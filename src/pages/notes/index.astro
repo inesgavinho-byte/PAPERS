@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NotePreview from '../../components/NotePreview.astro';
+import { getNotes } from '../../lib/content';
+
+const notes = await getNotes();
+---
+
+<Layout
+  title="Notes"
+  description="Short notes — thinking in progress."
+  canonicalPath="/notes"
+>
+  <section class="wrap page-head">
+    <h1>Notes</h1>
+    <p class="lede">Shorter pieces. Thinking in progress, not yet essays.</p>
+  </section>
+
+  <section class="wrap section">
+    <ul class="entry-list">
+      {
+        notes.map((note) => (
+          <li>
+            <NotePreview note={note} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

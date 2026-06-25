@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PaperPreview from '../components/PaperPreview.astro';
+import NotePreview from '../components/NotePreview.astro';
+import ConceptList from '../components/ConceptList.astro';
+import { getPapers, getNotes, getPapersAscending } from '../lib/content';
+import { site, featuredConcepts } from '../data/site';
+import { paperNumber } from '../lib/format';
+
+const papers = await getPapers();
+const notes = await getNotes();
+const archive = await getPapersAscending();
+
+const latest = papers[0];
+const recentNotes = notes.slice(0, 4);
+---
+
+<Layout canonicalPath="/">
+  <section class="hero wrap">
+    <h1>{site.name}</h1>
+    <p class="byline">{site.byline}</p>
+    <p class="purpose">{site.purpose}</p>
+    <p class="desc">{site.description}</p>
+  </section>
+
+  <div class="wrap"><hr class="rule" /></div>
+
+  {
+    latest && (
+      <section class="wrap section">
+        <p class="eyebrow section-title">Latest Paper</p>
+        <PaperPreview paper={latest} />
+      </section>
+    )
+  }
+
+  <div class="wrap"><hr class="rule" /></div>
+
+  <section class="wrap section">
+    <p class="eyebrow section-title">Recent Notes</p>
+    <div>
+      {recentNotes.map((note) => <NotePreview note={note} compact />)}
+    </div>
+    <p style="margin-top:1.2rem"><a class="read-more" href="/notes" style="border:0">All notes →</a></p>
+  </section>
+
+  <div class="wrap"><hr class="rule" /></div>
+
+  <section class="wrap section">
+    <p class="eyebrow section-title">Explore by Concept</p>
+    <ConceptList concepts={featuredConcepts} />
+    <p style="margin-top:1.2rem"><a class="read-more" href="/index" style="border:0">Full index →</a></p>
+  </section>
+
+  <div class="wrap"><hr class="rule" /></div>
+
+  <section class="wrap section">
+    <p class="eyebrow section-title">Archive</p>
+    <ul class="archive-list">
+      {
+        archive.map((paper) => (
+          <li>
+            <span class="num">{paperNumber(paper.data.number)}</span>
+            <a href={`/papers/${paper.id}`}>{paper.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+    <p style="margin-top:1.2rem"><a class="read-more" href="/archive" style="border:0">Full archive →</a></p>
+  </section>
+</Layout>

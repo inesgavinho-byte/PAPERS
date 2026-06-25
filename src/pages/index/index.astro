@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPapers, getNotes, conceptCount } from '../../lib/content';
+import { concepts, conceptSlug } from '../../data/site';
+
+const papers = await getPapers();
+const notes = await getNotes();
+
+const entries = concepts.map((c) => ({
+  name: c,
+  slug: conceptSlug(c),
+  count: conceptCount(papers, notes, c),
+}));
+---
+
+<Layout
+  title="Index"
+  description="The editorial vocabulary of PAPERS, organised by concept rather than by date."
+  canonicalPath="/index"
+>
+  <section class="wrap page-head">
+    <h1>Index</h1>
+    <p class="lede">
+      Organised by concept, not by date. The recurring ideas that the Papers
+      and Notes return to.
+    </p>
+  </section>
+
+  <section class="wrap section">
+    <ul class="archive-list">
+      {
+        entries.map((e) => (
+          <li>
+            <span class="num" style="font-size:1.1rem; min-width:2.5rem">
+              {String(e.count).padStart(2, '0')}
+            </span>
+            <a href={`/index/${e.slug}`}>{e.name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

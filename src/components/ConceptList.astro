@@ -1,0 +1,21 @@
+---
+import { conceptSlug } from '../data/site';
+
+interface Props {
+  concepts: string[];
+  // "columns" = large serif column layout; "inline" = compact tag row
+  variant?: 'columns' | 'inline';
+}
+
+const { concepts, variant = 'columns' } = Astro.props;
+---
+
+<ul class={variant === 'inline' ? 'concept-inline' : 'concept-list'}>
+  {
+    concepts.map((c) => (
+      <li>
+        <a href={`/index/${conceptSlug(c)}`}>{c}</a>
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getPapersAscending } from '../lib/content';
+import { formatDate, paperNumber } from '../lib/format';
+
+const papers = await getPapersAscending();
+---
+
+<Layout
+  title="Archive"
+  description="A numbered, chronological archive of every Paper."
+  canonicalPath="/archive"
+>
+  <section class="wrap page-head">
+    <h1>Archive</h1>
+    <p class="lede">Every Paper, numbered and in order of publication.</p>
+  </section>
+
+  <section class="wrap section">
+    <ul class="archive-list">
+      {
+        papers.map((paper) => (
+          <li>
+            <span class="num">{paperNumber(paper.data.number)}</span>
+            <span style="flex:1 1 auto">
+              <a href={`/papers/${paper.id}`}>{paper.data.title}</a>
+              <span class="meta-line" style="display:block; margin-top:0.2rem">
+                {formatDate(paper.data.published)} · {paper.data.readingTime}
+              </span>
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>
