@@ -7,47 +7,52 @@ import { issueNumber } from '../lib/format';
 const papers = await getPapers();
 const current = await getCurrentPaper();
 
-// Lead with the current Paper's thesis; break on sentences so it composes
-// into the dominant multi-line statement of the cover.
+// The visitor arrives inside the idea: lead with the current thesis.
 const thesisRaw = current?.data.thesis ?? site.purpose;
 const thesisLines = thesisRaw.split(/(?<=\.)\s+/).filter(Boolean);
+
+const note =
+  'An independent publication investigating architecture, organisations and the human condition through original essays.';
 ---
 
 <Layout nav="cover" canonicalPath="/">
-  <div class="cover">
-    <div class="cover-inner">
-      <h1 class="cover-title">{site.name}</h1>
-      <p class="cover-byline">{site.byline}</p>
-
-      <hr class="cover-shortrule" />
-
-      <p class="cover-thesis">
+  <div class="edition">
+    <!-- Section 1 — the thesis confronts the visitor -->
+    <section class="lead">
+      <p class="lead-thesis">
         {thesisLines.map((line) => <span class="line">{line}</span>)}
       </p>
-
       {
         current && (
-          <div class="cover-current">
-            <p class="ci-issue">Issue {issueNumber(current.data.issue)}</p>
-            <p class="ci-title">{current.data.title}</p>
-            <a class="text-link" href={`/papers/${current.id}`}>Read →</a>
-          </div>
+          <p class="lead-cta">
+            <a href={`/papers/${current.id}`}>Read Paper {issueNumber(current.data.issue)} →</a>
+          </p>
         )
       }
+    </section>
 
-      <section class="cover-contents">
-        <p class="section-kicker">Collected Papers</p>
-        <div class="contents-table">
-          {
-            papers.map((paper) => (
-              <a class="contents-row" href={`/papers/${paper.id}`}>
-                <span class="ci">Issue {issueNumber(paper.data.issue)}</span>
-                <span class="ct">{paper.data.title}</span>
+    <!-- Section 2 — the publication, revealed afterwards, placed aside -->
+    <section class="colophon">
+      <h1 class="colophon-title">{site.name}</h1>
+      <p class="colophon-byline">{site.byline}</p>
+      <p class="colophon-note">{note}</p>
+    </section>
+
+    <!-- Section 3 — a printed contents page -->
+    <section class="toc">
+      <p class="section-kicker">Collected Papers</p>
+      <ol class="toc-list">
+        {
+          papers.map((paper) => (
+            <li class="toc-entry">
+              <a href={`/papers/${paper.id}`}>
+                <span class="toc-num">Issue {issueNumber(paper.data.issue)}</span>
+                <span class="toc-title">{paper.data.title}</span>
               </a>
-            ))
-          }
-        </div>
-      </section>
-    </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
   </div>
 </Layout>
