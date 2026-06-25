@@ -13,7 +13,7 @@
 
 --max-cover: 760px;
 --max-reading: 720px;
---max-wide: 1120px;
+--max-wide: 1200px;
 }
 
 html {
@@ -71,61 +71,121 @@ color: var(--ink);
 border-bottom: 1px solid var(--ink);
 }
 
-/* COVER / HOMEPAGE */
+/* COVER / HOMEPAGE — a left-placed editorial sheet, not a centred page */
+
+.rule {
+border: 0;
+border-top: 1px solid var(--faint);
+margin: 0;
+}
 
 .cover {
-max-width: var(--max-cover);
-margin: 110px auto 0;
-padding: 0 32px 120px;
+max-width: var(--max-wide);
+margin: 0 auto;
+padding: 64px 32px 48px;
+}
+
+/* All cover content lives in a left field; the right of the sheet stays open. */
+.cover-inner {
+max-width: 720px;
 }
 
 .cover-title {
 font-family: var(--serif);
-font-size: clamp(78px, 12vw, 150px);
-line-height: 0.9;
-letter-spacing: 0.18em;
+font-size: clamp(72px, 14vw, 188px);
+line-height: 0.82;
+letter-spacing: 0.12em;
 text-transform: uppercase;
-font-weight: 400;
-margin: 0 0 24px;
+font-weight: 500;
+margin: 0;
+color: var(--ink);
 }
 
 .cover-byline {
 font-family: var(--serif);
 font-style: italic;
-font-size: 22px;
+font-size: clamp(17px, 2.2vw, 24px);
 color: var(--muted);
-margin-bottom: 68px;
+margin: 16px 0 0;
 }
 
-.rule {
+.cover-shortrule {
 border: 0;
-border-top: 1px solid var(--faint);
-margin: 0 0 58px;
+border-top: 1px solid var(--ink);
+width: 168px;
+margin: 44px 0 46px;
 }
 
 .cover-thesis {
 font-family: var(--serif);
-font-size: clamp(32px, 4.5vw, 54px);
-line-height: 1.06;
-font-weight: 400;
-margin: 0 0 46px;
+font-size: clamp(38px, 5.6vw, 72px);
+line-height: 1.05;
+font-weight: 500;
+color: var(--ink);
+margin: 0;
 }
 
-.cover-meta {
-font-family: var(--sans);
-font-size: 11px;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(--muted);
-margin-bottom: 12px;
+.cover-thesis .line {
+display: block;
 }
 
-.cover-paper-title {
+.cover-current {
+margin-top: 46px;
+}
+
+.cover-current .ci-issue {
 font-family: var(--serif);
-font-size: 31px;
+font-size: 18px;
+letter-spacing: 0.04em;
+color: var(--muted);
+margin: 0;
+}
+
+.cover-current .ci-title {
+font-family: var(--serif);
+font-size: clamp(24px, 3vw, 34px);
+line-height: 1.12;
+color: var(--ink);
+margin: 6px 0 16px;
+}
+
+/* COLLECTED PAPERS — an editorial contents table */
+
+.cover-contents {
+margin-top: 76px;
+max-width: 640px;
+}
+
+.contents-table {
+border-top: 1px solid var(--ink);
+}
+
+.contents-row {
+display: grid;
+grid-template-columns: 180px 1fr;
+gap: 24px;
+align-items: baseline;
+padding: 16px 0;
+border-bottom: 1px solid var(--faint);
+text-decoration: none;
+color: var(--ink);
+}
+
+.contents-row .ci {
+font-family: var(--serif);
+font-size: 17px;
+letter-spacing: 0.01em;
+color: var(--muted);
+}
+
+.contents-row .ct {
+font-family: var(--serif);
+font-size: clamp(19px, 2vw, 23px);
 line-height: 1.15;
-font-weight: 400;
-margin: 0 0 18px;
+}
+
+.contents-row:hover .ct {
+color: var(--accent);
 }
 
 .text-link {
@@ -193,9 +253,9 @@ color: var(--accent);
 
 .paper-entry {
 max-width: var(--max-reading);
-margin: 92px auto 90px;
+margin: 80px auto 84px;
 padding: 0 32px;
-text-align: center;
+text-align: left;
 }
 
 .paper-entry .issue-number {
@@ -235,7 +295,12 @@ font-size: 27px;
 line-height: 1.22;
 font-weight: 400;
 max-width: 520px;
-margin: 0 auto;
+margin: 0;
+}
+
+/* The distinction is the one centred feature on the entry, as in the mockup. */
+.paper-entry-section--center {
+text-align: center;
 }
 
 .central-distinction {
@@ -259,7 +324,7 @@ font-size: 21px;
 line-height: 1.48;
 color: var(--ink);
 max-width: 580px;
-margin: 0 auto;
+margin: 0;
 }
 
 .paper-metadata {
@@ -509,17 +574,27 @@ gap: 18px;
 }
 
 .cover {
-margin-top: 76px;
-padding: 0 22px 90px;
+padding: 40px 22px 40px;
+}
+
+.cover-inner,
+.cover-contents {
+max-width: none;
 }
 
 .cover-title {
-font-size: 64px;
-letter-spacing: 0.14em;
+font-size: clamp(52px, 17vw, 96px);
+letter-spacing: 0.08em;
 }
 
 .cover-thesis {
-font-size: 34px;
+font-size: clamp(32px, 9vw, 50px);
+max-width: none;
+}
+
+.contents-row {
+grid-template-columns: 1fr;
+gap: 2px;
 }
 
 .paper-row {
@@ -554,39 +629,6 @@ a { color: inherit; }
 /* Central Distinction — inline form (reading rail, anywhere small) */
 .distinction-inline { font-family: var(--serif); }
 .distinction-inline .op-accent { color: var(--accent); padding: 0 0.18em; }
-
-/* COVER — current investigation + ideas + about */
-.cover-current { margin-bottom: 4px; }
-
-.cover-extra { margin-top: 92px; }
-
-.cover-ideas-list {
-list-style: none;
-margin: 0;
-padding: 0;
-columns: 2;
-column-gap: 40px;
-}
-@media (min-width: 560px) { .cover-ideas-list { columns: 3; } }
-
-.cover-ideas-list li { break-inside: avoid; padding: 7px 0; }
-.cover-ideas-list a {
-font-family: var(--serif);
-font-size: 21px;
-color: var(--ink);
-text-decoration: none;
-}
-.cover-ideas-list a:hover { color: var(--accent); }
-
-.cover-about-link a {
-font-family: var(--serif);
-font-size: 24px;
-color: var(--ink);
-text-decoration: none;
-border-bottom: 1px solid var(--ink);
-padding-bottom: 2px;
-}
-.cover-about-link a:hover { color: var(--accent); border-color: var(--accent); }
 
 /* READING RAIL — internal structure */
 .rail-section { margin-bottom: 26px; }

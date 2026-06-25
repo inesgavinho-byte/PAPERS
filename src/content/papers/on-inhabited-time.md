@@ -2,6 +2,7 @@
 issue: 1
 title: "On Inhabited Time"
 centralDistinction: "Architecture = Time"
+thesis: "We do not occupy space. We endure time."
 question: "What do we actually inhabit?"
 abstract: "We describe buildings as objects in space. But what we actually live in is duration — and the spaces we love are the ones that know how to hold it."
 readingTime: "12 min"

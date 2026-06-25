@@ -2,6 +2,7 @@
 issue: 4
 title: "The Appearance and the Function"
 centralDistinction: "Formal Innovation ≠ Functional Innovation"
+thesis: "The movements changed appearance. They did not change life."
 question: "Is a new form a new idea?"
 abstract: "Architecture has learned to produce new shapes faster than it produces new ways of living. We have mistaken the novelty of the image for the advance of the art."
 readingTime: "15 min"
