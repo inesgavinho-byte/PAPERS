@@ -2,6 +2,7 @@
 issue: 1
 title: "On Inhabited Time"
 centralDistinction: "Architecture = Time"
+question: "What do we actually inhabit?"
 abstract: "We describe buildings as objects in space. But what we actually live in is duration — and the spaces we love are the ones that know how to hold it."
 readingTime: "12 min"
 published: "2025-11-20"

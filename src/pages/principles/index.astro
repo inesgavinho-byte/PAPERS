@@ -10,27 +10,22 @@ const principles = await getPrinciples();
   description="Operational principles distilled from the Papers — the commitments the theses converge upon."
   canonicalPath="/principles"
 >
-  <section class="wrap page-head">
+  <div class="index-page">
     <h1>Principles</h1>
-    <p class="lede">
+    <p class="index-intro">
       A Principle is distilled from several Papers — the operational commitment
       the theses converge upon.
     </p>
-  </section>
 
-  <section class="wrap section">
-    <ul class="entry-list">
-      {
-        principles.map((pr) => (
-          <li>
-            <a class="principle-row" href={`/principles/${pr.id}`}>
-              <h2 class="principle-name">{pr.data.title}</h2>
-              <p class="principle-definition">{pr.data.definition}</p>
-              <span class="read-more">Read →</span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+    {
+      principles.map((pr) => (
+        <a class="principle-row" href={`/principles/${pr.id}`}>
+          <span>
+            <span class="principle-title">{pr.data.title}</span>
+            <span class="principle-definition">{pr.data.definition}</span>
+          </span>
+        </a>
+      ))
+    }
+  </div>
 </Layout>

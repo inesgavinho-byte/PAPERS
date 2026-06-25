@@ -16,29 +16,24 @@ const entries = ideas.map((idea) => ({
   description="The conceptual territories of PAPERS. Each Idea gathers every Paper that enters its terrain."
   canonicalPath="/ideas"
 >
-  <section class="wrap page-head">
+  <div class="index-page">
     <h1>Ideas</h1>
-    <p class="lede">
-      Not tags — territories. Each Idea gathers every Paper that enters its
-      terrain.
+    <p class="index-intro">
+      Not tags — territories. Each Idea gathers every Paper that enters its terrain.
     </p>
-  </section>
 
-  <section class="wrap section">
-    <ul class="idea-territories">
-      {
-        entries.map((e) => (
-          <li>
-            <a href={`/ideas/${e.slug}`}>
-              <span class="idea-name">{e.name}</span>
-              <span class="idea-gloss">{e.gloss}</span>
-              <span class="idea-count">
-                {e.count} {e.count === 1 ? 'Paper' : 'Papers'}
-              </span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+    {
+      entries.map((e) => (
+        <a class="idea-row" href={`/ideas/${e.slug}`}>
+          <span>
+            <span class="idea-title">{e.name}</span>
+            <span class="idea-definition">{e.gloss}</span>
+          </span>
+          <span class="idea-count">
+            {e.count} {e.count === 1 ? 'Paper' : 'Papers'}
+          </span>
+        </a>
+      ))
+    }
+  </div>
 </Layout>

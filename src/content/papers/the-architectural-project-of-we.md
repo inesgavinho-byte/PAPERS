@@ -2,6 +2,7 @@
 issue: 0
 title: "The Architectural Project of We"
 centralDistinction: "Architecture ≠ Service"
+question: "Who is a building for?"
 abstract: "We have learned to ask what a building does for its owner. The older, harder question is what it does for everyone else who must live beside it."
 readingTime: "14 min"
 published: "2025-09-15"

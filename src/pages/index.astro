@@ -1,9 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Distinction from '../components/Distinction.astro';
-import IdeaList from '../components/IdeaList.astro';
+import PaperPreview from '../components/PaperPreview.astro';
 import { getPapers, getCurrentPaper } from '../lib/content';
-import { site, featuredIdeas } from '../data/site';
+import { site, featuredIdeas, slugify } from '../data/site';
 import { issueNumber } from '../lib/format';
 
 const papers = await getPapers();
@@ -12,52 +11,42 @@ const current = await getCurrentPaper();
 
 <Layout canonicalPath="/">
   <div class="cover">
-    <section class="masthead">
-      <h1 class="masthead-title">{site.name}</h1>
-      <p class="masthead-byline">{site.byline}</p>
-      <p class="masthead-purpose">{site.purpose}</p>
-    </section>
+    <h1 class="cover-title">{site.name}</h1>
+    <p class="cover-byline">{site.byline}</p>
+
+    <hr class="rule" />
+
+    <p class="cover-thesis">{site.purpose}</p>
 
     {
       current && (
-        <section class="cover-block">
-          <p class="label">Current Investigation</p>
-          <a class="current" href={`/papers/${current.id}`}>
-            <span class="issue">Issue {issueNumber(current.data.issue)}</span>
-            <span class="current-title">{current.data.title}</span>
-            <span class="current-distinction">
-              <Distinction value={current.data.centralDistinction} size="medium" />
-            </span>
-            <span class="read-more">Read →</span>
-          </a>
-        </section>
+        <div class="cover-current">
+          <p class="cover-meta">Current Investigation — Issue {issueNumber(current.data.issue)}</p>
+          <h2 class="cover-paper-title">{current.data.title}</h2>
+          <a class="text-link" href={`/papers/${current.id}`}>Read →</a>
+        </div>
       )
     }
 
-    <section class="cover-block">
-      <p class="label">Collected Papers</p>
-      <ol class="contents">
+    <section class="collected">
+      <p class="section-kicker">Collected Papers</p>
+      {papers.map((paper) => <PaperPreview paper={paper} />)}
+    </section>
+
+    <section class="cover-extra">
+      <p class="section-kicker">Ideas</p>
+      <ul class="cover-ideas-list">
         {
-          papers.map((paper) => (
-            <li>
-              <a href={`/papers/${paper.id}`}>
-                <span class="contents-issue">Issue {issueNumber(paper.data.issue)}</span>
-                <span class="contents-title">{paper.data.title}</span>
-              </a>
-            </li>
+          featuredIdeas.map((idea) => (
+            <li><a href={`/ideas/${slugify(idea)}`}>{idea}</a></li>
           ))
         }
-      </ol>
+      </ul>
     </section>
 
-    <section class="cover-block">
-      <p class="label">Ideas</p>
-      <IdeaList ideas={featuredIdeas} />
-    </section>
-
-    <section class="cover-block cover-about">
-      <p class="label">About</p>
-      <p><a href="/about">{site.name} is an editorial institution. →</a></p>
+    <section class="cover-extra cover-about-link">
+      <p class="section-kicker">About</p>
+      <a href="/about">{site.name} is an editorial institution. →</a>
     </section>
   </div>
 </Layout>

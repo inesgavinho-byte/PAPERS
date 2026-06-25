@@ -8,37 +8,27 @@ export async function getStaticPaths() {
   const papers = await getPapers();
   return ideas.map((idea) => ({
     params: { idea: slugify(idea.name) },
-    props: {
-      idea,
-      papers: papersForIdea(papers, idea.name),
-    },
+    props: { idea, papers: papersForIdea(papers, idea.name) },
   }));
 }
 
 const { idea, papers } = Astro.props;
 ---
 
-<Layout
-  title={idea.name}
-  description={idea.gloss}
-  canonicalPath={`/ideas/${slugify(idea.name)}`}
->
-  <section class="wrap page-head">
-    <p class="label">Idea</p>
+<Layout title={idea.name} description={idea.gloss} canonicalPath={`/ideas/${slugify(idea.name)}`}>
+  <div class="index-page">
+    <p class="section-kicker">Idea</p>
     <h1>{idea.name}</h1>
-    <p class="lede">{idea.gloss}</p>
-  </section>
+    <p class="index-intro">{idea.gloss}</p>
 
-  <section class="wrap section">
     {
       papers.length > 0 ? (
-        <div class="paper-index">
-          {papers.map((paper) => <PaperPreview paper={paper} />)}
-        </div>
+        papers.map((paper) => <PaperPreview paper={paper} />)
       ) : (
         <p class="muted">No Papers have entered this territory yet.</p>
       )
     }
-    <p style="margin-top:2rem"><a class="read-more" href="/ideas" style="border:0">← All ideas</a></p>
-  </section>
+
+    <p style="margin-top:48px"><a class="text-link" href="/ideas">All Ideas</a></p>
+  </div>
 </Layout>

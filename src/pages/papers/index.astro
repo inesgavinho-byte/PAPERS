@@ -11,18 +11,12 @@ const papers = await getPapers();
   description="The collected Papers of PAPERS — theses on architecture, time, attention and the human condition."
   canonicalPath="/papers"
 >
-  <section class="wrap page-head">
-    <p class="label">Volume I</p>
+  <div class="index-page">
     <h1>Papers</h1>
-    <p class="lede">
+    <p class="index-intro">
       Each Paper is a thesis. Each introduces a single conceptual distinction.
       The collection grows slowly, by addition.
     </p>
-  </section>
-
-  <section class="wrap section">
-    <div class="paper-index">
-      {papers.map((paper) => <PaperPreview paper={paper} />)}
-    </div>
-  </section>
+    {papers.map((paper) => <PaperPreview paper={paper} />)}
+  </div>
 </Layout>

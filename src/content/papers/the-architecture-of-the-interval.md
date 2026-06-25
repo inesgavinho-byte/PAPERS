@@ -2,6 +2,7 @@
 issue: 2
 title: "The Architecture of the Interval"
 centralDistinction: "Interval ≠ Transition"
+question: "What is the space between for?"
 abstract: "Modern planning treats the space between as time to be minimised. But the pause is not the absence of experience. It is where experience composes itself."
 readingTime: "11 min"
 published: "2026-01-22"

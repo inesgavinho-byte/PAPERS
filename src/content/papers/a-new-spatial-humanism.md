@@ -2,6 +2,7 @@
 issue: 3
 title: "A New Spatial Humanism"
 centralDistinction: "Depth ≠ Emptiness"
+question: "Is emptiness the same as depth?"
 abstract: "Minimalism promised profundity and too often delivered subtraction. Depth was never the absence of things. It is the presence of meaning."
 readingTime: "13 min"
 published: "2026-04-10"

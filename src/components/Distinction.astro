@@ -1,12 +1,14 @@
 ---
 interface Props {
   value: string;
-  size?: 'large' | 'medium' | 'small';
+  // "stacked" = large entry treatment with the operator on its own line;
+  // "inline" = single line with the operator accented.
+  variant?: 'stacked' | 'inline';
 }
 
-const { value, size = 'medium' } = Astro.props;
+const { value, variant = 'inline' } = Astro.props;
 
-// Split on a standalone ≠ or = operator so it can be set apart typographically.
+// Split on a standalone ≠ or = so the operator can be set apart.
 const match = value.match(/\s(≠|=)\s/);
 const op = match?.[1] ?? null;
 let left = value;
@@ -18,16 +20,20 @@ if (op) {
 }
 ---
 
-<span class={`distinction distinction--${size}`} aria-label={value}>
-  {
-    op ? (
-      <>
-        <span class="term">{left}</span>
-        <span class="op" aria-hidden="true">{op}</span>
-        <span class="term">{right}</span>
-      </>
-    ) : (
-      <span class="term">{value}</span>
-    )
-  }
-</span>
+{
+  variant === 'stacked' && op ? (
+    <span class="central-distinction" aria-label={value}>
+      {left}
+      <span class="not-equal" aria-hidden="true">{op}</span>
+      {right}
+    </span>
+  ) : op ? (
+    <span class="distinction-inline" aria-label={value}>
+      {left}
+      <span class="op-accent" aria-hidden="true">{op}</span>
+      {right}
+    </span>
+  ) : (
+    <span class="distinction-inline">{value}</span>
+  )
+}

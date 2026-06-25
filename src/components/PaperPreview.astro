@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import Distinction from './Distinction.astro';
 import { issueNumber } from '../lib/format';
 
 interface Props {
@@ -8,16 +7,10 @@ interface Props {
 }
 
 const { paper } = Astro.props;
-const { issue, title, centralDistinction } = paper.data;
-const href = `/papers/${paper.id}`;
+const { issue, title } = paper.data;
 ---
 
-<a class="paper-row" href={href}>
+<a class="paper-row" href={`/papers/${paper.id}`}>
   <span class="issue">Issue {issueNumber(issue)}</span>
-  <span class="paper-row-body">
-    <span class="paper-row-title">{title}</span>
-    <span class="paper-row-distinction">
-      <Distinction value={centralDistinction} size="small" />
-    </span>
-  </span>
+  <span class="title">{title}</span>
 </a>

@@ -90,6 +90,7 @@ URL slug** — `on-inhabited-time.md` becomes `/papers/on-inhabited-time`.
 issue: 5
 title: "The Title of the Paper"
 centralDistinction: "Term A ≠ Term B"   # or "Term A = Term B"
+question: "The animating question?"      # shown on the Paper's title page
 abstract: "One or two sharp sentences. Displayed below the distinction."
 readingTime: "12 min"
 published: "2026-09-01"

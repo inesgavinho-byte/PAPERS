@@ -9,6 +9,8 @@ const papers = defineCollection({
     title: z.string(),
     // The intellectual core, displayed above the abstract, e.g. "Architecture ≠ Service".
     centralDistinction: z.string(),
+    // The animating question the thesis answers (first movement of the editorial DNA).
+    question: z.string().optional(),
     abstract: z.string(),
     readingTime: z.string(),
     published: z.coerce.date(),
