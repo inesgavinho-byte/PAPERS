@@ -71,7 +71,7 @@ color: var(--ink);
 border-bottom: 1px solid var(--ink);
 }
 
-/* COVER / HOMEPAGE — a left-placed editorial sheet, not a centred page */
+/* HOMEPAGE — a digital edition. The visitor arrives inside a thought. */
 
 .rule {
 border: 0;
@@ -79,112 +79,129 @@ border-top: 1px solid var(--faint);
 margin: 0;
 }
 
-.cover {
+.edition {
 max-width: var(--max-wide);
 margin: 0 auto;
-padding: 64px 32px 48px;
+padding: 0 32px 72px;
 }
 
-/* All cover content lives in a left field; the right of the sheet stays open. */
-.cover-inner {
-max-width: 720px;
+/* Section 1 — the current thesis, holding the opening field */
+.lead {
+min-height: 84vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 8vh 0 0;
 }
 
-.cover-title {
+.lead-thesis {
 font-family: var(--serif);
-font-size: clamp(72px, 14vw, 188px);
-line-height: 0.82;
-letter-spacing: 0.12em;
-text-transform: uppercase;
+font-size: clamp(44px, 7.6vw, 108px);
+line-height: 1.0;
 font-weight: 500;
-margin: 0;
+letter-spacing: 0.004em;
 color: var(--ink);
-}
-
-.cover-byline {
-font-family: var(--serif);
-font-style: italic;
-font-size: clamp(17px, 2.2vw, 24px);
-color: var(--muted);
-margin: 16px 0 0;
-}
-
-.cover-shortrule {
-border: 0;
-border-top: 1px solid var(--ink);
-width: 168px;
-margin: 44px 0 46px;
-}
-
-.cover-thesis {
-font-family: var(--serif);
-font-size: clamp(38px, 5.6vw, 72px);
-line-height: 1.05;
-font-weight: 500;
-color: var(--ink);
+max-width: 15ch;
 margin: 0;
 }
 
-.cover-thesis .line {
+.lead-thesis .line {
 display: block;
 }
 
-.cover-current {
-margin-top: 46px;
+.lead-cta {
+margin: clamp(2.2rem, 5vh, 3.5rem) 0 0;
 }
 
-.cover-current .ci-issue {
+.lead-cta a {
 font-family: var(--serif);
-font-size: 18px;
-letter-spacing: 0.04em;
-color: var(--muted);
+font-size: clamp(20px, 2.4vw, 27px);
+color: var(--ink);
+text-decoration: none;
+border-bottom: 1px solid var(--ink);
+padding-bottom: 3px;
+}
+
+.lead-cta a:hover {
+color: var(--accent);
+border-color: var(--accent);
+}
+
+/* Section 2 — the publication, revealed after the idea, placed to the right */
+.colophon {
+margin: clamp(150px, 26vh, 340px) 0 0 auto;
+max-width: 31rem;
+}
+
+.colophon-title {
+font-family: var(--serif);
+font-size: clamp(30px, 4.4vw, 56px);
+letter-spacing: 0.2em;
+text-transform: uppercase;
+font-weight: 500;
+color: var(--ink);
 margin: 0;
 }
 
-.cover-current .ci-title {
+.colophon-byline {
 font-family: var(--serif);
-font-size: clamp(24px, 3vw, 34px);
-line-height: 1.12;
+font-style: italic;
+font-size: clamp(17px, 2vw, 22px);
+color: var(--muted);
+margin: 12px 0 0;
+}
+
+.colophon-note {
+font-family: var(--serif);
+font-size: clamp(18px, 2vw, 22px);
+line-height: 1.42;
 color: var(--ink);
-margin: 6px 0 16px;
+max-width: 33ch;
+margin: 24px 0 0;
 }
 
-/* COLLECTED PAPERS — an editorial contents table */
-
-.cover-contents {
-margin-top: 76px;
-max-width: 640px;
+/* Section 3 — Collected Papers as a printed contents page (no rules, just space) */
+.toc {
+margin: clamp(150px, 26vh, 340px) 0 0;
+max-width: 760px;
 }
 
-.contents-table {
-border-top: 1px solid var(--ink);
+.toc .section-kicker {
+margin-bottom: 4px;
 }
 
-.contents-row {
-display: grid;
-grid-template-columns: 180px 1fr;
-gap: 24px;
-align-items: baseline;
-padding: 16px 0;
-border-bottom: 1px solid var(--faint);
+.toc-list {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.toc-entry a {
+display: block;
+border: 0;
 text-decoration: none;
 color: var(--ink);
+padding: clamp(22px, 3.4vh, 40px) 0;
 }
 
-.contents-row .ci {
+.toc-num {
+display: block;
 font-family: var(--serif);
-font-size: 17px;
-letter-spacing: 0.01em;
+font-size: 16px;
+letter-spacing: 0.04em;
 color: var(--muted);
+margin-bottom: 8px;
 }
 
-.contents-row .ct {
+.toc-title {
+display: block;
 font-family: var(--serif);
-font-size: clamp(19px, 2vw, 23px);
-line-height: 1.15;
+font-size: clamp(24px, 3vw, 36px);
+line-height: 1.08;
+color: var(--ink);
 }
 
-.contents-row:hover .ct {
+.toc-entry a:hover .toc-title {
 color: var(--accent);
 }
 
@@ -573,28 +590,28 @@ padding: 28px 22px 0;
 gap: 18px;
 }
 
-.cover {
-padding: 40px 22px 40px;
+.edition {
+padding: 0 22px 56px;
 }
 
-.cover-inner,
-.cover-contents {
+.lead {
+min-height: 78vh;
+padding-top: 6vh;
+}
+
+.lead-thesis {
+font-size: clamp(38px, 11vw, 66px);
 max-width: none;
 }
 
-.cover-title {
-font-size: clamp(52px, 17vw, 96px);
-letter-spacing: 0.08em;
-}
-
-.cover-thesis {
-font-size: clamp(32px, 9vw, 50px);
+.colophon {
+margin: clamp(110px, 22vh, 220px) 0 0;
 max-width: none;
 }
 
-.contents-row {
-grid-template-columns: 1fr;
-gap: 2px;
+.toc {
+margin: clamp(110px, 22vh, 220px) 0 0;
+max-width: none;
 }
 
 .paper-row {
