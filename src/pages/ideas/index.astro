@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPapers, ideaCount } from '../../lib/content';
+import { ideas, slugify } from '../../data/site';
+
+const papers = await getPapers();
+const entries = ideas.map((idea) => ({
+  ...idea,
+  slug: slugify(idea.name),
+  count: ideaCount(papers, idea.name),
+}));
+---
+
+<Layout
+  title="Ideas"
+  description="The conceptual territories of PAPERS. Each Idea gathers every Paper that enters its terrain."
+  canonicalPath="/ideas"
+>
+  <div class="index-page">
+    <h1>Ideas</h1>
+    <p class="index-intro">
+      Not tags — territories. Each Idea gathers every Paper that enters its terrain.
+    </p>
+
+    {
+      entries.map((e) => (
+        <a class="idea-row" href={`/ideas/${e.slug}`}>
+          <span>
+            <span class="idea-title">{e.name}</span>
+            <span class="idea-definition">{e.gloss}</span>
+          </span>
+          <span class="idea-count">
+            {e.count} {e.count === 1 ? 'Paper' : 'Papers'}
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</Layout>

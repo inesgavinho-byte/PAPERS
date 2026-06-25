@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PaperPreview from '../components/PaperPreview.astro';
+import { getPapers, getCurrentPaper } from '../lib/content';
+import { site, featuredIdeas, slugify } from '../data/site';
+import { issueNumber } from '../lib/format';
+
+const papers = await getPapers();
+const current = await getCurrentPaper();
+---
+
+<Layout canonicalPath="/">
+  <div class="cover">
+    <h1 class="cover-title">{site.name}</h1>
+    <p class="cover-byline">{site.byline}</p>
+
+    <hr class="rule" />
+
+    <p class="cover-thesis">{site.purpose}</p>
+
+    {
+      current && (
+        <div class="cover-current">
+          <p class="cover-meta">Current Investigation — Issue {issueNumber(current.data.issue)}</p>
+          <h2 class="cover-paper-title">{current.data.title}</h2>
+          <a class="text-link" href={`/papers/${current.id}`}>Read →</a>
+        </div>
+      )
+    }
+
+    <section class="collected">
+      <p class="section-kicker">Collected Papers</p>
+      {papers.map((paper) => <PaperPreview paper={paper} />)}
+    </section>
+
+    <section class="cover-extra">
+      <p class="section-kicker">Ideas</p>
+      <ul class="cover-ideas-list">
+        {
+          featuredIdeas.map((idea) => (
+            <li><a href={`/ideas/${slugify(idea)}`}>{idea}</a></li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="cover-extra cover-about-link">
+      <p class="section-kicker">About</p>
+      <a href="/about">{site.name} is an editorial institution. →</a>
+    </section>
+  </div>
+</Layout>

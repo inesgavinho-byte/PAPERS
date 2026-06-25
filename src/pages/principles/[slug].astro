@@ -1,0 +1,71 @@
+---
+import { render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { getPapers, getPrinciples, papersForPrinciple } from '../../lib/content';
+import { issueNumber } from '../../lib/format';
+import { slugify } from '../../data/site';
+
+export async function getStaticPaths() {
+  const principles = await getPrinciples();
+  const papers = await getPapers();
+  return principles.map((principle) => ({
+    params: { slug: principle.id },
+    props: { principle, papers },
+  }));
+}
+
+const { principle, papers } = Astro.props;
+const { Content } = await render(principle);
+const { title, definition, ideas } = principle.data;
+const related = papersForPrinciple(papers, principle);
+---
+
+<Layout title={title} description={definition} canonicalPath={`/principles/${principle.id}`}>
+  <article>
+    <header class="paper-entry">
+      <p class="issue-number">Principle</p>
+      <h1>{title}</h1>
+      <div class="paper-entry-section">
+        <p class="paper-abstract">{definition}</p>
+      </div>
+    </header>
+
+    <div class="reading-single">
+      <div class="prose">
+        <Content />
+      </div>
+
+      <footer class="paper-footer">
+        <hr class="rule" />
+        {
+          related.length > 0 && (
+            <div class="related-group">
+              <p class="group-title">Drawn From</p>
+              <ul>
+                {related.map((p) => (
+                  <li>
+                    <a href={`/papers/${p.id}`}>
+                      Issue {issueNumber(p.data.issue)} — {p.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+        {
+          ideas.length > 0 && (
+            <div class="related-group">
+              <p class="group-title">Related Ideas</p>
+              <ul>
+                {ideas.map((i) => (
+                  <li><a href={`/ideas/${slugify(i)}`}>{i}</a></li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+      </footer>
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,21 @@
+---
+import { slugify } from '../data/site';
+
+interface Props {
+  ideas: string[];
+  // "territories" = generous serif column list; "inline" = compact row
+  variant?: 'territories' | 'inline';
+}
+
+const { ideas, variant = 'territories' } = Astro.props;
+---
+
+<ul class={variant === 'inline' ? 'idea-inline' : 'idea-list'}>
+  {
+    ideas.map((idea) => (
+      <li>
+        <a href={`/ideas/${slugify(idea)}`}>{idea}</a>
+      </li>
+    ))
+  }
+</ul>

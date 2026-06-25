@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { issueNumber } from '../lib/format';
+
+interface Props {
+  paper: CollectionEntry<'papers'>;
+}
+
+const { paper } = Astro.props;
+const { issue, title } = paper.data;
+---
+
+<a class="paper-row" href={`/papers/${paper.id}`}>
+  <span class="issue">Issue {issueNumber(issue)}</span>
+  <span class="title">{title}</span>
+</a>

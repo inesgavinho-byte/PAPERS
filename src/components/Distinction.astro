@@ -1,0 +1,39 @@
+---
+interface Props {
+  value: string;
+  // "stacked" = large entry treatment with the operator on its own line;
+  // "inline" = single line with the operator accented.
+  variant?: 'stacked' | 'inline';
+}
+
+const { value, variant = 'inline' } = Astro.props;
+
+// Split on a standalone ≠ or = so the operator can be set apart.
+const match = value.match(/\s(≠|=)\s/);
+const op = match?.[1] ?? null;
+let left = value;
+let right = '';
+if (op) {
+  const parts = value.split(` ${op} `);
+  left = parts[0];
+  right = parts.slice(1).join(` ${op} `);
+}
+---
+
+{
+  variant === 'stacked' && op ? (
+    <span class="central-distinction" aria-label={value}>
+      {left}
+      <span class="not-equal" aria-hidden="true">{op}</span>
+      {right}
+    </span>
+  ) : op ? (
+    <span class="distinction-inline" aria-label={value}>
+      {left}
+      <span class="op-accent" aria-hidden="true">{op}</span>
+      {right}
+    </span>
+  ) : (
+    <span class="distinction-inline">{value}</span>
+  )
+}
