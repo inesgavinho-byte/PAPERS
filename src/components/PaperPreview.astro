@@ -1,25 +1,23 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import MetadataLine from './MetadataLine.astro';
-import { formatDate, paperNumber } from '../lib/format';
+import Distinction from './Distinction.astro';
+import { issueNumber } from '../lib/format';
 
 interface Props {
   paper: CollectionEntry<'papers'>;
-  showAbstract?: boolean;
 }
 
-const { paper, showAbstract = true } = Astro.props;
-const { number, title, abstract, published, readingTime, version, concepts } = paper.data;
+const { paper } = Astro.props;
+const { issue, title, centralDistinction } = paper.data;
 const href = `/papers/${paper.id}`;
 ---
 
-<article class="paper-preview">
-  <div class="num">Paper {paperNumber(number)}</div>
-  <h3><a href={href} style="border:0">{title}</a></h3>
-  {showAbstract && <p class="abstract">{abstract}</p>}
-  <MetadataLine
-    parts={[readingTime, formatDate(published), `v${version}`]}
-    concepts={concepts}
-  />
-  <p style="margin-top:0.8rem"><a class="read-more" href={href} style="border:0">Read →</a></p>
-</article>
+<a class="paper-row" href={href}>
+  <span class="issue">Issue {issueNumber(issue)}</span>
+  <span class="paper-row-body">
+    <span class="paper-row-title">{title}</span>
+    <span class="paper-row-distinction">
+      <Distinction value={centralDistinction} size="small" />
+    </span>
+  </span>
+</a>

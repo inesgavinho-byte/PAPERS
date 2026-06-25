@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PaperPreview from '../../components/PaperPreview.astro';
+import { getPapers, papersForIdea } from '../../lib/content';
+import { ideas, slugify } from '../../data/site';
+
+export async function getStaticPaths() {
+  const papers = await getPapers();
+  return ideas.map((idea) => ({
+    params: { idea: slugify(idea.name) },
+    props: {
+      idea,
+      papers: papersForIdea(papers, idea.name),
+    },
+  }));
+}
+
+const { idea, papers } = Astro.props;
+---
+
+<Layout
+  title={idea.name}
+  description={idea.gloss}
+  canonicalPath={`/ideas/${slugify(idea.name)}`}
+>
+  <section class="wrap page-head">
+    <p class="label">Idea</p>
+    <h1>{idea.name}</h1>
+    <p class="lede">{idea.gloss}</p>
+  </section>
+
+  <section class="wrap section">
+    {
+      papers.length > 0 ? (
+        <div class="paper-index">
+          {papers.map((paper) => <PaperPreview paper={paper} />)}
+        </div>
+      ) : (
+        <p class="muted">No Papers have entered this territory yet.</p>
+      )
+    }
+    <p style="margin-top:2rem"><a class="read-more" href="/ideas" style="border:0">← All ideas</a></p>
+  </section>
+</Layout>

@@ -1,0 +1,69 @@
+---
+import { render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import IdeaList from '../../components/IdeaList.astro';
+import { getPapers, getPrinciples, papersForPrinciple } from '../../lib/content';
+import { issueNumber } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const principles = await getPrinciples();
+  const papers = await getPapers();
+  return principles.map((principle) => ({
+    params: { slug: principle.id },
+    props: { principle, papers },
+  }));
+}
+
+const { principle, papers } = Astro.props;
+const { Content } = await render(principle);
+const { title, definition, ideas } = principle.data;
+const related = papersForPrinciple(papers, principle);
+---
+
+<Layout title={title} description={definition} canonicalPath={`/principles/${principle.id}`}>
+  <article class="wrap article">
+    <div class="read">
+      <header class="paper-head">
+        <p class="label">Principle</p>
+        <h1 class="paper-title">{title}</h1>
+        <p class="abstract">{definition}</p>
+      </header>
+
+      <hr class="rule" />
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      <footer class="paper-foot">
+        <hr class="rule" />
+        <div class="related">
+          {
+            related.length > 0 && (
+              <div>
+                <p class="group-title">Drawn From</p>
+                <ul>
+                  {related.map((p) => (
+                    <li>
+                      <a href={`/papers/${p.id}`}>
+                        Issue {issueNumber(p.data.issue)} — {p.data.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+          {
+            ideas.length > 0 && (
+              <div>
+                <p class="group-title">Related Ideas</p>
+                <IdeaList ideas={ideas} variant="inline" />
+              </div>
+            )
+          }
+        </div>
+      </footer>
+    </div>
+  </article>
+</Layout>

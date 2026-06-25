@@ -1,65 +1,102 @@
 ---
 import { render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import ConceptList from '../../components/ConceptList.astro';
+import Distinction from '../../components/Distinction.astro';
+import IdeaList from '../../components/IdeaList.astro';
 import {
   getPapers,
-  getNotes,
+  getPrinciples,
   relatedPapers,
-  relatedNotes,
+  principlesForPaper,
 } from '../../lib/content';
-import { formatDate, paperNumber } from '../../lib/format';
+import { formatDate, issueNumber } from '../../lib/format';
 
 export async function getStaticPaths() {
   const papers = await getPapers();
-  const notes = await getNotes();
+  const principles = await getPrinciples();
   return papers.map((paper) => ({
     params: { slug: paper.id },
-    props: { paper, papers, notes },
+    props: { paper, papers, principles },
   }));
 }
 
-const { paper, papers, notes } = Astro.props;
+const { paper, papers, principles } = Astro.props;
 const { Content } = await render(paper);
 
-const { number, title, abstract, published, readingTime, version, concepts } = paper.data;
+const {
+  issue,
+  title,
+  centralDistinction,
+  abstract,
+  readingTime,
+  published,
+  ideas,
+  genealogy,
+} = paper.data;
 
-const related = relatedPapers(paper, papers).slice(0, 4);
-const relNotes = relatedNotes(paper, notes).slice(0, 4);
+const related = relatedPapers(paper, papers).slice(0, 3);
+const relPrinciples = principlesForPaper(paper, principles);
 ---
 
-<Layout
-  title={title}
-  description={abstract}
-  canonicalPath={`/papers/${paper.id}`}
-  ogType="article"
->
+<Layout title={title} description={abstract} canonicalPath={`/papers/${paper.id}`} ogType="article">
   <article class="wrap article">
     <div class="read">
-      <p class="num" style="font-family:var(--serif); color:var(--olive); letter-spacing:0.1em">
-        Paper {paperNumber(number)}
-      </p>
-      <h1 class="paper-title">{title}</h1>
-      <p class="abstract">{abstract}</p>
+      <header class="paper-head">
+        <p class="issue-line">Issue {issueNumber(issue)}</p>
+        <h1 class="paper-title">{title}</h1>
 
-      <dl class="meta-grid">
-        <div>
-          <dt>Published</dt>
-          <dd>{formatDate(published)}</dd>
+        <div class="central-distinction">
+          <p class="label">Central Distinction</p>
+          <Distinction value={centralDistinction} size="large" />
         </div>
-        <div>
-          <dt>Reading time</dt>
-          <dd>{readingTime}</dd>
-        </div>
-        <div>
-          <dt>Version</dt>
-          <dd>{version}</dd>
-        </div>
-        <div>
-          <dt>Concepts</dt>
-          <dd><ConceptList concepts={concepts} variant="inline" /></dd>
-        </div>
-      </dl>
+
+        <p class="abstract">{abstract}</p>
+
+        <dl class="paper-meta">
+          <div>
+            <dt>Published</dt>
+            <dd>{formatDate(published)}</dd>
+          </div>
+          <div>
+            <dt>Reading time</dt>
+            <dd>{readingTime}</dd>
+          </div>
+          {
+            ideas.length > 0 && (
+              <div>
+                <dt>Ideas</dt>
+                <dd><IdeaList ideas={ideas} variant="inline" /></dd>
+              </div>
+            )
+          }
+          {
+            relPrinciples.length > 0 && (
+              <div>
+                <dt>Principles</dt>
+                <dd>
+                  <ul class="meta-links">
+                    {relPrinciples.map((pr) => (
+                      <li><a href={`/principles/${pr.id}`}>{pr.data.title}</a></li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            )
+          }
+          {
+            genealogy.length > 0 && (
+              <div class="genealogy">
+                <dt>Genealogy</dt>
+                <dd>
+                  <ul>
+                    {genealogy.map((g) => <li>{g}</li>)}
+                  </ul>
+                </dd>
+              </div>
+            )
+          }
+        </dl>
+      </header>
 
       <hr class="rule" />
 
@@ -68,8 +105,8 @@ const relNotes = relatedNotes(paper, notes).slice(0, 4);
       </div>
 
       {
-        (related.length > 0 || relNotes.length > 0 || concepts.length > 0) && (
-          <>
+        (related.length > 0 || relPrinciples.length > 0 || ideas.length > 0) && (
+          <footer class="paper-foot">
             <hr class="rule" />
             <div class="related">
               {related.length > 0 && (
@@ -79,7 +116,7 @@ const relNotes = relatedNotes(paper, notes).slice(0, 4);
                     {related.map((p) => (
                       <li>
                         <a href={`/papers/${p.id}`}>
-                          {paperNumber(p.data.number)} — {p.data.title}
+                          Issue {issueNumber(p.data.issue)} — {p.data.title}
                         </a>
                       </li>
                     ))}
@@ -87,27 +124,25 @@ const relNotes = relatedNotes(paper, notes).slice(0, 4);
                 </div>
               )}
 
-              {relNotes.length > 0 && (
+              {relPrinciples.length > 0 && (
                 <div>
-                  <p class="group-title">Related Notes</p>
+                  <p class="group-title">Related Principles</p>
                   <ul>
-                    {relNotes.map((n) => (
-                      <li>
-                        <a href={`/notes/${n.id}`}>{n.data.title}</a>
-                      </li>
+                    {relPrinciples.map((pr) => (
+                      <li><a href={`/principles/${pr.id}`}>{pr.data.title}</a></li>
                     ))}
                   </ul>
                 </div>
               )}
 
-              {concepts.length > 0 && (
+              {ideas.length > 0 && (
                 <div>
-                  <p class="group-title">Related Concepts</p>
-                  <ConceptList concepts={concepts} variant="inline" />
+                  <p class="group-title">Related Ideas</p>
+                  <IdeaList ideas={ideas} variant="inline" />
                 </div>
               )}
             </div>
-          </>
+          </footer>
         )
       }
     </div>

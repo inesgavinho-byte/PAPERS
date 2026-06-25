@@ -8,23 +8,21 @@ const papers = await getPapers();
 
 <Layout
   title="Papers"
-  description="Essays on architecture, organisations, hospitality, knowledge and systems."
+  description="The collected Papers of PAPERS — theses on architecture, time, attention and the human condition."
   canonicalPath="/papers"
 >
   <section class="wrap page-head">
+    <p class="label">Volume I</p>
     <h1>Papers</h1>
-    <p class="lede">Long-form essays, in reverse chronological order.</p>
+    <p class="lede">
+      Each Paper is a thesis. Each introduces a single conceptual distinction.
+      The collection grows slowly, by addition.
+    </p>
   </section>
 
   <section class="wrap section">
-    <ul class="entry-list">
-      {
-        papers.map((paper) => (
-          <li>
-            <PaperPreview paper={paper} />
-          </li>
-        ))
-      }
-    </ul>
+    <div class="paper-index">
+      {papers.map((paper) => <PaperPreview paper={paper} />)}
+    </div>
   </section>
 </Layout>

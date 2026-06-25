@@ -1,0 +1,33 @@
+---
+interface Props {
+  value: string;
+  size?: 'large' | 'medium' | 'small';
+}
+
+const { value, size = 'medium' } = Astro.props;
+
+// Split on a standalone ≠ or = operator so it can be set apart typographically.
+const match = value.match(/\s(≠|=)\s/);
+const op = match?.[1] ?? null;
+let left = value;
+let right = '';
+if (op) {
+  const parts = value.split(` ${op} `);
+  left = parts[0];
+  right = parts.slice(1).join(` ${op} `);
+}
+---
+
+<span class={`distinction distinction--${size}`} aria-label={value}>
+  {
+    op ? (
+      <>
+        <span class="term">{left}</span>
+        <span class="op" aria-hidden="true">{op}</span>
+        <span class="term">{right}</span>
+      </>
+    ) : (
+      <span class="term">{value}</span>
+    )
+  }
+</span>

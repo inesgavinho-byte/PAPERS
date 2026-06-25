@@ -1,71 +1,63 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PaperPreview from '../components/PaperPreview.astro';
-import NotePreview from '../components/NotePreview.astro';
-import ConceptList from '../components/ConceptList.astro';
-import { getPapers, getNotes, getPapersAscending } from '../lib/content';
-import { site, featuredConcepts } from '../data/site';
-import { paperNumber } from '../lib/format';
+import Distinction from '../components/Distinction.astro';
+import IdeaList from '../components/IdeaList.astro';
+import { getPapers, getCurrentPaper } from '../lib/content';
+import { site, featuredIdeas } from '../data/site';
+import { issueNumber } from '../lib/format';
 
 const papers = await getPapers();
-const notes = await getNotes();
-const archive = await getPapersAscending();
-
-const latest = papers[0];
-const recentNotes = notes.slice(0, 4);
+const current = await getCurrentPaper();
 ---
 
 <Layout canonicalPath="/">
-  <section class="hero wrap">
-    <h1>{site.name}</h1>
-    <p class="byline">{site.byline}</p>
-    <p class="purpose">{site.purpose}</p>
-    <p class="desc">{site.description}</p>
-  </section>
+  <div class="cover">
+    <section class="masthead">
+      <h1 class="masthead-title">{site.name}</h1>
+      <p class="masthead-byline">{site.byline}</p>
+      <p class="masthead-purpose">{site.purpose}</p>
+    </section>
 
-  <div class="wrap"><hr class="rule" /></div>
+    {
+      current && (
+        <section class="cover-block">
+          <p class="label">Current Investigation</p>
+          <a class="current" href={`/papers/${current.id}`}>
+            <span class="issue">Issue {issueNumber(current.data.issue)}</span>
+            <span class="current-title">{current.data.title}</span>
+            <span class="current-distinction">
+              <Distinction value={current.data.centralDistinction} size="medium" />
+            </span>
+            <span class="read-more">Read →</span>
+          </a>
+        </section>
+      )
+    }
 
-  {
-    latest && (
-      <section class="wrap section">
-        <p class="eyebrow section-title">Latest Paper</p>
-        <PaperPreview paper={latest} />
-      </section>
-    )
-  }
+    <section class="cover-block">
+      <p class="label">Collected Papers</p>
+      <ol class="contents">
+        {
+          papers.map((paper) => (
+            <li>
+              <a href={`/papers/${paper.id}`}>
+                <span class="contents-issue">Issue {issueNumber(paper.data.issue)}</span>
+                <span class="contents-title">{paper.data.title}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
 
-  <div class="wrap"><hr class="rule" /></div>
+    <section class="cover-block">
+      <p class="label">Ideas</p>
+      <IdeaList ideas={featuredIdeas} />
+    </section>
 
-  <section class="wrap section">
-    <p class="eyebrow section-title">Recent Notes</p>
-    <div>
-      {recentNotes.map((note) => <NotePreview note={note} compact />)}
-    </div>
-    <p style="margin-top:1.2rem"><a class="read-more" href="/notes" style="border:0">All notes →</a></p>
-  </section>
-
-  <div class="wrap"><hr class="rule" /></div>
-
-  <section class="wrap section">
-    <p class="eyebrow section-title">Explore by Concept</p>
-    <ConceptList concepts={featuredConcepts} />
-    <p style="margin-top:1.2rem"><a class="read-more" href="/index" style="border:0">Full index →</a></p>
-  </section>
-
-  <div class="wrap"><hr class="rule" /></div>
-
-  <section class="wrap section">
-    <p class="eyebrow section-title">Archive</p>
-    <ul class="archive-list">
-      {
-        archive.map((paper) => (
-          <li>
-            <span class="num">{paperNumber(paper.data.number)}</span>
-            <a href={`/papers/${paper.id}`}>{paper.data.title}</a>
-          </li>
-        ))
-      }
-    </ul>
-    <p style="margin-top:1.2rem"><a class="read-more" href="/archive" style="border:0">Full archive →</a></p>
-  </section>
+    <section class="cover-block cover-about">
+      <p class="label">About</p>
+      <p><a href="/about">{site.name} is an editorial institution. →</a></p>
+    </section>
+  </div>
 </Layout>

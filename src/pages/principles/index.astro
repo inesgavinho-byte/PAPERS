@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getPrinciples } from '../../lib/content';
+
+const principles = await getPrinciples();
+---
+
+<Layout
+  title="Principles"
+  description="Operational principles distilled from the Papers — the commitments the theses converge upon."
+  canonicalPath="/principles"
+>
+  <section class="wrap page-head">
+    <h1>Principles</h1>
+    <p class="lede">
+      A Principle is distilled from several Papers — the operational commitment
+      the theses converge upon.
+    </p>
+  </section>
+
+  <section class="wrap section">
+    <ul class="entry-list">
+      {
+        principles.map((pr) => (
+          <li>
+            <a class="principle-row" href={`/principles/${pr.id}`}>
+              <h2 class="principle-name">{pr.data.title}</h2>
+              <p class="principle-definition">{pr.data.definition}</p>
+              <span class="read-more">Read →</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>
