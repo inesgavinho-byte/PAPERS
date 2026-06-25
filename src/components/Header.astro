@@ -1,6 +1,15 @@
 ---
 import { site, nav } from '../data/site';
 
+interface Props {
+  variant?: 'full' | 'cover';
+}
+
+const { variant = 'full' } = Astro.props;
+
+// On the cover, navigation recedes — only About remains.
+const links = variant === 'cover' ? [{ label: 'About', href: '/about' }] : nav;
+
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) =>
   href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(href + '/');
@@ -10,7 +19,7 @@ const isActive = (href: string) =>
   <a class="site-logo" href="/">{site.name}</a>
   <nav class="site-nav" aria-label="Primary">
     {
-      nav.map((item) => (
+      links.map((item) => (
         <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
           {item.label}
         </a>
