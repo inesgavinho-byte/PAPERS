@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PaperPreview from '../../components/PaperPreview.astro';
+import { getPapers } from '../../lib/content';
+
+const papers = await getPapers();
+---
+
+<Layout
+  title="Papers"
+  description="Essays on architecture, organisations, hospitality, knowledge and systems."
+  canonicalPath="/papers"
+>
+  <section class="wrap page-head">
+    <h1>Papers</h1>
+    <p class="lede">Long-form essays, in reverse chronological order.</p>
+  </section>
+
+  <section class="wrap section">
+    <ul class="entry-list">
+      {
+        papers.map((paper) => (
+          <li>
+            <PaperPreview paper={paper} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

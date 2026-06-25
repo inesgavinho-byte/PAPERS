@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/site';
+---
+
+<Layout
+  title="Projects"
+  description="Where the ideas in PAPERS are put to work: GAVINHO, DECIMA and NUDO."
+  canonicalPath="/projects"
+>
+  <section class="wrap page-head">
+    <h1>Projects</h1>
+    <p class="lede">
+      Not a portfolio. These are the places where the ideas explored here are
+      tested in practice — the applications of the thinking.
+    </p>
+  </section>
+
+  <section class="wrap section">
+    {
+      projects.map((project) => (
+        <article class="project">
+          <h2>{project.name}</h2>
+          <p class="summary">{project.summary}</p>
+          <p>{project.description}</p>
+        </article>
+      ))
+    }
+  </section>
+</Layout>

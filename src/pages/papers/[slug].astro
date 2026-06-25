@@ -1,0 +1,115 @@
+---
+import { render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ConceptList from '../../components/ConceptList.astro';
+import {
+  getPapers,
+  getNotes,
+  relatedPapers,
+  relatedNotes,
+} from '../../lib/content';
+import { formatDate, paperNumber } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const papers = await getPapers();
+  const notes = await getNotes();
+  return papers.map((paper) => ({
+    params: { slug: paper.id },
+    props: { paper, papers, notes },
+  }));
+}
+
+const { paper, papers, notes } = Astro.props;
+const { Content } = await render(paper);
+
+const { number, title, abstract, published, readingTime, version, concepts } = paper.data;
+
+const related = relatedPapers(paper, papers).slice(0, 4);
+const relNotes = relatedNotes(paper, notes).slice(0, 4);
+---
+
+<Layout
+  title={title}
+  description={abstract}
+  canonicalPath={`/papers/${paper.id}`}
+  ogType="article"
+>
+  <article class="wrap article">
+    <div class="read">
+      <p class="num" style="font-family:var(--serif); color:var(--olive); letter-spacing:0.1em">
+        Paper {paperNumber(number)}
+      </p>
+      <h1 class="paper-title">{title}</h1>
+      <p class="abstract">{abstract}</p>
+
+      <dl class="meta-grid">
+        <div>
+          <dt>Published</dt>
+          <dd>{formatDate(published)}</dd>
+        </div>
+        <div>
+          <dt>Reading time</dt>
+          <dd>{readingTime}</dd>
+        </div>
+        <div>
+          <dt>Version</dt>
+          <dd>{version}</dd>
+        </div>
+        <div>
+          <dt>Concepts</dt>
+          <dd><ConceptList concepts={concepts} variant="inline" /></dd>
+        </div>
+      </dl>
+
+      <hr class="rule" />
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      {
+        (related.length > 0 || relNotes.length > 0 || concepts.length > 0) && (
+          <>
+            <hr class="rule" />
+            <div class="related">
+              {related.length > 0 && (
+                <div>
+                  <p class="group-title">Related Papers</p>
+                  <ul>
+                    {related.map((p) => (
+                      <li>
+                        <a href={`/papers/${p.id}`}>
+                          {paperNumber(p.data.number)} — {p.data.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {relNotes.length > 0 && (
+                <div>
+                  <p class="group-title">Related Notes</p>
+                  <ul>
+                    {relNotes.map((n) => (
+                      <li>
+                        <a href={`/notes/${n.id}`}>{n.data.title}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {concepts.length > 0 && (
+                <div>
+                  <p class="group-title">Related Concepts</p>
+                  <ConceptList concepts={concepts} variant="inline" />
+                </div>
+              )}
+            </div>
+          </>
+        )
+      }
+    </div>
+  </article>
+</Layout>
