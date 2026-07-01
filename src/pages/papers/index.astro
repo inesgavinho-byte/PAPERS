@@ -1,9 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PaperPreview from '../../components/PaperPreview.astro';
-import { getPapers } from '../../lib/content';
+import PaperRow from '../../components/PaperRow.astro';
+import { getPapers, volumesDescending, papersInVolume } from '../../lib/content';
 
 const papers = await getPapers();
+const volumes = volumesDescending(papers);
 ---
 
 <Layout
@@ -11,12 +12,24 @@ const papers = await getPapers();
   description="The collected Papers of PAPERS — theses on architecture, time, attention and the human condition."
   canonicalPath="/papers"
 >
-  <div class="index-page">
+  <div class="papers-page">
     <h1>Papers</h1>
     <p class="index-intro">
       Each Paper is a thesis. Each introduces a single conceptual distinction.
       The collection grows slowly, by addition.
     </p>
-    {papers.map((paper) => <PaperPreview paper={paper} />)}
+
+    {
+      volumes.map((volume) => (
+        <section class="volume-group">
+          <p class="index-kicker">Volume {volume}</p>
+          <div class="index-list">
+            {papersInVolume(papers, volume).map((paper) => (
+              <PaperRow paper={paper} />
+            ))}
+          </div>
+        </section>
+      ))
+    }
   </div>
 </Layout>

@@ -15,6 +15,23 @@ export async function getCurrentPaper(): Promise<Paper | undefined> {
   return papers[papers.length - 1];
 }
 
+/** Volumes present in the collection, highest first. */
+export function volumesDescending(papers: Paper[]): number[] {
+  return [...new Set(papers.map((p) => p.data.volume))].sort((a, b) => b - a);
+}
+
+/** The highest Volume number present (defaults to 1 if none). */
+export function maxVolume(papers: Paper[]): number {
+  return volumesDescending(papers)[0] ?? 1;
+}
+
+/** Papers of a given Volume, sorted by issue ascending. */
+export function papersInVolume(papers: Paper[], volume: number): Paper[] {
+  return papers
+    .filter((p) => p.data.volume === volume)
+    .sort((a, b) => a.data.issue - b.data.issue);
+}
+
 export async function getPrinciples(): Promise<Principle[]> {
   const principles = await getCollection('principles');
   return principles.sort((a, b) => a.data.order - b.data.order);
