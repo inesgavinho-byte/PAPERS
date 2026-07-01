@@ -8,6 +8,13 @@ export const site = {
   url: 'https://papers.inesgavinho.com',
 };
 
+// The founding question of the discipline, set large on the homepage.
+export const disciplineQuestion = 'What is an organisation?';
+
+// One-line statement of what the publication is about.
+export const tagline =
+  'A body of thought on how organisations can observe, learn and evolve in the age of artificial intelligence.';
+
 export const nav = [
   { label: 'Papers', href: '/papers' },
   { label: 'Ideas', href: '/ideas' },

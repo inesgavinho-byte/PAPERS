@@ -1,58 +1,58 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getPapers, getCurrentPaper } from '../lib/content';
-import { site } from '../data/site';
+import PaperRow from '../components/PaperRow.astro';
+import { getPapers, getCurrentPaper, maxVolume, papersInVolume } from '../lib/content';
+import { disciplineQuestion, tagline } from '../data/site';
 import { issueNumber } from '../lib/format';
 
 const papers = await getPapers();
 const current = await getCurrentPaper();
-
-// The visitor arrives inside the idea: lead with the current thesis.
-const thesisRaw = current?.data.thesis ?? site.purpose;
-const thesisLines = thesisRaw.split(/(?<=\.)\s+/).filter(Boolean);
-
-const note =
-  'An independent publication investigating architecture, organisations and the human condition through original essays.';
+const volume = maxVolume(papers);
+const volumePapers = papersInVolume(papers, volume);
 ---
 
-<Layout nav="cover" canonicalPath="/">
-  <div class="edition">
-    <!-- Section 1 — the thesis confronts the visitor -->
-    <section class="lead">
-      <p class="lead-thesis">
-        {thesisLines.map((line) => <span class="line">{line}</span>)}
-      </p>
+<Layout canonicalPath="/">
+  <div class="frontispiece">
+    <section class="hero">
+      <div class="hero-lead">
+        <h1 class="hero-question">{disciplineQuestion}</h1>
+        <hr class="hero-rule" />
+        <p class="hero-tagline">{tagline}</p>
+        {
+          current && (
+            <a class="hero-cta" href={`/papers/${current.id}`}>
+              Read Paper {issueNumber(current.data.issue)} →
+            </a>
+          )
+        }
+      </div>
+
       {
         current && (
-          <p class="lead-cta">
-            <a href={`/papers/${current.id}`}>Read Paper {issueNumber(current.data.issue)} →</a>
-          </p>
+          <a class="hero-panel" href={`/papers/${current.id}`}>
+            <span class="panel-label">Current Investigation</span>
+            <span class="panel-issue">Issue {issueNumber(current.data.issue)}</span>
+            <span class="panel-title">{current.data.title}</span>
+            <span class="panel-distinction">{current.data.centralDistinction}</span>
+            <hr class="panel-rule" />
+            <span class="panel-question">{current.data.question}</span>
+          </a>
         )
       }
     </section>
 
-    <!-- Section 2 — the publication, revealed afterwards, placed aside -->
-    <section class="colophon">
-      <h1 class="colophon-title">{site.name}</h1>
-      <p class="colophon-byline">{site.byline}</p>
-      <p class="colophon-note">{note}</p>
-    </section>
+    <section class="index">
+      <div class="index-head">
+        <div>
+          <p class="index-kicker">Collected Papers</p>
+          <p class="index-volume">Volume {volume}</p>
+        </div>
+        <a class="index-seeall" href="/papers">See all papers →</a>
+      </div>
 
-    <!-- Section 3 — a printed contents page -->
-    <section class="toc">
-      <p class="section-kicker">Collected Papers</p>
-      <ol class="toc-list">
-        {
-          papers.map((paper) => (
-            <li class="toc-entry">
-              <a href={`/papers/${paper.id}`}>
-                <span class="toc-num">Issue {issueNumber(paper.data.issue)}</span>
-                <span class="toc-title">{paper.data.title}</span>
-              </a>
-            </li>
-          ))
-        }
-      </ol>
+      <div class="index-list">
+        {volumePapers.map((paper) => <PaperRow paper={paper} />)}
+      </div>
     </section>
   </div>
 </Layout>

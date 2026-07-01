@@ -6,6 +6,8 @@ const papers = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/papers' }),
   schema: z.object({
     issue: z.number(),
+    // Which Volume this Paper belongs to. Existing Papers default to 1.
+    volume: z.number().default(1),
     title: z.string(),
     // The intellectual core, displayed above the abstract, e.g. "Architecture ≠ Service".
     centralDistinction: z.string(),
