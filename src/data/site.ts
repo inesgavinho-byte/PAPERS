@@ -48,6 +48,13 @@ export const ideas: Idea[] = [
   { name: 'Belonging', gloss: 'The sense of being expected, and of being held.' },
   { name: 'Technology', gloss: 'Means in search of ends worth serving.' },
   { name: 'Hospitality', gloss: 'The making of places that receive a stranger.' },
+  { name: 'Observation', gloss: 'The disciplined seeing of reality before it is judged or changed.' },
+  { name: 'Judgement', gloss: 'Deciding under irreducible uncertainty, where values carry weight.' },
+  { name: 'Knowledge', gloss: 'What an organisation knows, and whether it can survive the people who know it.' },
+  { name: 'Decision', gloss: 'How choices are made, delayed, distributed, or trapped in a single mind.' },
+  { name: 'Evolution', gloss: 'How organisations change their form while remaining themselves.' },
+  { name: 'Organisation', gloss: 'The organisation as an object of design, not a given.' },
+  { name: 'Pattern', gloss: 'What persists across change; used sparingly, where it reveals a continuity between Papers or Volumes.' },
 ];
 
 // Curated subset shown on the cover, in the brief's order.
