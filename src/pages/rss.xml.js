@@ -6,7 +6,7 @@ export async function GET(context) {
   const papers = await getCollection('papers');
 
   const items = papers
-    .sort((a, b) => a.data.issue - b.data.issue)
+    .sort((a, b) => a.data.volume - b.data.volume || a.data.issue - b.data.issue)
     .map((p) => ({
       title: `Issue ${String(p.data.issue).padStart(3, '0')} — ${p.data.title}`,
       description: `${p.data.centralDistinction}. ${p.data.abstract}`,
