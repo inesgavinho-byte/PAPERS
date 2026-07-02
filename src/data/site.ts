@@ -91,9 +91,13 @@ export const volumeNames: Record<number, string> = {
 
 const romanNumerals = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 
+/** e.g. volumeRoman(2) → "II". Volume numbers read as Roman numerals everywhere. */
+export function volumeRoman(volume: number): string {
+  return romanNumerals[volume] ?? String(volume);
+}
+
 /** e.g. volumeLabel(2) → "Volume II — Organisational Intelligence". */
 export function volumeLabel(volume: number): string {
-  const roman = romanNumerals[volume] ?? String(volume);
   const name = volumeNames[volume];
-  return name ? `Volume ${roman} — ${name}` : `Volume ${roman}`;
+  return name ? `Volume ${volumeRoman(volume)} — ${name}` : `Volume ${volumeRoman(volume)}`;
 }

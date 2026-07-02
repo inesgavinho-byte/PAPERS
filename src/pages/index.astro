@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PaperRow from '../components/PaperRow.astro';
 import { getPapers, getCurrentPaper, maxVolume, papersInVolume } from '../lib/content';
-import { disciplineQuestion, tagline } from '../data/site';
+import { disciplineQuestion, tagline, volumeRoman } from '../data/site';
 import { issueNumber } from '../lib/format';
 
 const papers = await getPapers();
@@ -45,7 +45,7 @@ const volumePapers = papersInVolume(papers, volume);
       <div class="index-head">
         <div>
           <p class="index-kicker">Collected Papers</p>
-          <p class="index-volume">Volume {volume}</p>
+          <p class="index-volume">Volume {volumeRoman(volume)}</p>
         </div>
         <a class="index-seeall" href="/papers">See all papers →</a>
       </div>
