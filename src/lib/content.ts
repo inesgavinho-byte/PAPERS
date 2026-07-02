@@ -3,13 +3,15 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 export type Paper = CollectionEntry<'papers'>;
 export type Principle = CollectionEntry<'principles'>;
 
-/** Papers in reading order — by issue number, ascending (000 first). */
+/** Papers in reading order — by (volume, issue) ascending. Numbering restarts per Volume. */
 export async function getPapers(): Promise<Paper[]> {
   const papers = await getCollection('papers');
-  return papers.sort((a, b) => a.data.issue - b.data.issue);
+  return papers.sort(
+    (a, b) => a.data.volume - b.data.volume || a.data.issue - b.data.issue,
+  );
 }
 
-/** The current investigation: the most recent issue. */
+/** The current investigation: the latest paper — highest volume, then highest issue within it. */
 export async function getCurrentPaper(): Promise<Paper | undefined> {
   const papers = await getPapers();
   return papers[papers.length - 1];
@@ -58,7 +60,9 @@ export function papersForPrinciple(papers: Paper[], principle: Principle): Paper
     (p) => !seen.has(p.id) && p.data.principles.includes(principle.id),
   );
 
-  return [...bySlug, ...byBackref].sort((a, b) => a.data.issue - b.data.issue);
+  return [...bySlug, ...byBackref].sort(
+    (a, b) => a.data.volume - b.data.volume || a.data.issue - b.data.issue,
+  );
 }
 
 /** Principles a Paper contributes to. */

@@ -9,7 +9,7 @@ import {
   principlesForPaper,
 } from '../../lib/content';
 import { formatDate, issueNumber } from '../../lib/format';
-import { slugify } from '../../data/site';
+import { slugify, volumeNames } from '../../data/site';
 
 export async function getStaticPaths() {
   const papers = await getPapers();
@@ -25,6 +25,7 @@ const { Content } = await render(paper);
 
 const {
   issue,
+  volume,
   title,
   centralDistinction,
   question,
@@ -38,13 +39,15 @@ const {
 const related = relatedPapers(paper, papers).slice(0, 3);
 const relPrinciples = principlesForPaper(paper, principles);
 const num = issueNumber(issue);
+// Reference label: domain name + zero-padded number, e.g. "Organisational Intelligence · 001".
+const reference = `${volumeNames[volume] ?? `Volume ${volume}`} · ${num}`;
 ---
 
 <Layout title={title} description={abstract} canonicalPath={`/papers/${paper.id}`} ogType="article">
   <article>
     <!-- Title page -->
     <header class="paper-entry">
-      <p class="issue-number">Issue {num}</p>
+      <p class="issue-number">{reference}</p>
       <h1>{title}</h1>
 
       {
@@ -72,7 +75,7 @@ const num = issueNumber(issue);
     <div class="paper-reading">
       <aside class="reading-rail">
         <div class="rail-section">
-          <strong>Issue {num}</strong>
+          <strong>{reference}</strong>
         </div>
         <div class="rail-section">
           <span class="rail-label">Published</span>
