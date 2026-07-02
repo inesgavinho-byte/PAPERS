@@ -79,3 +79,25 @@ export function slugify(value: string): string {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 }
+
+/**
+ * Volume number → domain name. The single source of truth for Volume names.
+ * PAPERS is one body of work with named lines of inquiry.
+ */
+export const volumeNames: Record<number, string> = {
+  1: 'Architecture',
+  2: 'Organisational Intelligence',
+};
+
+const romanNumerals = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+
+/** e.g. volumeRoman(2) → "II". Volume numbers read as Roman numerals everywhere. */
+export function volumeRoman(volume: number): string {
+  return romanNumerals[volume] ?? String(volume);
+}
+
+/** e.g. volumeLabel(2) → "Volume II — Organisational Intelligence". */
+export function volumeLabel(volume: number): string {
+  const name = volumeNames[volume];
+  return name ? `Volume ${volumeRoman(volume)} — ${name}` : `Volume ${volumeRoman(volume)}`;
+}

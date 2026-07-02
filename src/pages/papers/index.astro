@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import PaperRow from '../../components/PaperRow.astro';
 import { getPapers, volumesDescending, papersInVolume } from '../../lib/content';
+import { volumeLabel } from '../../data/site';
 
 const papers = await getPapers();
 const volumes = volumesDescending(papers);
@@ -22,7 +23,7 @@ const volumes = volumesDescending(papers);
     {
       volumes.map((volume) => (
         <section class="volume-group">
-          <p class="index-kicker">Volume {volume}</p>
+          <p class="index-kicker">{volumeLabel(volume)}</p>
           <div class="index-list">
             {papersInVolume(papers, volume).map((paper) => (
               <PaperRow paper={paper} />
