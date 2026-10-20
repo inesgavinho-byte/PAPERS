@@ -1,12 +1,12 @@
 /* PAPERS — Editorial Cover Direction */
 
 :root {
---paper: #f2f0e7;
---paper-deep: #ebe8dc;
---ink: #1f1f1c;
---muted: #7b776b;
---faint: #d8d4c7;
---accent: #8b8670;
+--paper: #ffffff;
+--paper-deep: #f6f6f6;
+--ink: #151515;
+--muted: #686868;
+--faint: #d4d4d4;
+--accent: #3a3a3a;
 
 --serif: "Cormorant Garamond", Georgia, serif;
 --sans: "Quattrocento Sans", system-ui, sans-serif;
@@ -972,3 +972,31 @@ white-space: normal;
 @media (prefers-reduced-motion: reduce) {
 * { transition: none !important; }
 }
+
+/* PAPERS / independent author-led monochrome editorial, October 2026 */
+.site-header{display:flex;flex-direction:column;gap:0;align-items:stretch;padding-top:24px;padding-bottom:0;border:0}
+.site-brand{align-items:center;gap:1px;padding:24px 0 27px;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.site-logo{font-size:clamp(3.9rem,9vw,7rem);font-weight:400;letter-spacing:-.055em;line-height:.85;text-transform:none}
+.site-subline{font-size:12px;letter-spacing:.02em;text-transform:none;color:var(--ink)}
+.site-nav{justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--ink)}
+.site-nav a{font-family:var(--serif);font-size:18px;letter-spacing:0;text-transform:none}
+.site-nav a+a::before{display:none}
+.frontispiece{padding-top:56px}
+.hero{grid-template-columns:minmax(0,1.1fr) minmax(230px,.5fr);gap:clamp(28px,5vw,70px);padding-bottom:38px;border-bottom:1px solid var(--ink)}
+.hero-question{font-size:clamp(3.4rem,7.6vw,6.9rem);font-weight:400;letter-spacing:-.035em;line-height:.92}
+.hero-panel{border-left:1px solid var(--faint);padding-left:32px}
+.panel-issue,.panel-label,.index-kicker,.index-volume{letter-spacing:.11em;color:var(--muted)}
+.panel-title{font-size:clamp(2rem,3.3vw,3rem);letter-spacing:-.025em}
+.index{margin-top:52px}
+.index-row{grid-template-columns:42px minmax(0,2.2fr) minmax(0,1.6fr) 72px 20px;grid-template-areas:"issue title dist time arrow";gap:18px;padding:19px 0}
+.col-question{display:none}
+.col-title{font-size:clamp(1.4rem,2.1vw,1.8rem)}
+.col-distinction{color:var(--muted)}
+.paper-entry{margin-top:72px}
+.paper-entry h1{letter-spacing:-.028em}
+.prose{font-size:clamp(20px,2vw,23px);line-height:1.65}
+.prose blockquote{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:28px 0}
+.site-footer{border-color:var(--ink)}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+@media(max-width:840px){.hero{grid-template-columns:1fr}.hero-panel{border-left:0;border-top:1px solid var(--faint);padding:26px 0 0}.index-row{grid-template-columns:38px 1fr 24px;grid-template-areas:"issue title arrow" ". dist time";gap:6px 12px}}
+@media(max-width:640px){.site-header{padding:18px 22px 0;gap:0;align-items:stretch}.site-logo{font-size:clamp(3.5rem,16vw,5.4rem)}.site-nav{width:100%;justify-content:space-between}.site-nav a{font-size:16px}.frontispiece{padding-top:34px}.hero-question{font-size:clamp(2.9rem,12vw,5rem)}.index-row{grid-template-areas:"issue title arrow" "dist dist time"}.paper-entry{margin-top:42px}}
