@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PaperRow from '../components/PaperRow.astro';
 import { getPapers, getCurrentPaper, maxVolume, papersInVolume } from '../lib/content';
-import { disciplineQuestion, tagline, volumeRoman } from '../data/site';
+import { volumeRoman } from '../data/site';
 import { issueNumber } from '../lib/format';
 
 const papers = await getPapers();
@@ -15,13 +15,14 @@ const volumePapers = papersInVolume(papers, volume);
   <div class="frontispiece">
     <section class="hero">
       <div class="hero-lead">
-        <h1 class="hero-question">{disciplineQuestion}</h1>
+        <p class="index-kicker">PAPERS / UMA PUBLICAÇÃO INDEPENDENTE</p>
+        <h1 class="hero-question">Pensar sobre aquilo que permanece.</h1>
         <hr class="hero-rule" />
-        <p class="hero-tagline">{tagline}</p>
+        <p class="hero-tagline">Ensaios de Inês Gavinho sobre arquitetura, tempo, atenção, conhecimento e condição humana.</p>
         {
           current && (
             <a class="hero-cta" href={`/papers/${current.id}`}>
-              Read Paper {issueNumber(current.data.issue)} →
+              Ler o ensaio {issueNumber(current.data.issue)} →
             </a>
           )
         }
@@ -30,8 +31,8 @@ const volumePapers = papersInVolume(papers, volume);
       {
         current && (
           <a class="hero-panel" href={`/papers/${current.id}`}>
-            <span class="panel-label">Current Investigation</span>
-            <span class="panel-issue">Issue {issueNumber(current.data.issue)}</span>
+            <span class="panel-label">Em destaque</span>
+            <span class="panel-issue">Paper {issueNumber(current.data.issue)}</span>
             <span class="panel-title">{current.data.title}</span>
             <span class="panel-distinction">{current.data.centralDistinction}</span>
             <hr class="panel-rule" />
@@ -44,10 +45,10 @@ const volumePapers = papersInVolume(papers, volume);
     <section class="index">
       <div class="index-head">
         <div>
-          <p class="index-kicker">Collected Papers</p>
+          <p class="index-kicker">Arquivo de ensaios</p>
           <p class="index-volume">Volume {volumeRoman(volume)}</p>
         </div>
-        <a class="index-seeall" href="/papers">See all papers →</a>
+        <a class="index-seeall" href="/papers">Ver todos os ensaios →</a>
       </div>
 
       <div class="index-list">
