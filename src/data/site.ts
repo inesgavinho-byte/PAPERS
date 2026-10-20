@@ -4,7 +4,7 @@ export const site = {
   byline: 'A publication by Inês Gavinho',
   purpose: 'Thinking for what remains.',
   description:
-    'An editorial institution. Theses on architecture, time, attention and the human condition — work intended to remain relevant long after the moment that produced it.',
+    'An independent personal publication by Inês Gavinho. Essays on architecture, attention, knowledge and the human condition.',
   url: 'https://papers.inesgavinho.com',
 };
 
