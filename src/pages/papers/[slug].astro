@@ -45,6 +45,7 @@ const reference = `${volumeNames[volume] ?? `Volume ${volume}`} · ${num}`;
 
 <Layout title={title} description={abstract} canonicalPath={`/papers/${paper.id}`} ogType="article">
   <article>
+    {paper.id === "on-inhabited-time" && <div style="max-width:720px;margin:36px auto 0;padding:0 32px;font-size:14px"><a href="/pt/papers/on-inhabited-time" hreflang="pt">Ler a versão portuguesa revista (2026) →</a></div>}
     {paper.id === "the-architectural-project-of-we" && <div style="max-width:720px;margin:36px auto 0;padding:0 32px;font-size:14px"><a href="/pt/papers/the-architectural-project-of-we" hreflang="pt">Ler a versão portuguesa revista (2026) →</a></div>}
     <!-- Title page -->
     <header class="paper-entry">
