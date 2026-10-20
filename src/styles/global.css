@@ -1000,3 +1000,6 @@ white-space: normal;
 a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
 @media(max-width:840px){.hero{grid-template-columns:1fr}.hero-panel{border-left:0;border-top:1px solid var(--faint);padding:26px 0 0}.index-row{grid-template-columns:38px 1fr 24px;grid-template-areas:"issue title arrow" ". dist time";gap:6px 12px}}
 @media(max-width:640px){.site-header{padding:18px 22px 0;gap:0;align-items:stretch}.site-logo{font-size:clamp(3.5rem,16vw,5.4rem)}.site-nav{width:100%;justify-content:space-between}.site-nav a{font-size:16px}.frontispiece{padding-top:34px}.hero-question{font-size:clamp(2.9rem,12vw,5rem)}.index-row{grid-template-areas:"issue title arrow" "dist dist time"}.paper-entry{margin-top:42px}}
+
+/* Portuguese revised editions */
+.paper-edition-pt{margin-bottom:30px}.paper-pt-body{max-width:700px;margin:0 auto 130px;padding:0 32px}.paper-pt-body h2{font-size:clamp(30px,4vw,38px)}.paper-pt-signature{border-top:1px solid var(--faint);padding-top:35px;margin-top:65px}.paper-edition-pt .paper-metadata{line-height:1.7}
