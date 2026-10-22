@@ -2,6 +2,8 @@
 
 > Thinking for what remains.
 
+Published at [papersbyig.netlify.app](https://papersbyig.netlify.app).
+
 An **editorial institution**. PAPERS publishes theses on architecture, time,
 attention and the human condition — work intended to remain relevant long after
 the moment that produced it. It is not a blog, a portfolio, or a magazine. It
