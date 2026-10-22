@@ -1,23 +1,31 @@
 # PM verification record · PAPERS
 
-**Status: REVIEW REQUIRED — NOT CERTIFIED**
+**Status: PM / REVIEW REQUIRED — NOT CERTIFIED**
 
 | Field | Value |
 |---|---|
-| Standard | pink_moustache Engineering Standard v0.1 |
+| Standard | pink_moustache Engineering Standard v0.1 (pilot) |
 | Project | PAPERS |
-| Target commit SHA | PENDING |
-| Reviewer | PENDING |
-| Review date | PENDING |
-| CI build evidence | PENDING |
-| Accessibility evidence | PENDING |
-| Security/privacy review | PENDING |
-| Deploy and rollback review | PENDING |
-| Final approval | NOT GRANTED |
+| Tested commit SHA | `ef6dbab876da007f90ae5484fbfb583be1354ead` |
+| GitHub Actions build | PASS on tested SHA — [run 39851135124](https://github.com/inesgavinho-byte/PAPERS/actions/runs/39851135124) |
+| Install step | PASS: `npm ci` (GitHub Actions) |
+| Astro build | PASS: `npm run build` (GitHub Actions) |
+| Netlify deploy preview | SUCCESS status: [PR #21 preview](https://deploy-preview-21--papersbyig.netlify.app) |
+| Internal link audit | NOT RUN |
+| Accessibility audit | NOT RUN |
+| Security/privacy assessment | NOT RUN |
+| Canonical domain review | OPEN |
+| Deployment rollback review | NOT RUN |
+| Human approver | PENDING |
+| Certification | **NOT GRANTED** |
 
-## Findings to resolve
-- `astro.config.mjs` declares `https://papers.inesgavinho.com`, while the currently shared public address is `https://papersbyig.netlify.app/`. Confirm intended canonical domain before change.
-- No CI workflow was found at `.github/workflows/ci.yml`; check other workflow paths before concluding that no CI exists.
-- Default branch is `claude/hopeful-thompson-8juws1`; assess Netlify branch linkage before changing it.
+## Outstanding observations
 
-No tests are asserted to have passed in this document. Update with actual command outputs, CI run links, tested SHA, scope, and limitations.
+1. `astro.config.mjs` sets `https://papers.inesgavinho.com`; the public URL provided is `https://papersbyig.netlify.app/`. Confirm whether the configured canonical hostname is intended, and whether redirects and DNS are provisioned, before editing configuration.
+2. The GitHub default branch is `claude/hopeful-thompson-8juws1`. Do not change branch or Netlify production configuration without checking current deploy linkage.
+3. This record is evidence for the explicitly named tested SHA. When it changes, rerun checks and record the new tested SHA. Documentation edits alone do not establish compliance.
+
+## Meaning of recorded statuses
+- Workflow success confirms only the steps that actually ran; it does not establish security or accessibility compliance.
+- Deploy preview success confirms deployment completion status, not comprehensive functional verification.
+- **PM / Verified** requires all applicable gates, explicit approval, and immutable target SHA.
