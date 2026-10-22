@@ -2,10 +2,13 @@ export const site = {
   name: 'PAPERS',
   author: 'Inês Gavinho',
   byline: 'A publication by Inês Gavinho',
+  bylinePt: 'Uma publicação de Inês Gavinho',
   purpose: 'Thinking for what remains.',
   description:
-    'An independent personal publication by Inês Gavinho. Essays on architecture, attention, knowledge and the human condition.',
-  url: 'https://papers.inesgavinho.com',
+    'An independent personal publication by Inês Gavinho. Essays on architecture, technology, organisations, art and the human condition.',
+  descriptionPt:
+    'Uma publicação pessoal e independente de Inês Gavinho. Ensaios sobre arquitetura, tecnologia, organizações, arte e condição humana.',
+  url: 'https://papersbyig.netlify.app',
 };
 
 // The founding question of the discipline, set large on the homepage.

@@ -1,24 +1,36 @@
 ---
 import { site, nav } from '../data/site';
-
-// Full navigation, site-wide (including the homepage).
+import { languagePaths, type Language } from '../data/editions';
+interface Props { lang?: Language }
+const { lang = 'en' } = Astro.props;
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
-const isActive = (href: string) =>
-  href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(href + '/');
+const normalPath = pathname.replace(/^\/pt(?=\/)/, '');
+const editions = languagePaths(pathname);
+const isActive = (href: string) => normalPath === href || normalPath.startsWith(href + '/');
+const navigation = nav.map((item) => ({
+  ...item,
+  href: lang === 'pt' && ['/papers', '/about'].includes(item.href) ? `/pt${item.href}` : item.href,
+  active: isActive(item.href),
+  targetLanguage: lang === 'pt' && ['/papers', '/about'].includes(item.href) ? 'pt' : 'en',
+}));
 ---
-
 <header class="site-header">
-  <a class="site-brand" href="/">
+  <a class="site-brand" href={lang === 'pt' ? '/' : '/en'}>
     <span class="site-logo">{site.name}</span>
-    <span class="site-subline">A publication by Inês Gavinho</span>
+    <span class="site-subline">{lang === 'pt' ? 'Uma publicação de Inês Gavinho' : 'A publication by Inês Gavinho'}</span>
   </a>
-  <nav class="site-nav" aria-label="Primary">
-    {
-      nav.map((item) => (
-        <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
-          {item.label}
-        </a>
-      ))
-    }
-  </nav>
+  <div class="site-navigation">
+    <nav class="site-nav" aria-label={lang === 'pt' ? 'Navegação principal' : 'Main navigation'} lang="en">
+      {navigation.map((item) => (
+        <a href={item.href} hreflang={item.targetLanguage} aria-current={item.active ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+    {editions && (
+      <nav class="language-nav" aria-label={lang === 'pt' ? 'Edições disponíveis' : 'Available editions'}>
+        <a href={editions.pt} lang="pt" hreflang="pt" aria-current={lang === 'pt' ? 'page' : undefined} aria-label="Ler em português">PT</a>
+        <span aria-hidden="true">/</span>
+        <a href={editions.en} lang="en" hreflang="en" aria-current={lang === 'en' ? 'page' : undefined} aria-label="Read in English">EN</a>
+      </nav>
+    )}
+  </div>
 </header>

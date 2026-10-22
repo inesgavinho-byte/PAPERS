@@ -22,15 +22,15 @@ if (op) {
 
 {
   variant === 'stacked' && op ? (
-    <span class="central-distinction" aria-label={value}>
+    <span class="central-distinction">
       {left}
-      <span class="not-equal" aria-hidden="true">{op}</span>
+      <span class="not-equal">{op}</span>
       {right}
     </span>
   ) : op ? (
-    <span class="distinction-inline" aria-label={value}>
+    <span class="distinction-inline">
       {left}
-      <span class="op-accent" aria-hidden="true">{op}</span>
+      <span class="op-accent">{op}</span>
       {right}
     </span>
   ) : (

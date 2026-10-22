@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PaperRow from './PaperRow.astro';
+import { getPapers, maxVolume, papersInVolume } from '../lib/content';
+import { volumeRoman } from '../data/site';
+import { paperEdition, portugueseEditions, type Language } from '../data/editions';
+import { issueNumber } from '../lib/format';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const pt = lang === 'pt';
+const papers = await getPapers();
+const available = pt ? papers.filter((paper) => portugueseEditions[paper.id]) : papers;
+const current = available.at(-1) ?? papers.at(-1);
+const edition = current ? paperEdition(current, lang) : undefined;
+const volume = current?.data.volume ?? maxVolume(papers);
+const volumePapers = papersInVolume(papers, volume);
+const description = pt
+  ? 'Ensaios de Inês Gavinho sobre arquitetura, tecnologia, organizações, arte e condição humana.'
+  : 'Essays by Inês Gavinho on architecture, technology, organisations, art and the human condition.';
+---
+
+<Layout lang={lang} description={description} canonicalPath={pt ? '/' : '/en'} alternateLanguages={[{ lang: 'pt', href: '/' }, { lang: 'en', href: '/en' }]}>
+  <div class="frontispiece">
+    <section class="hero">
+      <div class="hero-lead">
+        <p class="index-kicker">{pt ? 'PAPERS / UMA PUBLICAÇÃO INDEPENDENTE' : 'PAPERS / AN INDEPENDENT PUBLICATION'}</p>
+        <h1 class="hero-question">{pt ? 'Pensar sobre aquilo que permanece.' : 'Thinking for what remains.'}</h1>
+        <hr class="hero-rule" />
+        <p class="hero-tagline">{description}</p>
+        {current && edition && <a class="hero-cta" href={edition.href}>{pt ? 'Ler o ensaio' : 'Read Paper'} {issueNumber(current.data.issue)} →</a>}
+      </div>
+      {current && edition && (
+        <a class="hero-panel" href={edition.href} lang={edition.language === 'pt' ? 'pt-PT' : 'en'}>
+          <span class="panel-label">{edition.revised ? 'Edição portuguesa revista' : 'English original'}</span>
+          <span class="panel-issue">{pt ? 'Ensaio' : 'Paper'} {issueNumber(current.data.issue)}</span>
+          <span class="panel-title">{edition.title}</span>
+          <span class="panel-distinction">{edition.distinction}</span>
+          <hr class="panel-rule" />
+          <span class="panel-question">{edition.question}</span>
+        </a>
+      )}
+    </section>
+
+    <section class="index" aria-labelledby="collected-papers">
+      <div class="index-head">
+        <div>
+          <h2 class="index-kicker" id="collected-papers">{pt ? 'Arquivo de ensaios' : 'Collected papers'}</h2>
+          <p class="index-volume">Volume {volumeRoman(volume)}</p>
+        </div>
+        <a class="index-seeall" href={pt ? '/pt/papers' : '/papers'}>{pt ? 'Ver todos os ensaios' : 'All papers'} →</a>
+      </div>
+      <div class="index-list">{volumePapers.map((paper) => <PaperRow paper={paper} lang={lang} />)}</div>
+    </section>
+
+    <aside class="cover-author">
+      <p>{pt ? 'Uma publicação pessoal de Inês Gavinho.' : 'A personal publication by Inês Gavinho.'}</p>
+      <a href={pt ? '/pt/about' : '/about'}>{pt ? 'Sobre a autora e a publicação' : 'About the author and the publication'} →</a>
+    </aside>
+  </div>
+</Layout>
