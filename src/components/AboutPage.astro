@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  lang?: 'en' | 'pt';
+}
+
+const { lang = 'en' } = Astro.props;
+const isPortuguese = lang === 'pt';
+const copy = isPortuguese
+  ? {
+      title: 'Sobre o PAPERS',
+      description: 'PAPERS é uma publicação pessoal e independente de Inês Gavinho. Ensaios sobre arquitetura, tecnologia, organizações, arte e condição humana.',
+      paragraphs: [
+        'PAPERS é uma publicação pessoal e independente de Inês Gavinho. Reúne ensaios sobre arquitetura, tecnologia, organizações, arte e condição humana.',
+        'Os textos partem de perguntas que atravessam a prática criativa: como habitamos, como prestamos atenção, como construímos conhecimento e o que permanece daquilo que fazemos. Cada ensaio desenvolve uma ideia e abre espaço para a continuar a pensar.',
+        'Inês Gavinho é arquiteta, designer e diretora criativa. A sua prática cruza a arquitetura e os interiores com a conceção de produtos e sistemas digitais.',
+      ],
+      editorialHeading: 'Nota editorial',
+      editorialNote: 'Os novos ensaios são escritos primeiro em português. As traduções para inglês são identificadas como tal. Os textos revistos preservam a indicação da edição anterior.',
+    }
+  : {
+      title: 'About PAPERS',
+      description: 'PAPERS is an independent personal publication by Inês Gavinho. Essays on architecture, technology, organisations, art and the human condition.',
+      paragraphs: [
+        'PAPERS is an independent personal publication by Inês Gavinho. It brings together essays on architecture, technology, organisations, art and the human condition.',
+        'The writing begins with questions that run through creative practice: how we inhabit places, how we pay attention, how we build knowledge, and what remains of what we make. Each essay develops an idea and leaves room to think further.',
+        'Inês Gavinho is an architect, designer and creative director. Her practice spans architecture and interiors alongside the conception of digital products and systems.',
+      ],
+      editorialHeading: 'Editorial note',
+      editorialNote: 'New essays are written first in Portuguese. English translations are identified as such. Revised texts retain a reference to the earlier edition.',
+    };
+---
+
+<Layout
+  title={copy.title}
+  description={copy.description}
+  lang={lang}
+  canonicalPath={isPortuguese ? '/pt/about' : '/about'}
+  alternateLanguages={[
+    { lang: 'pt', href: '/pt/about' },
+    { lang: 'en', href: '/about' },
+  ]}
+>
+  <div class="about-page">
+    <p class="section-kicker">PAPERS / INÊS GAVINHO</p>
+    <h1>{copy.title}</h1>
+    {copy.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+
+    <section class="about-editorial" aria-labelledby="editorial-note-heading">
+      <h2 id="editorial-note-heading">{copy.editorialHeading}</h2>
+      <p>{copy.editorialNote}</p>
+      {!isPortuguese && (
+        <p class="translation-note">Translated from the original publication in Portuguese</p>
+      )}
+      <p>
+        {isPortuguese
+          ? <a href="/about" hreflang="en" lang="en">Read in English →</a>
+          : <a href="/pt/about" hreflang="pt-PT" lang="pt-PT">Ler em português →</a>}
+      </p>
+    </section>
+  </div>
+</Layout>

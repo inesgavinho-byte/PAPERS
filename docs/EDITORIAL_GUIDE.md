@@ -8,32 +8,32 @@ can maintain and extend PAPERS without breaking its identity.
 
 ## 1. What PAPERS is
 
-**PAPERS** is an **editorial institution** published by Inês Gavinho. It is not
-a personal website, a portfolio, a blog, a magazine, or a commercial landing
-page. It is a **digital edition** — as if a beautifully printed first edition,
-a monograph, an annual volume, had been digitised with enormous care.
+**PAPERS** is an **independent personal publication by Inês Gavinho**, bringing
+together essays on architecture, technology, organisations, art and the human
+condition. It has its own editorial identity, distinct from PINK_MOUSTACHE,
+DECIMA and GAVINHO. References to work or projects do not make it a commercial
+landing page or limit its subject matter to technology.
 
 - **Name:** PAPERS
 - **Byline:** A publication by Inês Gavinho
 - **Purpose:** *Thinking for what remains.*
-- **Mission:** to build a body of thought over decades. It publishes slowly, by
-  accumulation. The ambition is not to publish often, but to publish work that
-  deserves to remain relevant fifty years from now.
+- **Mission:** to build a body of thought through essays that develop ideas
+  with care. Editorial quality takes priority over publishing frequency.
 
-**Central principle:** the idea is primary, the publication is secondary. The
-visitor should arrive *inside a thought*, not in front of a brand. The author
-almost disappears; the ideas are the protagonists.
+**Central principle:** the ideas lead, and the author's name and personal voice
+remain visible. The publication is a place for Inês's own writing and inquiry.
 
-The question to ask before every decision: **"Would this exist in a beautifully
-printed first edition?"** If yes, keep it. If it feels like something invented
-by modern web design, remove it.
+The design reference is a carefully composed publication: typography, white
+space, hierarchy and readable essays. The current direction is white, black and
+neutral greys. Earlier beige/olive, anonymous-author and English-first
+directions have been superseded by Inês's explicit decisions.
 
 ---
 
 ## 2. The editorial DNA (the shape of every Paper)
 
-Each **Paper** is a **thesis**, not an article. It always follows the same
-intellectual movement:
+The existing Papers use an essay framework that develops an argument through
+the following intellectual movement:
 
 1. A question.
 2. An accepted assumption is challenged.
@@ -41,15 +41,19 @@ intellectual movement:
 4. A new thesis emerges.
 5. The thesis becomes an operational principle.
 
-Each Paper introduces **one conceptual distinction** (the *Central Distinction*),
-of the form `A ≠ B` or `A = B`. It is more important than the abstract and is
-displayed prominently. Examples:
+The Markdown Paper collection requires **one conceptual distinction** (the
+*Central Distinction*), of the form `A ≠ B` or `A = B`, displayed prominently in
+the English edition layout. Examples:
 
 - Architecture ≠ Service
 - Architecture = Time
 - Interval ≠ Transition
 - Depth ≠ Emptiness
 - Formal Innovation ≠ Functional Innovation
+
+The approved Portuguese revisions are separate editions with their own
+personal voice and structure. Do not rewrite an approved text or add a new
+thesis merely to reproduce the structure of an earlier English edition.
 
 ---
 
@@ -58,14 +62,17 @@ displayed prominently. Examples:
 - **Astro 5** — static site generation.
 - **Markdown / MDX** content via **Content Collections**.
 - **No CMS, no database, no unnecessary dependencies.**
-- Deploy on **Netlify** (`netlify.toml` included: build `npm run build`,
+- Deploy on **Netlify** (`netlify.toml` included: build `npm run build && npm run check:publication`,
   publish `dist`, Node 22).
 - Fonts via Google Fonts: **Cormorant Garamond** (serif — titles and essay
   body) + **Quattrocento Sans** (sans — labels and metadata).
 - Extras: RSS feed (`/rss.xml`), sitemap, basic SEO (title, description,
   canonical, OpenGraph).
-- `site` in `astro.config.mjs` is `https://papers.inesgavinho.com` — it drives
-  canonical links, the sitemap and RSS. Update it if the final domain differs.
+- The verified public origin is `https://papersbyig.netlify.app`. Keep `site`
+  in `astro.config.mjs`, `site.url` in `src/data/site.ts`, canonical links,
+  sitemap, RSS and sharing metadata aligned. The earlier
+  `https://papers.inesgavinho.com` setting must not be treated as proof that a
+  custom domain is configured or live.
 
 ### Project structure
 
@@ -79,7 +86,7 @@ src/
   components/          # Layout, Header, Footer, PaperPreview, Distinction, IdeaList
   layouts/Layout.astro # shared HTML shell + SEO
   lib/                 # content queries + formatting helpers
-  pages/               # routes
+  pages/               # routes, including separate Portuguese revised editions
   styles/global.css    # the single stylesheet
 public/                # favicon
 docs/                  # this guide
@@ -99,10 +106,11 @@ The **file name is the slug / URL** (e.g. `on-inhabited-time.md` →
 
 ```yaml
 ---
-issue: 4                                   # issue number (000, 001, ...); orders everything
+issue: 4                                   # issue number within the volume (000, 001, ...)
+volume: 1                                  # defaults to 1 for existing Papers
 title: "The Appearance and the Function"
 centralDistinction: "Formal Innovation ≠ Functional Innovation"   # REQUIRED
-thesis: "The movements changed appearance. They did not change life."  # dominant line used on the cover
+thesis: "The movements changed appearance. They did not change life."  # optional statement of the argument
 question: "Is a new form a new idea?"      # the question the thesis answers
 abstract: "..."                            # one or two sharp sentences
 readingTime: "15 min"
@@ -121,16 +129,39 @@ The body of the thesis, in Markdown. Footnotes render automatically[^1].
 
 Notes:
 
-- `issue` drives ordering and the "current investigation" (the highest issue)
-  shown on the cover. Use the next available integer.
+- `volume` and `issue` drive collection ordering. The current selection follows
+  the collection helpers; check them before changing which edition the cover
+  links to. Use the next available issue within the appropriate volume.
 - `centralDistinction` is mandatory; the ` ≠ ` / ` = ` operator is set apart
   typographically.
-- `thesis` is the short, dominant statement the homepage leads with.
+- `thesis` is an optional short statement of the argument; whether it is shown
+  on the homepage depends on the current approved presentation.
 - `ideas` should come from the vocabulary in `src/data/site.ts`.
 - `principles` lists the Principle slugs this Paper contributes to; the relation
   shows on both the Paper and the Principle.
 - `relatedPapers` is optional — related Papers are otherwise inferred from
   shared Ideas.
+
+### Portuguese revised editions — `src/pages/pt/papers/*.astro`
+
+The existing Portuguese revisions are static routes outside the Markdown
+collection. They preserve their issue number, title, author, revision date and
+link to the earlier English edition. They are substantive revisions, not
+necessarily equivalent translations.
+
+- Do not assume these routes automatically enter the collection's indexes,
+  Idea aggregations, relations or RSS.
+- Keep the edition and language clear in links; do not silently send a reader
+  requesting Portuguese to an English text.
+- Preserve existing publication and revision dates until their provenance is
+  verified. A Git commit date alone does not establish the date of an earlier
+  publication elsewhere.
+- A draft label may be removed only when editorial approval for that version
+  is established. A merge or build result does not supply that approval.
+- New original essays are written first in European Portuguese. English
+  translations follow the approved Portuguese text and carry the note
+  **"Translated from the original publication in Portuguese"**. Do not apply
+  this note retroactively to the earlier English originals.
 
 ### Principles — `src/content/principles/*.md`
 
@@ -152,50 +183,59 @@ A short articulation of the principle and how the Papers converge on it.
 
 Ideas live in `src/data/site.ts` (the `ideas` list, each with a one-line
 `gloss`). They are **conceptual territories, not tags**. Each Idea generates a
-page automatically, gathering every Paper that enters its terrain. The current
-vocabulary (16): Time, Attention, Presence, Memory, Architecture, Consciousness,
-Human Condition, Responsibility, Atmosphere, Depth, Silence, Material, Care,
-Belonging, Technology, Hospitality. `featuredIdeas` controls any curated subset.
+page automatically, gathering every Paper that enters its terrain. The
+vocabulary and glosses in `src/data/site.ts` are the source of truth; they
+include architectural and organisational lines of inquiry. `featuredIdeas`
+defines a curated subset for consumers that use it.
 
 ---
 
-## 5. Volume I (current content)
+## 5. Existing editions
 
 - **Issue 000** — The Architectural Project of We — *Architecture ≠ Service*
 - **Issue 001** — On Inhabited Time — *Architecture = Time*
 - **Issue 002** — The Architecture of the Interval — *Interval ≠ Transition*
 - **Issue 003** — A New Spatial Humanism — *Depth ≠ Emptiness*
-- **Issue 004** — The Appearance and the Function — *Formal Innovation ≠ Functional Innovation* (current investigation)
+- **Issue 004** — The Appearance and the Function — *Formal Innovation ≠ Functional Innovation*
+
+Edition status checked on 23 October 2026: these are the existing English
+editions in Volume I — Architecture. Portuguese
+revised editions of 000–003 have been published. Editorial approval to publish
+003 is established; a residual "Proposta de" label is a copy correction and
+does not authorise changes to its approved body or date. The Portuguese 004
+proposal remains separate in draft PR #20 and must not be treated as approved
+or published. Confirm later status changes against explicit approval and the
+actual deployment.
 
 Two Principles: **Mental Sovereignty** and **Architecture as Condition**.
 
-The projects referenced inside Papers: **GAVINHO** (architecture, interiors,
-construction), **DECIMA** (knowledge, evidence, organisational memory),
-**NUDO** (hospitality, belonging).
+Projects may be discussed where relevant to an essay. Keep their identities,
+ownership and claims distinct from the publication, and verify any factual
+description against the text and its sources.
 
 ---
 
 ## 6. Pages and navigation
 
-Routes: `/` · `/papers` · `/papers/[slug]` · `/ideas` · `/ideas/[idea]` ·
-`/principles` · `/principles/[slug]` · `/about` · `/rss.xml` · sitemap.
+Routes: `/` (Portuguese cover) · `/en` (English cover) · `/papers` ·
+`/pt/papers` · `/papers/[slug]` · `/pt/papers/[slug]` (available revised
+editions) · `/ideas` · `/ideas/[idea]` · `/principles` ·
+`/principles/[slug]` · `/about` · `/pt/about` · `/rss.xml` · sitemap.
 
 - **Primary navigation:** only **Papers · Ideas · Principles · About**. There is
   no Archive, Blog, Notes or Projects. Projects are referenced *inside* Papers;
   they are not a navigation item.
-- **Homepage** is a digital edition, read in this order:
-  1. The current Paper's **thesis** alone, very large, holding the opening
-     field, with a single invitation — *Read Paper 004 →*. No metadata.
-  2. After deep silence, the publication reveals itself — **PAPERS**, the
-     byline, one plain sentence — placed to the **right** as a quiet aside.
-  3. After more silence, **Collected Papers** as a printed contents page —
-     issue number above title, generous whitespace, no horizontal rules.
-  Header on the homepage is reduced to **PAPERS** (left) · **About** (right).
-- **Paper page:** a title page (Issue, left-aligned title, the Central
+- **Homepage:** a typographic introduction to the independent publication,
+  Inês's authorship, a clear invitation to read and an essay index. The
+  implemented design uses a lead and a supporting editorial panel. Preserve
+  the approved direction and inspect the current page before changing its
+  layout. The historical thesis-only cover is not a restoration requirement.
+- **English Paper page:** a title page (Issue, left-aligned title, the Central
   Distinction centred as the one feature, Question, Abstract, metadata), then a
   three-column reading layout — sticky metadata rail · serif essay · sticky
   Central Distinction. Footer of the Paper: Related Papers / Related Principles
-  / Related Ideas.
+  / Related Ideas. Portuguese revised editions retain their approved reading
+  structure and provenance; do not describe them as identical translations.
 - **Ideas / Principles / About** are internal pages and keep full navigation.
 
 ---
@@ -206,38 +246,44 @@ Palette (defined in `:root` of `src/styles/global.css`):
 
 | Token      | Value     | Use                                   |
 | ---------- | --------- | ------------------------------------- |
-| `--paper`  | `#f2f0e7` | warm off-white background             |
-| `--ink`    | `#1f1f1c` | text                                  |
-| `--muted`  | `#7b776b` | secondary text                        |
-| `--faint`  | `#d8d4c7` | thin rules                            |
-| `--accent` | `#8b8670` | discreet olive — the ≠/= operator, hovers |
+| `--paper`  | `#ffffff` | white background                      |
+| `--ink`    | `#151515` | near-black text                       |
+| `--muted`  | `#686868` | neutral secondary text                |
+| `--faint`  | `#d4d4d4` | light-grey rules                      |
+| `--accent` | `#3a3a3a` | dark-grey operators and hovers         |
 
 Composition rules:
 
 - Typography is the interface. Whitespace is information. Silence is a design
   element. Hierarchy over decoration.
-- No images on the homepage. No SaaS-style cards, no coloured buttons, no
-  shadows, no gradients, no excessive animation.
+- Keep the current typographic cover. Images require a deliberate editorial
+  decision, not a decorative placeholder. No SaaS-style cards, coloured
+  buttons, shadows, gradients or excessive animation.
 - Few horizontal rules — use whitespace instead.
 - Asymmetric composition (different alignments and scales), not a single
   centred, stacked column.
 - Reading measure ~700–740px; wide canvas ~1200px.
-- Optimise for **editorial authority**, not usability. It is acceptable that the
-  page feels slower, emptier, and that the visitor has to think. This
-  publication is not competing for attention; it rewards attention.
+- Preserve editorial character together with legibility and access to the
+  full text. A restrained composition should make the writing easier to read.
 
 ---
 
 ## 8. Tone of voice (for writing Papers)
 
-- Essayistic, precise, sober, literary but unadorned. British English.
-- Structure every Paper by the editorial DNA: open with a question → challenge
+- Essayistic, precise, sober, literary but unadorned. New originals use
+  European Portuguese and preserve Inês's personal voice. Translations use
+  British English and are clearly identified.
+- Structure new Paper drafts by the editorial DNA: open with a question → challenge
   an assumption → introduce a distinction → establish the thesis → end on an
-  actionable operational principle.
+  actionable operational principle. Preserve the approved structure of the
+  existing Portuguese revisions.
 - Use footnotes (`[^1]`) for genealogy and citations, and one central
   blockquote as the hinge of the argument.
-- No marketing language. No "featured", "latest", "trending". The author almost
-  disappears; the ideas are the protagonists.
+- No marketing language in the essays. The ideas lead; Inês's authorship and
+  voice remain visible. Do not introduce commercial claims or make PAPERS a
+  channel belonging to another brand.
+- Preserve distinctions between an interpretation, an attributed fact and a
+  direct quotation. Verify sources before presenting a citation as checked.
 
 ---
 
@@ -254,16 +300,35 @@ npm run preview  # preview the production build
 
 Adding content:
 
-- **New Paper:** create `src/content/papers/<slug>.md` with the frontmatter in
-  §4; `issue` = next integer; `ideas` from the vocabulary in `src/data/site.ts`.
-  The homepage automatically leads with the highest issue as the current
-  investigation.
+- **New Paper:** write and obtain editorial approval for the European
+  Portuguese original first. When adding a collection entry, use
+  `src/content/papers/<slug>.md` with the frontmatter in §4; `issue` = next
+  available integer in the volume; `ideas` from `src/data/site.ts`. Check the
+  current edition helpers and homepage selection rather than assuming that
+  the newest collection entry should be the Portuguese reading invitation.
 - **New Principle:** create `src/content/principles/<slug>.md`.
 - **New Idea:** edit the `ideas` list in `src/data/site.ts` — its page is
   generated automatically.
 
-Everything is generated automatically from the Markdown files: pages,
-per-Idea aggregation, shared-concept relations, RSS and sitemap.
+Collection pages, per-Idea aggregation, shared-concept relations and RSS derive
+from the Markdown files. Portuguese static routes are maintained separately;
+the sitemap follows the generated routes. Verify language links, metadata and
+indexes when an edition is added or revised.
 
-Repository: `inesgavinho-byte/papers`. Development happens on the feature
-branch; pull requests target `main`.
+Repository: `pink-moustache/PAPERS`. Development happens on a feature branch;
+pull requests target `main`. The current public site is
+`https://papersbyig.netlify.app`.
+
+Before committing, run `npm run build && npm run check:publication`. The
+publication check validates generated internal links, edition routes, metadata,
+social images, robots, RSS and sitemap. For changes affecting presentation or
+reading, verify the relevant pages and complete text at the affected screen
+sizes. Record actual results and any limitations.
+
+Editorial approval, implementation, testing, merge and production publication
+are separate states. Do not publish a proposed essay on the strength of a build
+or merge alone. Do not claim a change is live until deployment is verified.
+Publication is not engineering certification: any compliance or certification
+claim requires explicit criteria and recorded evidence for the relevant
+version. This guide does not grant approval to unpublished content or certify
+the site.

@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { idea, papers } = Astro.props;
 ---
 
-<Layout title={idea.name} description={idea.gloss} canonicalPath={`/ideas/${slugify(idea.name)}`}>
+<Layout title={idea.name} description={idea.gloss} canonicalPath={`/ideas/${slugify(idea.name)}`} noindex={papers.length === 0}>
   <div class="index-page">
     <p class="section-kicker">Idea</p>
     <h1>{idea.name}</h1>
