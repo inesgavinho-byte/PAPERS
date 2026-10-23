@@ -4,7 +4,7 @@ export type Paper = CollectionEntry<'papers'>;
 export type Principle = CollectionEntry<'principles'>;
 export type Project = CollectionEntry<'projects'>;
 
-/** Projects in editorial order — by number ascending. Drafts never render. */
+/** Projects in editorial order. Drafts never render. */
 export async function getProjects(): Promise<Project[]> {
   const projects = await getCollection('projects', ({ data }) => !data.draft);
   return projects.sort((a, b) => a.data.number - b.data.number);

@@ -52,6 +52,7 @@ src/
   content/
     papers/          # one Markdown/MDX file per Paper (a thesis)
     principles/      # one file per Principle (distilled across Papers)
+    projects/        # selected built work as editorial case studies
   content.config.ts  # collection schemas
   data/site.ts       # site metadata, nav, and the Ideas vocabulary
   components/        # Layout, Header, Footer, PaperPreview, Distinction, IdeaList
@@ -73,13 +74,16 @@ public/              # favicon
 | `/ideas/[idea]`       | Every Paper that enters an Idea's terrain    |
 | `/principles`         | Principles                                   |
 | `/principles/[slug]`  | A single Principle                           |
-| `/about`              | About                                        |
+| `/projects`            | Selected project case studies                |
+| `/projects/[slug]`     | A project case study                         |
+| `/pt/projects`         | Projetos — edição portuguesa                 |
+| `/pt/projects/[slug]`  | Um caso de projeto em português              |
+| `/about`               | About                                        |
 | `/rss.xml`            | RSS feed                                     |
 | `/sitemap-index.xml`  | Sitemap (generated at build)                 |
 
 The menu is intentionally five items: **Papers · Ideas · Projects · Principles · About.**
-There is no Archive, Blog or Notes. Projects documents built work as editorial
-case studies — not a portfolio and not an agency page.
+There is no Archive, Blog or Notes. Projects are editorial case studies, not a services catalogue.
 
 ---
 

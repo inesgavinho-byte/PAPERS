@@ -41,7 +41,7 @@ const principles = defineCollection({
   }),
 });
 
-// A Project is a documented piece of built work — an editorial case study, not a portfolio card.
+// A Project is selected built work documented as an editorial case study.
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
   schema: z.object({
@@ -57,7 +57,6 @@ const projects = defineCollection({
     imageAlt: z.string().default(''),
     imageAltPt: z.string().default(''),
     published: z.coerce.date(),
-    // Unpublished projects stay in the data model but out of the site.
     draft: z.boolean().default(false),
   }),
 });

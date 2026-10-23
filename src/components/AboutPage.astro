@@ -1,0 +1,237 @@
+---
+import Layout from '../layouts/Layout.astro';
+import portrait360 from '../assets/author/ines-gavinho-360.webp';
+import portrait560 from '../assets/author/ines-gavinho-560.webp';
+import portrait840 from '../assets/author/ines-gavinho-840.webp';
+import portrait from '../assets/author/ines-gavinho-1116.webp';
+
+interface Props {
+  lang?: 'en' | 'pt';
+}
+
+const { lang = 'en' } = Astro.props;
+const isPortuguese = lang === 'pt';
+const portraitSources = [portrait360, portrait560, portrait840, portrait]
+  .map((image) => `${image.src} ${image.width}w`)
+  .join(', ');
+const copy = isPortuguese
+  ? {
+      title: 'Inês Gavinho',
+      description: 'Inês Gavinho: direção criativa, arquitetura e interiores, produtos digitais e integração de IA. Autora do PAPERS, uma publicação pessoal e independente.',
+      kicker: 'Sobre a autora',
+      portraitAlt: 'Retrato de Inês Gavinho a preto e branco, com um pequeno bigode rosa na camisola.',
+      biography: 'Sou arquiteta, designer e diretora criativa. O meu trabalho cruza a conceção de espaços, a criação visual e o desenvolvimento de produtos digitais.',
+      papersLink: 'Ler os ensaios',
+      practiceHeading: 'Da ideia à concretização',
+      practiceIntroduction: 'Sou diretora criativa e sócia da GAVINHO e fundadora da DECIMA. A minha prática liga a definição de uma ideia à construção dos elementos necessários para a realizar, comunicar e pôr em funcionamento.',
+      capabilities: [
+        {
+          title: 'Direção criativa',
+          text: 'Desenvolvo conceitos, linguagens visuais, imagens e apresentações. Trabalho a forma como uma ideia é apresentada e compreendida, estabelecendo uma direção que orienta as decisões ao longo do projeto. Posso assumir a direção de um conjunto ou trabalhar sobre uma necessidade específica.',
+        },
+        {
+          title: 'Arquitetura e interiores',
+          text: 'Desenvolvo projetos desde as primeiras ideias até à sua concretização. A minha experiência inclui o acompanhamento de obra, ligando a intenção do desenho às escolhas de materiais, aos detalhes e às condições de execução.',
+        },
+        {
+          title: 'Produtos digitais e inteligência artificial',
+          text: 'Concebo e desenvolvo produtos digitais para operações reais. Trabalho na integração de inteligência artificial e na organização de processos de empresas: compreender como o trabalho acontece, definir o que precisa de ser resolvido e construir ferramentas que possam ser utilizadas nesse contexto.',
+        },
+      ],
+      publicationHeading: 'O PAPERS',
+      paragraphs: [
+        'No PAPERS, escrevo a partir das perguntas que atravessam esta prática: como habitamos, a que prestamos atenção, como construímos conhecimento e o que permanece daquilo que fazemos.',
+        'É a minha publicação pessoal e independente, com identidade editorial própria. A arquitetura, a tecnologia, as organizações, a arte e a condição humana fazem parte deste campo de reflexão. Cada ensaio procura desenvolver uma ideia com tempo, relacioná-la com outras e deixar espaço para continuar a pensar.',
+      ],
+      projectsNote: 'Projects documenta trabalho selecionado de Inês Gavinho. PINK_MOUSTACHE identifica a sua prática independente de produto e tecnologia quando essa atribuição se aplica.',
+      editorialHeading: 'Nota editorial',
+      editorialNote: 'Os novos ensaios são escritos primeiro em português. As traduções para inglês são identificadas como tal. Os textos revistos preservam a indicação da edição anterior.',
+    }
+  : {
+      title: 'Inês Gavinho',
+      description: 'Inês Gavinho: creative direction, architecture and interiors, digital products and AI integration. Author of PAPERS, an independent personal publication.',
+      kicker: 'About the author',
+      portraitAlt: 'Black-and-white portrait of Inês Gavinho, with a small pink moustache on her jumper.',
+      biography: 'I am an architect, designer and creative director. My work brings together the design of spaces, visual creation and the development of digital products.',
+      papersLink: 'Read the essays',
+      practiceHeading: 'From idea to realisation',
+      practiceIntroduction: 'I am Creative Director and Partner at GAVINHO and the founder of DECIMA. My practice connects the definition of an idea with the work needed to realise it, communicate it and put it into use.',
+      capabilities: [
+        {
+          title: 'Creative direction',
+          text: 'I develop concepts, visual languages, images and presentations. I work on how an idea is presented and understood, establishing a direction that guides decisions throughout a project. I can lead the whole or work on a specific need.',
+        },
+        {
+          title: 'Architecture and interiors',
+          text: 'I develop projects from the first ideas through to their realisation. My experience includes following work on site, connecting the intention of the design with material choices, details and the conditions of construction.',
+        },
+        {
+          title: 'Digital products and artificial intelligence',
+          text: 'I conceive and develop digital products for real operations. I work on integrating artificial intelligence and organising business processes: understanding how work happens, defining what needs to be resolved and building tools that can be used in that context.',
+        },
+      ],
+      publicationHeading: 'PAPERS',
+      paragraphs: [
+        'In PAPERS, I write from the questions that run through this practice: how we inhabit places, what we pay attention to, how we build knowledge, and what remains of what we make.',
+        'It is my independent personal publication, with its own editorial identity. Architecture, technology, organisations, art and the human condition belong to this field of reflection. Each essay takes time to develop an idea, connect it with others and leave room to think further.',
+      ],
+      projectsNote: 'Projects documents selected work by Inês Gavinho. PINK_MOUSTACHE identifies her independent product and technology practice where that attribution applies.',
+      editorialHeading: 'Editorial note',
+      editorialNote: 'New essays are written first in Portuguese. English translations are identified as such. Revised texts retain a reference to the earlier edition.',
+    };
+---
+
+<Layout
+  title={copy.title}
+  description={copy.description}
+  lang={lang}
+  canonicalPath={isPortuguese ? '/pt/about' : '/about'}
+  alternateLanguages={[
+    { lang: 'pt', href: '/pt/about' },
+    { lang: 'en', href: '/about' },
+  ]}
+>
+  <article class="author-profile">
+    <div class="author-introduction">
+      <header class="author-heading">
+        <p class="author-kicker">PAPERS / {copy.kicker}</p>
+        <h1><span>Inês</span> <span>Gavinho</span></h1>
+      </header>
+
+      <figure class="author-portrait">
+        <img
+          src={portrait.src}
+          width={portrait.width}
+          height={portrait.height}
+          alt={copy.portraitAlt}
+          srcset={portraitSources}
+          sizes="(max-width: 760px) calc(100vw - 44px), (max-width: 1200px) 42vw, 480px"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </figure>
+
+      <div class="author-biography">
+        <p>{copy.biography}</p>
+        <a class="author-reading-link" href={isPortuguese ? '/pt/papers' : '/papers'}>{copy.papersLink} →</a>
+      </div>
+    </div>
+
+    <div class="author-writing">
+      <section class="author-practice" aria-labelledby="practice-heading">
+        <h2 id="practice-heading">{copy.practiceHeading}</h2>
+        <p>{copy.practiceIntroduction}</p>
+        {copy.capabilities.map((capability) => (
+          <div class="author-capability">
+            <h3>{capability.title}</h3>
+            <p>{capability.text}</p>
+          </div>
+        ))}
+      </section>
+
+      <section aria-labelledby="publication-heading">
+        <h2 id="publication-heading">{copy.publicationHeading}</h2>
+        {copy.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <p>{copy.projectsNote}</p>
+      </section>
+
+    <section class="author-editorial" aria-labelledby="editorial-note-heading">
+      <h2 id="editorial-note-heading">{copy.editorialHeading}</h2>
+      <p>{copy.editorialNote}</p>
+      {!isPortuguese && (
+        <p class="translation-note">Translated from the original publication in Portuguese</p>
+      )}
+      <p>
+        {isPortuguese
+          ? <a href="/about" hreflang="en" lang="en">Read in English →</a>
+          : <a href="/pt/about" hreflang="pt-PT" lang="pt-PT">Ler em português →</a>}
+      </p>
+    </section>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .author-profile {
+    max-width: 1200px;
+    margin: 72px auto 120px;
+    padding: 0 32px;
+  }
+  .author-introduction {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1fr);
+    grid-template-areas: 'portrait heading' 'portrait biography';
+    column-gap: clamp(48px, 7vw, 88px);
+    grid-template-rows: auto 1fr;
+  }
+  .author-heading { grid-area: heading; padding-top: 16px; }
+  .author-kicker {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+  .author-heading h1 {
+    font-family: var(--serif);
+    font-size: clamp(64px, 7.8vw, 108px);
+    font-weight: 400;
+    line-height: .88;
+    letter-spacing: -.035em;
+    margin: 0 0 36px;
+  }
+  .author-heading h1 span { display: block; }
+  .author-portrait { grid-area: portrait; margin: 0; }
+  .author-portrait :global(img) { display: block; width: 100%; height: auto; }
+  .author-biography { grid-area: biography; align-self: start; max-width: 470px; }
+  .author-biography p {
+    font-family: var(--serif);
+    font-size: clamp(24px, 2.5vw, 31px);
+    line-height: 1.35;
+    margin: 0 0 34px;
+  }
+  .author-reading-link {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    line-height: 1.8;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+  }
+  .author-writing { max-width: 700px; margin: 88px 0 0 auto; }
+  .author-writing h2 {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 400;
+    margin: 0 0 28px;
+  }
+  .author-writing p { font-family: var(--serif); font-size: 23px; line-height: 1.6; margin: 0 0 24px; }
+  .author-practice { margin-bottom: 72px; }
+  .author-capability { margin-top: 36px; }
+  .author-capability h3 { font-family: var(--sans); font-size: 13px; font-weight: 400; letter-spacing: .07em; text-transform: uppercase; line-height: 1.6; margin: 0 0 14px; }
+  .author-editorial { border-top: 1px solid var(--faint); margin-top: 48px; padding-top: 28px; }
+  .author-editorial h2 { font-family: var(--sans); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 20px; }
+  .author-editorial p { font-family: var(--sans); font-size: 14px; line-height: 1.7; color: var(--muted); margin-bottom: 18px; }
+  .author-editorial a { text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  @media (max-width: 900px) {
+    .author-introduction { column-gap: 40px; }
+    .author-heading h1 { font-size: 76px; }
+    .author-biography p { font-size: 26px; }
+  }
+  @media (max-width: 760px) {
+    .author-profile { margin: 44px auto 80px; padding: 0 22px; }
+    .author-introduction { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'heading' 'portrait' 'biography'; gap: 30px; }
+    .author-heading { padding: 0; }
+    .author-kicker { margin-bottom: 24px; }
+    .author-heading h1 { font-size: clamp(64px, 14vw, 96px); margin: 0; }
+    .author-biography { max-width: none; }
+    .author-biography p { font-size: 26px; }
+    .author-writing { margin-top: 64px; }
+    .author-writing p { font-size: 22px; }
+    .author-editorial p { font-size: 14px; }
+  }
+</style>

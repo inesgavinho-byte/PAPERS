@@ -9,11 +9,10 @@ import Distinction from '../../../components/Distinction.astro';
   canonicalPath="/pt/projects/terra"
   ogType="article"
   lang="pt"
-  ogImage="/projects/terra/og.png"
-  alternates={[
+  alternateLanguages={[
     { lang: 'pt', href: '/pt/projects/terra' },
     { lang: 'en', href: '/projects/terra' },
-    { lang: 'x-default', href: '/pt/projects/terra' },
+    { lang: 'x-default', href: '/projects/terra' },
   ]}
 >
   <article class="project-case" lang="pt">
@@ -65,7 +64,7 @@ import Distinction from '../../../components/Distinction.astro';
       </figure>
 
       <h2>Uma correção não apaga o que veio antes</h2>
-      <p>Quando uma medição muda — por exemplo, uma dedução de 4,00 m² que reduz a área de 24,00 para 20,00 m² — o valor anterior não é substituído. A revisão sobe de 1 para 2 e o sistema acrescenta um evento com o antes e o depois. O histórico é acrescentivo: nada é eliminado.</p>
+      <p>Quando uma medição muda — por exemplo, uma dedução de 4,00 m² que reduz a área de 24,00 para 20,00 m² — o valor anterior não é substituído. A revisão sobe de 1 para 2 e o sistema acrescenta um evento com o antes e o depois. O estado anterior é preservado através de novos eventos no histórico da medição.</p>
       <figure class="case-figure">
         <img src="/projects/terra/historico-deducao.png" alt="Medição após dedução: «Área 1 — 20,00 m² (servidor), rev 2», com o histórico de eventos aberto." width="2000" height="1764" loading="lazy" />
         <figcaption>Fig. 3 — Dedução de 4,00 m²: a área passa a 20,00 m², a revisão sobe para 2 e o histórico guarda o antes e o depois.</figcaption>
@@ -86,7 +85,7 @@ import Distinction from '../../../components/Distinction.astro';
       <p>As capturas deste caso provêm de uma execução de demonstração em base isolada, com dados inteiramente sintéticos — obra de ensaio, desenhos de ensaio, utilizador de ensaio; a produção ficou intacta. Os valores visíveis são os valores calculados e guardados pelo sistema, verificados ao mesmo tempo na base de dados e na interface; nenhuma captura foi retocada.</p>
 
       <h2>Estado</h2>
-      <p>TERRA está em piloto para a gestão de produção de obra. O módulo de medições sobre desenhos foi executado e verificado de ponta a ponta em ambiente de demonstração isolado (22–23 de outubro de 2026); o uso em produção decorrerá por fases.</p>
+      <p>TERRA está em piloto para a gestão de produção de obra. O percurso de medição de área apresentado neste caso — calibração, gravação, persistência, dedução/revisão e histórico — foi executado e verificado de ponta a ponta em ambiente de demonstração isolado (22–23 de outubro de 2026). O uso em produção decorrerá por fases.</p>
     </div>
 
     <footer class="case-footer">
