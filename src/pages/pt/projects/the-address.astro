@@ -1,0 +1,97 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Distinction from '../../../components/Distinction.astro';
+---
+
+<Layout
+  title="THE ADDRESS"
+  description="Um produto imobiliário concebido em torno de pessoas, lugares e contexto persistente — não apenas anúncios."
+  canonicalPath="/pt/projects/the-address"
+  ogType="article"
+  lang="pt"
+  alternateLanguages={[
+    { lang: 'pt', href: '/pt/projects/the-address' },
+    { lang: 'en', href: '/projects/the-address' },
+    { lang: 'x-default', href: '/projects/the-address' },
+  ]}
+>
+  <article class="project-case" lang="pt">
+    <div class="edition-link">
+      <a href="/projects/the-address" hreflang="en">Ler a tradução em inglês →</a>
+    </div>
+
+    <header class="case-header">
+      <p class="issue-number">Projects · 002</p>
+      <h1>THE ADDRESS</h1>
+      <p class="project-category">Inteligência imobiliária · Produto digital</p>
+      <p class="case-attribution">Conceção de produto, direção criativa e de tecnologia — Inês Gavinho / PINK_MOUSTACHE</p>
+      <p class="paper-metadata">Edição original em português · 23 de outubro de 2026</p>
+
+      <div class="paper-entry-section paper-entry-section--center">
+        <p class="paper-entry-label">Distinção central</p>
+        <Distinction value="Imóvel ≠ Anúncio" variant="stacked" />
+      </div>
+
+      <p class="case-lead">
+        Procurar casa não é apenas um problema de catálogo. As decisões residenciais dependem das relações entre pessoas, lugares, constrangimentos, tempo e intenção. THE ADDRESS foi concebido a partir desse contexto.
+      </p>
+    </header>
+
+    <div class="prose case-body">
+      <h2>O problema</h2>
+      <p>A maioria das plataformas imobiliárias começa pelo inventário: preço, localização, quartos e área.</p>
+      <p>Esses atributos importam, mas não explicam porque é que uma casa é certa para uma pessoa e errada para outra. Dez minutos a pé, a proximidade de uma escola, um bairro à noite ou o momento de uma mudança têm significados diferentes conforme a pessoa que está a decidir.</p>
+      <p>O imóvel é apenas uma parte da decisão. As relações em torno dele também importam.</p>
+
+      <h2>Um imóvel não é o mesmo que um anúncio</h2>
+      <p>Um anúncio é uma representação temporária. O imóvel pode persistir através de diferentes anúncios, agentes, preços, documentos e momentos.</p>
+      <p>THE ADDRESS trata por isso o imóvel e o anúncio como objetos distintos. Esta separação permite organizar conhecimento em torno do lugar subjacente e não apenas de uma publicação comercial.</p>
+
+      <h2>Connected Worlds</h2>
+      <p>A experiência foi concebida como um percurso entre escalas ligadas:</p>
+      <blockquote><p>Cidades → Bairros → Imóveis → Conversa</p></blockquote>
+      <p>Uma pessoa pode passar da compreensão de uma zona para a análise de um imóvel e daí para uma conversa sem que o produto precise de esquecer onde essa conversa começou.</p>
+      <p>A entrada conversacional implementada já altera o seu contexto consoante a rota: numa página de imóvel parte desse imóvel; noutros contextos parte de uma descoberta mais ampla.</p>
+
+      <h2>Dos filtros à intenção</h2>
+      <p>Os filtros são úteis, mas descrevem parâmetros e não necessariamente os motivos.</p>
+      <p>O produto atual contém um modelo de intenção de comprador no qual os requisitos podem ter diferentes níveis de importância — obrigatório, preferido, opcional, evitar ou excluir — juntamente com timing e propósito.</p>
+      <p>Assim, a pesquisa pode ser tratada como uma hipótese de trabalho que evolui, em vez de cada visita ser apenas uma consulta isolada.</p>
+
+      <h2>Um sistema que pode continuar a procurar</h2>
+      <p>THE ADDRESS contém também uma camada persistente de buyer agent. Para intenções ativas, o sistema pode recalcular correspondências e preservar aquilo que já foi visto ou comunicado, permitindo distinguir novos matches fortes dos anteriores.</p>
+      <p>A pergunta deixa de ser apenas “o que corresponde agora?” e passa também a poder ser “o que apareceu desde a última vez que procurámos?”</p>
+
+      <h2>A descoberta continua a ser espacial</h2>
+      <p>O contexto não substitui a exploração imobiliária convencional. O produto inclui uma experiência dividida entre lista e mapa, filtros e seleção geográfica.</p>
+      <p>O objetivo é ligar a exploração espacial a contexto persistente, e não substituir interações familiares apenas porque existe mais inteligência disponível.</p>
+
+      <h2>A qualificação pode tornar-se reutilizável</h2>
+      <p>No arrendamento, o produto inclui o Address Rental Passport: um dossier financeiro reutilizável que pode apoiar candidaturas mediante autorização explícita do candidato.</p>
+      <p>O princípio subjacente é semelhante: identidade e evidência podem persistir enquanto o acesso continua contextual a uma candidatura específica.</p>
+
+      <h2>A informação editorial faz parte do produto</h2>
+      <p>THE ADDRESS inclui um Journal editorial a par da descoberta de imóveis. Cidades, arquitetura, finanças, regulação e formas de habitar são tratados como parte do ambiente de decisão e não como conteúdo desligado do produto.</p>
+      <p>Melhores decisões exigem mais do que mais informação. Exigem contexto que continue inteligível.</p>
+
+      <h2>O meu papel</h2>
+      <p>Concebi THE ADDRESS como um produto imobiliário organizado em torno de relações e não apenas de anúncios.</p>
+      <p>O meu papel abrange conceção de produto, direção criativa e direção de tecnologia: definição do modelo de produto, da experiência entre escalas ligadas, da relação entre descoberta e conversa e dos princípios usados para separar informação persistente, inferência contextual e ação autorizada pelo utilizador.</p>
+      <p class="case-attribution">Inês Gavinho / PINK_MOUSTACHE</p>
+
+      <h2>Sistema construído</h2>
+      <p>O repositório canónico atual contém áreas implementadas para exploração espacial de imóveis, fichas, conta e favoritos, alertas, publicação e edição de imóveis, perfis profissionais, Rental Passport e candidaturas, operações internas de mercado, intenções persistentes de comprador e matching, entradas conversacionais contextuais e Journal.</p>
+      <p>Estas áreas não têm necessariamente a mesma maturidade, âmbito operacional ou nível de verificação. A sua presença no código não constitui, por si só, uma afirmação de que todas estão publicadas ou igualmente validadas em produção.</p>
+
+      <h2>Estado</h2>
+      <p>THE ADDRESS é um produto digital ativo e em evolução. Este caso documenta arquitetura e comportamento de produto implementados e demonstráveis no repositório canónico; não atribui o mesmo estado de verificação a todas as capacidades descritas.</p>
+    </div>
+
+    <footer class="case-footer">
+      <p class="pm-wordmark">pink<span class="pm-underscore">_</span>moustache</p>
+      <p class="pm-note">A prática independente de produto e tecnologia de Inês Gavinho.</p>
+      <p class="pm-tagline">Think differently. Build deliberately.</p>
+      <p class="case-back"><a href="/pt/projects">← Projects</a></p>
+    </footer>
+  </article>
+</Layout>

@@ -30,9 +30,11 @@ const projects = await getProjects();
             <a href={`/projects/${project.id}`}>{project.data.title}</a>
           </h2>
           <p class="project-category">{project.data.category}</p>
-          <a class="project-figure" href={`/projects/${project.id}`} aria-label={`Open the ${project.data.title} case study`}>
-            <img src={project.data.image} alt={project.data.imageAlt} width="2000" height="1764" loading="lazy" />
-          </a>
+          {project.data.image && (
+            <a class="project-figure" href={`/projects/${project.id}`} aria-label={`Open the ${project.data.title} case study`}>
+              <img src={project.data.image} alt={project.data.imageAlt} width="2000" height="1764" loading="lazy" />
+            </a>
+          )}
           <p class="project-summary">{project.data.summary}</p>
           <p class="project-role">Product conception, creative & technology direction</p>
           <p class="project-metadata">{formatDate(project.data.published)}</p>
