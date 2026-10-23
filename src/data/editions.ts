@@ -67,6 +67,12 @@ export const portugueseEditions: Record<string, PortugueseEdition> = {
     question: 'Como preservamos a inteligibilidade de sistemas que estão sempre a mudar?',
     kind: 'original',
   },
+  'the-architecture-of-context': {
+    title: 'A Arquitetura do Contexto',
+    distinction: 'Contexto ≠ Quantidade',
+    question: 'O que precisa realmente um sistema para compreender a situação sobre a qual lhe estamos a perguntar?',
+    kind: 'original',
+  },
   'one-organisation-many-perspectives': {
     title: 'A Organização é Uma. As Perspetivas São Múltiplas.',
     distinction: 'Realidade ≠ Representação',
