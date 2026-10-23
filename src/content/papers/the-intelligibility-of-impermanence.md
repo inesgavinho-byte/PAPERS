@@ -151,6 +151,10 @@ The question is:
 
 “Can we reconstruct, with confidence, what actually happened?”
 
+![Wooden corridor of traditional Japanese architecture, its floor marked by use, seen in longitudinal perspective.](/images/impermanence-corridor.jpg)
+
+*Photograph © Inês Gavinho.*
+
 ## The paradox of digital memory
 
 Technology has intensified this problem at the same time as it promised to solve it.
