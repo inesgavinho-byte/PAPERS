@@ -63,6 +63,11 @@ export const ideas: Idea[] = [
   { name: 'Provenance', gloss: 'The origin and chain through which information acquires meaning and accountability.' },
   { name: 'Authority', gloss: 'Who or what is entitled to decide, approve, supersede or attest.' },
   { name: 'Verification', gloss: 'The ability to inspect the basis of a claim and test whether it still holds.' },
+  { name: 'Identity', gloss: 'The continuity of what something is across systems, versions and representations.' },
+  { name: 'Representation', gloss: 'A partial view of reality shaped by the purpose and limits of a system.' },
+  { name: 'Systems', gloss: 'Structured ways of observing, relating and acting on reality.' },
+  { name: 'Context', gloss: 'The relationships, conditions and history that make information intelligible.' },
+  { name: 'Interoperability', gloss: 'The capacity for different systems to refer coherently to the same underlying reality.' },
 ];
 
 // Curated subset shown on the cover, in the brief's order.
