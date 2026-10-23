@@ -15,9 +15,10 @@ edition?"** If not, don't add it.
 - The **palette** (`--paper #f2f0e7`, `--ink #1f1f1c`, `--muted #7b776b`,
   `--faint #d8d4c7`, `--accent #8b8670`) or the fonts (Cormorant Garamond +
   Quattrocento Sans).
-- The **navigation set**: `Papers · Ideas · Principles · About`. Do NOT add
-  Archive, Blog, Notes, Projects, or any new nav item. Projects are referenced
-  *inside* Papers only.
+- The **navigation set**: `Papers · Ideas · Projects · Principles · About`
+  (Projects added by explicit editorial decision, 23 October 2026). Do NOT add
+  Archive, Blog, Notes, or any new nav item. Projects may also be referenced
+  *inside* Papers, as evidence for an argument.
 - The **stack**: Astro + Markdown/MDX + Content Collections, static, Netlify.
   Do NOT add a CMS, a database, client-side frameworks, or unnecessary deps.
 - The **homepage rhythm**: (1) current thesis alone, very large, + a single

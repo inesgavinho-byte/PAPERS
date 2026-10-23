@@ -77,8 +77,9 @@ public/              # favicon
 | `/rss.xml`            | RSS feed                                     |
 | `/sitemap-index.xml`  | Sitemap (generated at build)                 |
 
-The menu is intentionally four items: **Papers · Ideas · Principles · About.**
-There is no Archive, Blog, or Projects. Projects are referenced *inside* Papers.
+The menu is intentionally five items: **Papers · Ideas · Projects · Principles · About.**
+There is no Archive, Blog or Notes. Projects documents built work as editorial
+case studies — not a portfolio and not an agency page.
 
 ---
 

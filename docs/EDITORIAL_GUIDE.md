@@ -178,11 +178,14 @@ construction), **DECIMA** (knowledge, evidence, organisational memory),
 ## 6. Pages and navigation
 
 Routes: `/` · `/papers` · `/papers/[slug]` · `/ideas` · `/ideas/[idea]` ·
-`/principles` · `/principles/[slug]` · `/about` · `/rss.xml` · sitemap.
+`/principles` · `/principles/[slug]` · `/projects` · `/projects/[slug]` ·
+`/pt/projects` · `/pt/projects/[slug]` · `/about` · `/rss.xml` · sitemap.
 
-- **Primary navigation:** only **Papers · Ideas · Principles · About**. There is
-  no Archive, Blog, Notes or Projects. Projects are referenced *inside* Papers;
-  they are not a navigation item.
+- **Primary navigation:** **Papers · Ideas · Projects · Principles · About**
+  (Projects added by explicit editorial decision, 23 October 2026). There is no
+  Archive, Blog, or Notes. Projects are editorial case studies with their own
+  section; they may also be referenced *inside* Papers, as evidence for an
+  argument.
 - **Homepage** is a digital edition, read in this order:
   1. The current Paper's **thesis** alone, very large, holding the opening
      field, with a single invitation — *Read Paper 004 →*. No metadata.
@@ -197,6 +200,10 @@ Routes: `/` · `/papers` · `/papers/[slug]` · `/ideas` · `/ideas/[idea]` ·
   Central Distinction. Footer of the Paper: Related Papers / Related Principles
   / Related Ideas.
 - **Ideas / Principles / About** are internal pages and keep full navigation.
+
+### Projects — editorial case studies (added 23 October 2026, explicit editorial decision)
+
+`/projects` and `/pt/projects` present built work as editorial case studies — numbered (001, 002…), documented as evidence, never as portfolio or services. Each case keeps the editorial DNA: question, problem, a central distinction, the system, evidence, status, role, signature. The Portuguese edition is original where stated; English editions are labelled translations. Evidence captures must come from isolated, synthetic-data environments and are published unretouched. The PINK_MOUSTACHE signature carries the single permitted pink accent (#E2A2B3, the wordmark underscore).
 
 ---
 
