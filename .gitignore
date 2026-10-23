@@ -24,3 +24,6 @@ yarn-error.log*
 
 # netlify
 .netlify/
+
+# Private TERRA demo originals (not for commit)
+.terra-src/

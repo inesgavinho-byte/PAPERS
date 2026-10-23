@@ -43,4 +43,24 @@ const principles = defineCollection({
   }),
 });
 
-export const collections = { papers, principles };
+// A Project is selected built work documented as an editorial case study.
+const projects = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
+  schema: z.object({
+    number: z.number(),
+    title: z.string(),
+    category: z.string(),
+    categoryPt: z.string(),
+    attribution: z.string(),
+    attributionPt: z.string(),
+    summary: z.string(),
+    summaryPt: z.string(),
+    image: z.string().default(''),
+    imageAlt: z.string().default(''),
+    imageAltPt: z.string().default(''),
+    published: z.coerce.date(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { papers, principles, projects };

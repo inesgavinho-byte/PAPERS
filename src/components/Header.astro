@@ -9,9 +9,9 @@ const editions = languagePaths(pathname);
 const isActive = (href: string) => normalPath === href || normalPath.startsWith(href + '/');
 const navigation = nav.map((item) => ({
   ...item,
-  href: lang === 'pt' && ['/papers', '/about'].includes(item.href) ? `/pt${item.href}` : item.href,
+  href: lang === 'pt' && ['/papers', '/projects', '/about'].includes(item.href) ? `/pt${item.href}` : item.href,
   active: isActive(item.href),
-  targetLanguage: lang === 'pt' && ['/papers', '/about'].includes(item.href) ? 'pt' : 'en',
+  targetLanguage: lang === 'pt' && ['/papers', '/projects', '/about'].includes(item.href) ? 'pt' : 'en',
 }));
 ---
 <header class="site-header">

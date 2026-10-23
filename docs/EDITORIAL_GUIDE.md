@@ -220,11 +220,14 @@ description against the text and its sources.
 Routes: `/` (Portuguese cover) · `/en` (English cover) · `/papers` ·
 `/pt/papers` · `/papers/[slug]` · `/pt/papers/[slug]` (available revised
 editions) · `/ideas` · `/ideas/[idea]` · `/principles` ·
-`/principles/[slug]` · `/about` · `/pt/about` · `/rss.xml` · sitemap.
+`/principles/[slug]` · `/projects` · `/pt/projects` · `/projects/[slug]` ·
+`/pt/projects/[slug]` · `/about` · `/pt/about` · `/rss.xml` · sitemap.
 
-- **Primary navigation:** only **Papers · Ideas · Principles · About**. There is
-  no Archive, Blog, Notes or Projects. Projects are referenced *inside* Papers;
-  they are not a navigation item.
+- **Primary navigation:** **Papers · Ideas · Projects · Principles · About**
+  (Projects added by explicit editorial decision, 23 October 2026). There is no
+  Archive, Blog, or Notes. Projects are editorial case studies with their own
+  section; they may also be referenced *inside* Papers, as evidence for an
+  argument.
 - **Homepage:** a typographic introduction to the independent publication,
   Inês's authorship, a clear invitation to read and an essay index. The
   implemented design uses a lead and a supporting editorial panel. Preserve
@@ -237,6 +240,10 @@ editions) · `/ideas` · `/ideas/[idea]` · `/principles` ·
   / Related Ideas. Portuguese revised editions retain their approved reading
   structure and provenance; do not describe them as identical translations.
 - **Ideas / Principles / About** are internal pages and keep full navigation.
+
+### Projects — editorial case studies (added 23 October 2026, explicit editorial decision)
+
+`/projects` and `/pt/projects` present built work as editorial case studies — numbered (001, 002…), documented as evidence, never as portfolio or services. Each case keeps the editorial DNA: question, problem, a central distinction, the system, evidence, status, role, signature. The Portuguese edition is original where stated; English editions are labelled translations. Evidence captures must come from isolated, synthetic-data environments and are published unretouched. The PINK_MOUSTACHE signature carries the single permitted pink accent (#E2A2B3, the wordmark underscore).
 
 ---
 

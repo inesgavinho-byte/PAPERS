@@ -1,0 +1,44 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getProjects } from '../../lib/content';
+import { formatDate, issueNumber } from '../../lib/format';
+
+const projects = await getProjects();
+---
+
+<Layout
+  title="Projects"
+  description="Built work by Inês Gavinho, documented as evidence — construction systems and digital products."
+  canonicalPath="/projects"
+  alternateLanguages={[
+    { lang: 'pt', href: '/pt/projects' },
+    { lang: 'en', href: '/projects' },
+    { lang: 'x-default', href: '/projects' },
+  ]}
+>
+  <div class="projects-index">
+    <header class="projects-header">
+      <h1>Projects</h1>
+      <p class="index-intro">Built work, documented through decisions, systems and evidence.</p>
+    </header>
+
+    {
+      projects.map((project) => (
+        <article class="project-row">
+          <p class="issue-number">Projects · {issueNumber(project.data.number)}</p>
+          <h2>
+            <a href={`/projects/${project.id}`}>{project.data.title}</a>
+          </h2>
+          <p class="project-category">{project.data.category}</p>
+          <a class="project-figure" href={`/projects/${project.id}`} aria-label={`Open the ${project.data.title} case study`}>
+            <img src={project.data.image} alt={project.data.imageAlt} width="2000" height="1764" loading="lazy" />
+          </a>
+          <p class="project-summary">{project.data.summary}</p>
+          <p class="project-role">Product conception, creative & technology direction</p>
+          <p class="project-metadata">{formatDate(project.data.published)}</p>
+          <a class="project-link" href={`/projects/${project.id}`}>Read the case →</a>
+        </article>
+      ))
+    }
+  </div>
+</Layout>

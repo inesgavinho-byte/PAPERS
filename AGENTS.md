@@ -22,9 +22,10 @@ over superseded descriptions in repository documents.
   `--faint #d4d4d4`, `--accent #3a3a3a`) or the fonts (Cormorant Garamond +
   Quattrocento Sans). The approved direction is white, black and neutral greys;
   do not restore the former beige/olive palette.
-- The **navigation set**: `Papers · Ideas · Principles · About`. Do NOT add
-  Archive, Blog, Notes, Projects, or any new nav item. Projects are referenced
-  *inside* Papers only.
+- The **navigation set**: `Papers · Ideas · Projects · Principles · About`
+  (Projects added by explicit editorial decision, 23 October 2026). Do NOT add
+  Archive, Blog, Notes, or any new nav item. Projects may also be referenced
+  *inside* Papers, as evidence for an argument.
 - The **stack**: Astro + Markdown/MDX + Content Collections, static, Netlify.
   Do NOT add a CMS, a database, client-side frameworks, or unnecessary deps.
 - The **homepage's editorial direction**: a typographic introduction, a clear
