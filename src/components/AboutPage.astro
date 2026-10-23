@@ -22,6 +22,7 @@ const copy = isPortuguese
       portraitAlt: 'Retrato de Inês Gavinho a preto e branco, com um pequeno bigode rosa na camisola.',
       biography: 'Sou arquiteta, designer e diretora criativa. O meu trabalho cruza a conceção de espaços, a criação visual e o desenvolvimento de produtos digitais.',
       papersLink: 'Ler os ensaios',
+      projectsLink: 'Ver projetos selecionados',
       practiceHeading: 'Da ideia à concretização',
       practiceIntroduction: 'Sou diretora criativa e sócia da GAVINHO e fundadora da DECIMA. A minha prática liga a definição de uma ideia à construção dos elementos necessários para a realizar, comunicar e pôr em funcionamento.',
       capabilities: [
@@ -54,6 +55,7 @@ const copy = isPortuguese
       portraitAlt: 'Black-and-white portrait of Inês Gavinho, with a small pink moustache on her jumper.',
       biography: 'I am an architect, designer and creative director. My work brings together the design of spaces, visual creation and the development of digital products.',
       papersLink: 'Read the essays',
+      projectsLink: 'View selected projects',
       practiceHeading: 'From idea to realisation',
       practiceIntroduction: 'I am Creative Director and Partner at GAVINHO and the founder of DECIMA. My practice connects the definition of an idea with the work needed to realise it, communicate it and put it into use.',
       capabilities: [
@@ -114,7 +116,10 @@ const copy = isPortuguese
 
       <div class="author-biography">
         <p>{copy.biography}</p>
-        <a class="author-reading-link" href={isPortuguese ? '/pt/papers' : '/papers'}>{copy.papersLink} →</a>
+        <div class="author-links">
+          <a class="author-reading-link" href={isPortuguese ? '/pt/papers' : '/papers'}>{copy.papersLink} →</a>
+          <a class="author-reading-link" href={isPortuguese ? '/pt/projects' : '/projects'}>{copy.projectsLink} →</a>
+        </div>
       </div>
     </div>
 
@@ -192,6 +197,7 @@ const copy = isPortuguese
     line-height: 1.35;
     margin: 0 0 34px;
   }
+  .author-links { display: flex; flex-wrap: wrap; gap: 18px 28px; }
   .author-reading-link {
     font-family: var(--sans);
     font-size: 12px;
