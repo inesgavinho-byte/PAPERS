@@ -23,6 +23,11 @@ const editionLabel = edition?.editionKind === 'revised'
   : edition?.editionKind === 'translation'
     ? 'Translated from the original publication in Portuguese'
     : (pt ? 'Publicação original em português' : 'English original');
+const volumeName = volume === 2
+  ? (pt ? 'Inteligência Organizacional' : 'Organisational Intelligence')
+  : volume === 1
+    ? (pt ? 'Arquitetura' : 'Architecture')
+    : undefined;
 ---
 
 <Layout lang={lang} description={description} canonicalPath={pt ? '/' : '/en'} alternateLanguages={[{ lang: 'pt', href: '/' }, { lang: 'en', href: '/en' }]}>
@@ -37,8 +42,8 @@ const editionLabel = edition?.editionKind === 'revised'
       </div>
       {current && edition && (
         <a class="hero-panel" href={edition.href} lang={edition.language === 'pt' ? 'pt-PT' : 'en'}>
-          <span class="panel-label">{editionLabel}</span>
-          <span class="panel-issue">{pt ? 'Ensaio' : 'Paper'} {issueNumber(current.data.issue)}</span>
+          <span class="panel-label">{pt ? 'Investigação atual' : 'Current investigation'}</span>
+          <span class="panel-issue">{pt ? 'Ensaio' : 'Paper'} {issueNumber(current.data.issue)} · {editionLabel}</span>
           <span class="panel-title">{edition.title}</span>
           <span class="panel-distinction">{edition.distinction}</span>
           <hr class="panel-rule" />
@@ -50,8 +55,8 @@ const editionLabel = edition?.editionKind === 'revised'
     <section class="index" aria-labelledby="collected-papers">
       <div class="index-head">
         <div>
-          <h2 class="index-kicker" id="collected-papers">{pt ? 'Arquivo de ensaios' : 'Collected papers'}</h2>
-          <p class="index-volume">Volume {volumeRoman(volume)}</p>
+          <h2 class="index-kicker" id="collected-papers">{pt ? 'Volume em curso' : 'Current volume'}</h2>
+          <p class="index-volume">Volume {volumeRoman(volume)}{volumeName ? ` — ${volumeName}` : ''}</p>
         </div>
         <a class="index-seeall" href={pt ? '/pt/papers' : '/papers'}>{pt ? 'Ver todos os ensaios' : 'All papers'} →</a>
       </div>
