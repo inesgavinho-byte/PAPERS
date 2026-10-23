@@ -37,7 +37,7 @@ const {
 } = paper.data;
 
 const readingTime = estimateReadingTime(paper.body);
-const revisedEdition = portugueseEditions[paper.id];
+const portugueseEdition = portugueseEditions[paper.id];
 const related = relatedPapers(paper, papers).slice(0, 3);
 const relPrinciples = principlesForPaper(paper, principles);
 const num = issueNumber(issue);
@@ -48,10 +48,19 @@ const reference = `${volumeNames[volume] ?? `Volume ${volume}`} · ${num}`;
 <Layout title={title} description={abstract} canonicalPath={`/papers/${paper.id}`} ogType="article" ogImage={`/og/${paper.id}.png`}>
   <article>
     <div class="edition-back"><a href="/papers">← All papers</a></div>
-    {revisedEdition && (
+    {portugueseEdition && (
       <aside class="edition-notice">
-        <p>This is the original English publication. A revised Portuguese edition is also available.</p>
-        <a href={`/pt/papers/${paper.id}`} lang="pt" hreflang="pt">Ler a edição portuguesa revista →</a>
+        {portugueseEdition.kind === 'original' ? (
+          <>
+            <p>Translated from the original publication in Portuguese.</p>
+            <a href={`/pt/papers/${paper.id}`} lang="pt" hreflang="pt">Ler a publicação original em português →</a>
+          </>
+        ) : (
+          <>
+            <p>This is the original English publication. A revised Portuguese edition is also available.</p>
+            <a href={`/pt/papers/${paper.id}`} lang="pt" hreflang="pt">Ler a edição portuguesa revista →</a>
+          </>
+        )}
       </aside>
     )}
     <!-- Title page -->

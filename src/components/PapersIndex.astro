@@ -19,7 +19,7 @@ const label = (volume: number) => pt
 <Layout
   title={pt ? 'Ensaios' : 'Papers'}
   lang={lang}
-  description={pt ? 'A coleção de ensaios de Inês Gavinho. Originais em inglês e edições portuguesas revistas.' : 'The collected essays of Inês Gavinho. English originals and revised Portuguese editions.'}
+  description={pt ? 'A coleção de ensaios de Inês Gavinho, com originais em português, traduções inglesas e edições portuguesas revistas de textos anteriores.' : 'The collected essays of Inês Gavinho, including Portuguese originals, English translations and earlier English originals.'}
   canonicalPath={pt ? '/pt/papers' : '/papers'}
   alternateLanguages={[{ lang: 'pt', href: '/pt/papers' }, { lang: 'en', href: '/papers' }]}
 >
@@ -29,8 +29,8 @@ const label = (volume: number) => pt
       ? 'Cada ensaio parte de uma pergunta e propõe uma distinção. A coleção cresce por acumulação.'
       : 'Each essay begins with a question and proposes a distinction. The collection grows by accumulation.'}</p>
     <p class="edition-note">{pt
-      ? 'As edições portuguesas revistas desenvolvem os ensaios originais em inglês; não são traduções literais. Os originais mantêm as suas datas de publicação.'
-      : 'The revised Portuguese editions develop the original English essays; they are not literal translations. The originals retain their publication dates.'}</p>
+      ? 'Os novos ensaios são escritos originalmente em português e depois traduzidos para inglês. Os Papers anteriores preservam os seus originais ingleses e, quando disponíveis, edições portuguesas revistas.'
+      : 'New essays are written originally in Portuguese and then translated into English. Earlier Papers preserve their English originals and, where available, revised Portuguese editions.'}</p>
     {volumes.map((volume) => (
       <section class="volume-group" aria-labelledby={`volume-${volume}`}>
         <h2 class="index-kicker" id={`volume-${volume}`}>{label(volume)}</h2>

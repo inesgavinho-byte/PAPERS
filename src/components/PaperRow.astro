@@ -10,7 +10,10 @@ interface Props {
 
 const { paper, lang = 'en' } = Astro.props;
 const edition = paperEdition(paper, lang);
-const hasPortuguese = Boolean(portugueseEditions[paper.id]);
+const portuguese = portugueseEditions[paper.id];
+const hasPortuguese = Boolean(portuguese);
+const ptLabel = portuguese?.kind === 'original' ? 'Português · original' : 'Português · edição revista';
+const enLabel = portuguese?.kind === 'original' ? 'English · translation' : 'English · original';
 ---
 
 <article class="index-row" lang={edition.language === 'pt' ? 'pt-PT' : 'en'}>
@@ -18,8 +21,8 @@ const hasPortuguese = Boolean(portugueseEditions[paper.id]);
   <div class="col-heading">
     <h3 class="col-title"><a href={edition.href}>{edition.title}</a></h3>
     <p class="col-editions">
-      {hasPortuguese && <><a href={`/pt/papers/${paper.id}`} lang="pt-PT" hreflang="pt-PT">Português · edição revista</a><span aria-hidden="true"> / </span></>}
-      <a href={`/papers/${paper.id}`} lang="en" hreflang="en">English · original</a>
+      {hasPortuguese && <><a href={`/pt/papers/${paper.id}`} lang="pt-PT" hreflang="pt-PT">{ptLabel}</a><span aria-hidden="true"> / </span></>}
+      <a href={`/papers/${paper.id}`} lang="en" hreflang="en">{enLabel}</a>
     </p>
   </div>
   <span class="col-distinction">{edition.distinction}</span>
