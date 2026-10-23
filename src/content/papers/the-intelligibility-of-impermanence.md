@@ -22,6 +22,8 @@ principles: []
 genealogy: []
 relatedPapers:
   - memory-is-not-an-archive
+  - the-architecture-of-context
+  - project-memory
   - the-sponge-paradox
 ---
 
