@@ -151,6 +151,28 @@ The question is:
 
 “Can we reconstruct, with confidence, what actually happened?”
 
+## A building is never truly finished
+
+We tend to think of architecture as a succession of definitive moments: the design, the construction, the completion, the inauguration. As if a building reached, at a particular instant, its final form.
+
+But a building is never truly finished.
+
+Materials age. Light transforms the perception of spaces. Uses change. Inhabitants succeed one another. What was conceived to respond to certain needs inevitably comes to accommodate others.
+
+Architecture does not exist outside time. It exists through it.
+
+An intervention can preserve a façade and, at the same time, erase the history of the decisions that produced it. A renovation can retain material elements and eliminate the relations that gave them meaning. A building can remain physically present and become progressively less comprehensible.
+
+That is why continuity cannot be reduced to the permanence of matter.
+
+To understand a building implies understanding its transformations as well: what changed, when it changed, why it changed, and what relation exists between what we find today and what existed before.
+
+During a journey to Japan, I found in traditional architecture a particularly clear expression of this continuity. I remember the long wooden corridors, the marks left on the floor, and the way the passage of time seemed to become part of the very identity of the buildings.
+
+These were not spaces whose beauty depended on remaining untouched. On the contrary: part of their depth seemed to result from the coexistence of what had been built, what had been lived and what continued to change.
+
+The memory of a place does not reside only in the elements that survived. It resides equally in the possibility of reconstructing its evolution.
+
 ![Wooden corridor of traditional Japanese architecture, its floor marked by use, seen in longitudinal perspective.](/images/impermanence-corridor.jpg)
 
 *Photograph © Inês Gavinho.*
