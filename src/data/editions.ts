@@ -55,6 +55,12 @@ export const portugueseEditions: Record<string, PortugueseEdition> = {
     question: 'De que deve depender a confiança quando produzir uma resposta convincente se tornou quase gratuito?',
     kind: 'original',
   },
+  'the-intelligibility-of-impermanence': {
+    title: 'A Inteligibilidade da Impermanência',
+    distinction: 'Mudança ≠ Perda de Inteligibilidade',
+    question: 'Como preservamos a inteligibilidade de sistemas que estão sempre a mudar?',
+    kind: 'original',
+  },
   'one-organisation-many-perspectives': {
     title: 'A Organização é Uma. As Perspetivas São Múltiplas.',
     distinction: 'Realidade ≠ Representação',
