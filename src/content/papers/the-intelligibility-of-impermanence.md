@@ -48,10 +48,6 @@ Because memory is not accumulation.
 It is continuity.
 
 
-![Interior of a building undergoing transformation in Dafundo, with structure, finishes and construction layers exposed.](/images/dafundo-impermanence.jpg)
-
-*Dafundo, Portugal — Tiago Casanova for GAVINHO.*
-
 
 ## The delicacy of the ephemeral
 
@@ -154,6 +150,32 @@ The hardest question is rarely:
 The question is:
 
 “Can we reconstruct, with confidence, what actually happened?”
+
+## A building is never truly finished
+
+We tend to think of architecture as a succession of definitive moments: the design, the construction, the completion, the inauguration. As if a building reached, at a particular instant, its final form.
+
+But a building is never truly finished.
+
+Materials age. Light transforms the perception of spaces. Uses change. Inhabitants succeed one another. What was conceived to respond to certain needs inevitably comes to accommodate others.
+
+Architecture does not exist outside time. It exists through it.
+
+An intervention can preserve a façade and, at the same time, erase the history of the decisions that produced it. A renovation can retain material elements and eliminate the relations that gave them meaning. A building can remain physically present and become progressively less comprehensible.
+
+That is why continuity cannot be reduced to the permanence of matter.
+
+To understand a building implies understanding its transformations as well: what changed, when it changed, why it changed, and what relation exists between what we find today and what existed before.
+
+During a journey to Japan, I found in traditional architecture a particularly clear expression of this continuity. I remember the long wooden corridors, the marks left on the floor, and the way the passage of time seemed to become part of the very identity of the buildings.
+
+These were not spaces whose beauty depended on remaining untouched. On the contrary: part of their depth seemed to result from the coexistence of what had been built, what had been lived and what continued to change.
+
+The memory of a place does not reside only in the elements that survived. It resides equally in the possibility of reconstructing its evolution.
+
+![Wooden corridor of traditional Japanese architecture, its floor marked by use, seen in longitudinal perspective.](/images/impermanence-corridor.jpg)
+
+*Photograph © Inês Gavinho.*
 
 ## The paradox of digital memory
 
@@ -284,5 +306,11 @@ Perhaps true memory is not the preservation of what once existed.
 Perhaps it is the preservation of our ability to reconstruct what happened.
 
 And perhaps that distinction will become increasingly important in a world that has never produced so much information — or changed so quickly.
+
+## References
+
+- Motoori Norinaga, *Shibun yōryō* (1763) and *Genji monogatari Tama no ogushi* (1796) — the kokugaku treatises in which *mono no aware* is defined and applied to *The Tale of Genji*; translated excerpts in Michael F. Marra, *The Poetics of Motoori Norinaga: A Hermeneutical Journey* (Honolulu: University of Hawai‘i Press, 1997).
+- Haruo Shirane, *Japan and the Culture of the Four Seasons: Nature, Literature, and the Arts* (New York: Columbia University Press, 2012).
+- Earl Miner, *The Japanese Tradition in British and American Literature* (Princeton: Princeton University Press, 1966; first edition 1958).
 
 *Translated from the original publication in Portuguese.*
