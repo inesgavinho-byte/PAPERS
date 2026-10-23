@@ -43,6 +43,12 @@ export const portugueseEditions: Record<string, PortugueseEdition> = {
     question: 'O que acontece quando os sistemas concebidos para nos ajudar a saber mais deixam menos espaço para pensar?',
     kind: 'original',
   },
+  'memory-is-not-an-archive': {
+    title: 'A Memória Não é um Arquivo',
+    distinction: 'Registo ≠ Memória',
+    question: 'O que significaria um projeto conseguir lembrar-se da sua própria história?',
+    kind: 'original',
+  },
 };
 
 const portugueseSources = import.meta.glob('../pages/pt/papers/*.astro', {
