@@ -48,10 +48,6 @@ Because memory is not accumulation.
 It is continuity.
 
 
-![Interior of a building undergoing transformation in Dafundo, with structure, finishes and construction layers exposed.](/images/dafundo-impermanence.jpg)
-
-*Dafundo, Portugal — Tiago Casanova for GAVINHO.*
-
 
 ## The delicacy of the ephemeral
 
@@ -154,6 +150,10 @@ The hardest question is rarely:
 The question is:
 
 “Can we reconstruct, with confidence, what actually happened?”
+
+![Wooden corridor of traditional Japanese architecture, its floor marked by use, seen in longitudinal perspective.](/images/impermanence-corridor.jpg)
+
+*Photograph © Inês Gavinho.*
 
 ## The paradox of digital memory
 
@@ -284,5 +284,11 @@ Perhaps true memory is not the preservation of what once existed.
 Perhaps it is the preservation of our ability to reconstruct what happened.
 
 And perhaps that distinction will become increasingly important in a world that has never produced so much information — or changed so quickly.
+
+## References
+
+- Motoori Norinaga, *Shibun yōryō* (1763) and *Genji monogatari Tama no ogushi* (1796) — the kokugaku treatises that define *mono no aware* and apply it to *The Tale of Genji*; translated excerpts in Michael F. Marra, “Motoori Norinaga and Fujitani Mitsue”, *Harvard Journal of Asiatic Studies* 58, no. 1 (1998).
+- Haruo Shirane, *Japan and the Culture of the Four Seasons: Nature, Literature, and the Arts* (New York: Columbia University Press, 2012).
+- Earl Miner, *The Japanese Tradition in British and American Literature* (Princeton: Princeton University Press, 1966; first edition 1958).
 
 *Translated from the original publication in Portuguese.*
