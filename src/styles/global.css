@@ -633,6 +633,26 @@ text-decoration-thickness: 1px;
 text-underline-offset: 3px;
 }
 
+
+.paper-editorial-image {
+margin: 52px 0 68px;
+}
+
+.paper-editorial-image img {
+display: block;
+width: 100%;
+height: auto;
+}
+
+.paper-editorial-image figcaption {
+margin-top: 10px;
+font-family: var(--sans);
+font-size: 10px;
+line-height: 1.4;
+letter-spacing: 0.06em;
+color: var(--muted);
+}
+
 /* IDEAS / PRINCIPLES */
 
 .index-page {
