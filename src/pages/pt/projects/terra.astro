@@ -1,0 +1,99 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Distinction from '../../../components/Distinction.astro';
+---
+
+<Layout
+  title="TERRA"
+  description="Medições que nascem no desenho, são recalculadas no servidor e guardam a sua história — o caso TERRA, sistema de produção de obra."
+  canonicalPath="/pt/projects/terra"
+  ogType="article"
+  lang="pt"
+  ogImage="/projects/terra/og.png"
+  alternates={[
+    { lang: 'pt', href: '/pt/projects/terra' },
+    { lang: 'en', href: '/projects/terra' },
+    { lang: 'x-default', href: '/pt/projects/terra' },
+  ]}
+>
+  <article class="project-case" lang="pt">
+    <div class="edition-link">
+      <a href="/projects/terra" hreflang="en">Ler a tradução em inglês →</a>
+    </div>
+
+    <header class="case-header">
+      <p class="issue-number">Projects · 001</p>
+      <h1>TERRA</h1>
+      <p class="project-category">Sistemas de construção · Produto digital</p>
+      <p class="case-attribution">Conceção de produto, direção criativa e de tecnologia — Inês Gavinho / PINK_MOUSTACHE</p>
+      <p class="paper-metadata">Edição original em português · 23 de outubro de 2026</p>
+      <div class="paper-entry-section paper-entry-section--center">
+        <p class="paper-entry-label">Distinção central</p>
+        <Distinction value="Informação ≠ Decisão" variant="stacked" />
+      </div>
+      <p class="case-lead">
+        TERRA é um sistema de produção de obra. Este caso documenta a decisão que o
+        organiza: uma medição não é um número numa folha — é geometria com origem,
+        com revisões e com história.
+      </p>
+    </header>
+
+    <div class="prose case-body">
+      <h2>O problema</h2>
+      <p>Na construção, as quantidades decidem dinheiro. O metro quadrado medido hoje é a fatura paga amanhã — e a contestada no mês seguinte.</p>
+      <p>Essas quantidades nascem nos desenhos: plantas, cortes, pormenores. Mas vivem quase sempre longe deles. São transcritas à mão para folhas de cálculo, copiadas entre ficheiros, corrigidas sem rasto. Quando alguém pergunta de onde vem um número, a resposta é confiança — alguém o escreveu — e não demonstração.</p>
+      <p>O problema não é falta de informação. É que a informação perdeu a ligação à sua origem.</p>
+
+      <h2>Informação não é o mesmo que decisão</h2>
+      <p>Um número é informação. Decidir com ele — medir, faturar, deduzir, contestar — exige outra coisa: saber de onde veio, quem o alterou e o que havia antes. Sem isso, a decisão repousa em autoridade. Com isso, repousa em evidência.</p>
+      <p>É a distinção que organiza este projeto: informação ≠ decisão. Um sistema de produção pode ser excelente a produzir números e, ainda assim, mau a produzir decisões.</p>
+
+      <h2>Um sistema de relações</h2>
+      <p>TERRA liga cada quantidade à folha exata do desenho onde foi medida, à calibração dessa folha e à revisão do documento. As relações vivem no servidor; quem mede vê apenas o desenho.</p>
+      <p>A complexidade não é escondida por cortesia. É retirada do caminho para que a medição fique limpa e o registo fique completo. A mesma folha, aberta por outra pessoa noutro dia, mostra a mesma medição — não porque alguém a copiou, mas porque está guardada.</p>
+
+      <h2>A geometria torna-se evidência</h2>
+      <p>Antes de medir, calibra-se a folha contra uma cota conhecida do próprio desenho: dois pontos e a distância real entre eles. O servidor deriva o fator a partir dessa evidência; nunca aceita um fator pronto.</p>
+      <figure class="case-figure">
+        <img src="/projects/terra/calibracao.png" alt="Modal de calibração do TERRA sobre um desenho técnico: dois pontos marcados numa cota conhecida, 600 pt ≡ 6 m." width="2000" height="1764" loading="lazy" />
+        <figcaption>Fig. 1 — Calibração da folha contra uma cota conhecida: 600 pt ≡ 6 m.</figcaption>
+      </figure>
+      <p>Depois, a área é desenhada sobre o próprio desenho. A quantidade não é enviada pelo navegador: é recalculada no servidor a partir da geometria e da calibração. Ao recarregar a página, o valor não é lembrado — é recuperado do servidor: 24,00 m².</p>
+      <figure class="case-figure">
+        <img src="/projects/terra/area-guardada.png" alt="Área medida sobre o desenho: «Área 1 — 24,00 m² (servidor)», valor recuperado do servidor." width="2000" height="1764" loading="lazy" />
+        <figcaption>Fig. 2 — Área guardada: 24,00 m², valor recuperado do servidor após recarregar.</figcaption>
+      </figure>
+
+      <h2>Uma correção não apaga o que veio antes</h2>
+      <p>Quando uma medição muda — por exemplo, uma dedução de 4,00 m² que reduz a área de 24,00 para 20,00 m² — o valor anterior não é substituído. A revisão sobe de 1 para 2 e o sistema acrescenta um evento com o antes e o depois. O histórico é acrescentivo: nada é eliminado.</p>
+      <figure class="case-figure">
+        <img src="/projects/terra/historico-deducao.png" alt="Medição após dedução: «Área 1 — 20,00 m² (servidor), rev 2», com o histórico de eventos aberto." width="2000" height="1764" loading="lazy" />
+        <figcaption>Fig. 3 — Dedução de 4,00 m²: a área passa a 20,00 m², a revisão sobe para 2 e o histórico guarda o antes e o depois.</figcaption>
+      </figure>
+      <p>Uma correção, aqui, é um facto com data — não um erro apagado.</p>
+
+      <h2>Desenhado para exame, não apenas para automatização</h2>
+      <p>Medir mais depressa era o requisito óbvio. O objetivo do produto é outro: tornar possível examinar. Cada quantidade pode ser aberta — que folha, que calibração, que geometria, que revisões, quem alterou — e é essa abertura, não a velocidade, que faz a automatização ser aceite numa obra.</p>
+      <blockquote>
+        <p>Toda a quantidade deve poder ser reaberta até à sua geometria.</p>
+      </blockquote>
+
+      <h2>O meu papel</h2>
+      <p>Conceção de produto e direção criativa e de tecnologia: da forma conceptual do sistema às suas regras de evidência e à sua linguagem visual.</p>
+      <p class="case-attribution">Inês Gavinho / PINK_MOUSTACHE</p>
+
+      <h2>Evidência</h2>
+      <p>As capturas deste caso provêm de uma execução de demonstração em base isolada, com dados inteiramente sintéticos — obra de ensaio, desenhos de ensaio, utilizador de ensaio; a produção ficou intacta. Os valores visíveis são os valores calculados e guardados pelo sistema, verificados ao mesmo tempo na base de dados e na interface; nenhuma captura foi retocada.</p>
+
+      <h2>Estado</h2>
+      <p>TERRA está em piloto para a gestão de produção de obra. O módulo de medições sobre desenhos foi executado e verificado de ponta a ponta em ambiente de demonstração isolado (22–23 de outubro de 2026); o uso em produção decorrerá por fases.</p>
+    </div>
+
+    <footer class="case-footer">
+      <p class="pm-wordmark">pink<span class="pm-underscore">_</span>moustache</p>
+      <p class="pm-note">A prática independente de produto e tecnologia de Inês Gavinho.</p>
+      <p class="pm-tagline">Think differently. Build deliberately.</p>
+      <p class="case-back"><a href="/pt/projects">← Projects</a></p>
+    </footer>
+  </article>
+</Layout>

@@ -1,0 +1,98 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Distinction from '../../components/Distinction.astro';
+---
+
+<Layout
+  title="TERRA"
+  description="Measurements born on the drawing, recalculated on the server, and kept with their history — the TERRA case study, a production system for construction."
+  canonicalPath="/projects/terra"
+  ogType="article"
+  ogImage="/projects/terra/og.png"
+  alternates={[
+    { lang: 'pt', href: '/pt/projects/terra' },
+    { lang: 'en', href: '/projects/terra' },
+    { lang: 'x-default', href: '/projects/terra' },
+  ]}
+>
+  <article class="project-case">
+    <div class="edition-link">
+      <a href="/pt/projects/terra" hreflang="pt">Ler a edição original em português →</a>
+    </div>
+
+    <header class="case-header">
+      <p class="issue-number">Projects · 001</p>
+      <h1>TERRA</h1>
+      <p class="project-category">Construction systems · Digital product</p>
+      <p class="case-attribution">Product conception, creative & technology direction — Inês Gavinho / PINK_MOUSTACHE</p>
+      <p class="paper-metadata">English translation of the original Portuguese edition · 23 October 2026</p>
+      <div class="paper-entry-section paper-entry-section--center">
+        <p class="paper-entry-label">Central Distinction</p>
+        <Distinction value="Information ≠ Decision" variant="stacked" />
+      </div>
+      <p class="case-lead">
+        TERRA is a production system for construction. This case study documents the
+        decision that organises it: a measurement is not a number on a spreadsheet —
+        it is geometry with an origin, with revisions, and with a history.
+      </p>
+    </header>
+
+    <div class="prose case-body">
+      <h2>The problem</h2>
+      <p>In construction, quantities decide money. The square metre measured today is the invoice paid tomorrow — and the one disputed the month after.</p>
+      <p>Those quantities are born in drawings: plans, sections, details. But they almost always live far from them. They are transcribed by hand into spreadsheets, copied between files, corrected without a trace. When someone asks where a number comes from, the answer is trust — someone wrote it — not demonstration.</p>
+      <p>The problem is not a lack of information. It is that the information has lost its connection to its origin.</p>
+
+      <h2>Information is not the same as a decision</h2>
+      <p>A number is information. Deciding with it — measuring, invoicing, deducting, disputing — requires something else: knowing where it came from, who changed it, and what came before. Without that, a decision rests on authority. With it, it rests on evidence.</p>
+      <p>This is the distinction that organises the project: information ≠ decision. A production system can be excellent at producing numbers and still be poor at producing decisions.</p>
+
+      <h2>A system of relationships</h2>
+      <p>TERRA binds each quantity to the exact sheet of the drawing where it was measured, to that sheet's calibration, and to the document's revision. The relationships live on the server; the person measuring sees only the drawing.</p>
+      <p>The complexity is not hidden out of courtesy. It is taken out of the way so that the measurement stays clean and the record stays complete. The same sheet, opened by someone else on another day, shows the same measurement — not because someone copied it, but because it is stored.</p>
+
+      <h2>Geometry becomes evidence</h2>
+      <p>Before measuring, the sheet is calibrated against a known dimension in the drawing itself: two points and the real distance between them. The server derives the factor from that evidence; it never accepts a ready-made factor.</p>
+      <figure class="case-figure">
+        <img src="/projects/terra/calibracao.png" alt="TERRA calibration dialog over a technical drawing: two points marked on a known dimension, 600 pt ≡ 6 m." width="2000" height="1764" loading="lazy" />
+        <figcaption>Fig. 1 — Sheet calibration against a known dimension: 600 pt ≡ 6 m.</figcaption>
+      </figure>
+      <p>Then the area is drawn on the drawing itself. The quantity is not sent by the browser: it is recalculated on the server from the geometry and the calibration. When the page is reloaded, the value is not remembered — it is retrieved from the server: 24.00 m².</p>
+      <figure class="case-figure">
+        <img src="/projects/terra/area-guardada.png" alt="Area measured on the drawing: “Área 1 — 24,00 m² (servidor)”, the value retrieved from the server." width="2000" height="1764" loading="lazy" />
+        <figcaption>Fig. 2 — Stored area: 24.00 m², retrieved from the server after reload.</figcaption>
+      </figure>
+
+      <h2>A correction does not erase what came before</h2>
+      <p>When a measurement changes — for instance, a 4.00 m² deduction that reduces the area from 24.00 to 20.00 m² — the previous value is not replaced. The revision rises from 1 to 2, and the system appends an event with the before and the after. The history is append-only: nothing is deleted.</p>
+      <figure class="case-figure">
+        <img src="/projects/terra/historico-deducao.png" alt="Measurement after deduction: “Área 1 — 20,00 m² (servidor), rev 2”, with the event history open." width="2000" height="1764" loading="lazy" />
+        <figcaption>Fig. 3 — A 4.00 m² deduction: the area becomes 20.00 m², the revision rises to 2, and the history keeps the before and after.</figcaption>
+      </figure>
+      <p>A correction, here, is a dated fact — not an erased mistake.</p>
+
+      <h2>Designed for examination, not just automation</h2>
+      <p>Measuring faster was the obvious requirement. The product's aim is another: to make examination possible. Every quantity can be opened — which sheet, which calibration, which geometry, which revisions, who changed it — and it is that openness, not speed, that makes automation acceptable on a building site.</p>
+      <blockquote>
+        <p>Every quantity must be retraceable to its geometry.</p>
+      </blockquote>
+
+      <h2>My role</h2>
+      <p>Product conception, creative & technology direction — from the conceptual shape of the system to its rules of evidence and its visual language.</p>
+      <p class="case-attribution">Inês Gavinho / PINK_MOUSTACHE</p>
+
+      <h2>Evidence</h2>
+      <p>The captures in this case study come from a demonstration run in an isolated environment with entirely synthetic data — a trial project, trial drawings, a trial user; production was left untouched. The values shown are the values the system calculated and stored, verified at the database and the interface at the same time; no capture was retouched.</p>
+
+      <h2>Status</h2>
+      <p>TERRA is in pilot use for construction production management. The drawing-measurement module was executed and verified end-to-end in an isolated demonstration environment (22–23 October 2026); production adoption will proceed in phases.</p>
+    </div>
+
+    <footer class="case-footer">
+      <p class="pm-wordmark">pink<span class="pm-underscore">_</span>moustache</p>
+      <p class="pm-note">Inês Gavinho's independent product and technology practice.</p>
+      <p class="pm-tagline">Think differently. Build deliberately.</p>
+      <p class="case-back"><a href="/projects">← Projects</a></p>
+    </footer>
+  </article>
+</Layout>
