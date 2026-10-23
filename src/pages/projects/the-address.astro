@@ -1,0 +1,96 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Distinction from '../../components/Distinction.astro';
+---
+
+<Layout
+  title="THE ADDRESS"
+  description="A property product designed around people, places and persistent context rather than listings alone."
+  canonicalPath="/projects/the-address"
+  ogType="article"
+  alternateLanguages={[
+    { lang: 'pt', href: '/pt/projects/the-address' },
+    { lang: 'en', href: '/projects/the-address' },
+    { lang: 'x-default', href: '/projects/the-address' },
+  ]}
+>
+  <article class="project-case">
+    <div class="edition-link">
+      <a href="/pt/projects/the-address" hreflang="pt">Ler a edição original em português →</a>
+    </div>
+
+    <header class="case-header">
+      <p class="issue-number">Projects · 002</p>
+      <h1>THE ADDRESS</h1>
+      <p class="project-category">Property intelligence · Digital product</p>
+      <p class="case-attribution">Product conception, creative & technology direction — Inês Gavinho / PINK_MOUSTACHE</p>
+      <p class="paper-metadata">Translated from the original publication in Portuguese · 23 October 2026</p>
+
+      <div class="paper-entry-section paper-entry-section--center">
+        <p class="paper-entry-label">Central Distinction</p>
+        <Distinction value="Property ≠ Listing" variant="stacked" />
+      </div>
+
+      <p class="case-lead">
+        Property search is not only a catalogue problem. Residential decisions depend on relationships between people, places, constraints, timing and intention. THE ADDRESS was conceived around that context.
+      </p>
+    </header>
+
+    <div class="prose case-body">
+      <h2>The problem</h2>
+      <p>Most property platforms begin with inventory: price, location, bedrooms and area.</p>
+      <p>Those attributes matter, but they do not explain why one home is right for one person and wrong for another. A ten-minute walk, proximity to a school, a neighbourhood at night or the timing of a move have different meanings depending on the person making the decision.</p>
+      <p>The property is only one part of the decision. The relationships around it matter too.</p>
+
+      <h2>Property is not the same as a listing</h2>
+      <p>A listing is a temporary representation. The property can persist across different listings, agents, prices, documents and moments in time.</p>
+      <p>THE ADDRESS therefore treats the property and the listing as different objects. That distinction allows the product to organise knowledge around the underlying place rather than around one advertisement alone.</p>
+
+      <h2>Connected Worlds</h2>
+      <p>The product experience was conceived as a movement across connected scales:</p>
+      <blockquote><p>Cities → Neighbourhoods → Properties → Conversation</p></blockquote>
+      <p>A person can move from understanding an area to examining a property and then into a conversation without the product needing to forget where that conversation began.</p>
+      <p>The implemented conversational entry point already changes its prompt according to context: on a property route it starts from that property; elsewhere it starts from broader discovery.</p>
+
+      <h2>From filters to intention</h2>
+      <p>Filters are useful, but they describe parameters rather than motives.</p>
+      <p>The current product contains a buyer-intention model in which requirements can carry different levels of importance — required, preferred, optional, avoid or exclude — together with timing and purpose.</p>
+      <p>This means the system can represent a search as an evolving working hypothesis instead of treating every visit as an isolated query.</p>
+
+      <h2>A system that can continue looking</h2>
+      <p>THE ADDRESS also contains a persistent buyer-agent layer. For active intentions, it can recalculate matches and preserve what has already been seen or communicated so that new strong matches can be distinguished from old ones.</p>
+      <p>The relevant question is no longer only “what matches now?” but also “what appeared since the last time we looked?”</p>
+
+      <h2>Discovery remains spatial</h2>
+      <p>Context does not replace conventional property discovery. The product includes a split list-and-map exploration experience, filters and geographic selection.</p>
+      <p>The objective is to connect spatial exploration with persistent context rather than replace familiar interactions simply because more intelligence is available.</p>
+
+      <h2>Qualification can become reusable</h2>
+      <p>For rental, the product includes Address Rental Passport: a reusable financial dossier that can support applications with explicit authorisation from the candidate.</p>
+      <p>The underlying principle is similar: identity and evidence can persist while access remains contextual to a particular application.</p>
+
+      <h2>Editorial information is part of the product</h2>
+      <p>THE ADDRESS includes an editorial Journal alongside property discovery. Cities, architecture, finance, regulation and ways of living are treated as part of the decision environment rather than as content detached from the product.</p>
+      <p>Better decisions require more than more information. They require context that can remain intelligible.</p>
+
+      <h2>My role</h2>
+      <p>I conceived THE ADDRESS as a property product built around relationships rather than listings alone.</p>
+      <p>My role covers product conception, creative direction and technology direction: defining the product model, the experience across connected scales, the relationship between discovery and conversation, and the principles used to separate persistent information from contextual inference and user-authorised action.</p>
+      <p class="case-attribution">Inês Gavinho / PINK_MOUSTACHE</p>
+
+      <h2>Built system</h2>
+      <p>The current canonical repository contains implemented areas for spatial property exploration, property pages, account and favourites, alerts, property publication and editing, professional profiles, Rental Passport and applications, internal market operations, persistent buyer intentions and matching, contextual conversational entry points and the Journal.</p>
+      <p>These areas do not necessarily have the same maturity, operational scope or level of verification. Their presence in the codebase is not, by itself, a claim that every capability is live or equally validated in production.</p>
+
+      <h2>Status</h2>
+      <p>THE ADDRESS is an active digital product under continued development. This case documents implemented product architecture and behaviour that can be evidenced in the canonical repository; it does not assign the same verification status to every capability described.</p>
+    </div>
+
+    <footer class="case-footer">
+      <p class="pm-wordmark">pink<span class="pm-underscore">_</span>moustache</p>
+      <p class="pm-note">Inês Gavinho's independent product and technology practice.</p>
+      <p class="pm-tagline">Think differently. Build deliberately.</p>
+      <p class="case-back"><a href="/projects">← Projects</a></p>
+    </footer>
+  </article>
+</Layout>
