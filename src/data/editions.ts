@@ -55,6 +55,12 @@ export const portugueseEditions: Record<string, PortugueseEdition> = {
     question: 'De que deve depender a confiança quando produzir uma resposta convincente se tornou quase gratuito?',
     kind: 'original',
   },
+  'one-organisation-many-perspectives': {
+    title: 'A Organização é Uma. As Perspetivas São Múltiplas.',
+    distinction: 'Realidade ≠ Representação',
+    question: 'O que muda quando os sistemas deixam de tratar a sua representação da realidade como se fossem proprietários da própria realidade?',
+    kind: 'original',
+  },
 };
 
 const portugueseSources = import.meta.glob('../pages/pt/papers/*.astro', {
