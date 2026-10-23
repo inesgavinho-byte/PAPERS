@@ -21,7 +21,6 @@ export const tagline =
 export const nav = [
   { label: 'Papers', href: '/papers' },
   { label: 'Ideas', href: '/ideas' },
-  { label: 'Principles', href: '/principles' },
   { label: 'About', href: '/about' },
 ];
 
