@@ -146,7 +146,7 @@ for (const file of imageFiles) {
 
 // These published Portuguese editions are revisions of the original English
 // essays. Check navigation both ways without claiming translation equivalence.
-for (const slug of ['the-architectural-project-of-we', 'on-inhabited-time', 'the-architecture-of-the-interval', 'a-new-spatial-humanism', 'the-sponge-paradox', 'memory-is-not-an-archive']) {
+for (const slug of ['the-architectural-project-of-we', 'on-inhabited-time', 'the-architecture-of-the-interval', 'a-new-spatial-humanism', 'the-sponge-paradox', 'memory-is-not-an-archive', 'evidence-before-confidence']) {
   const enPath = `/papers/${slug}`;
   const ptPath = `/pt/papers/${slug}`;
   for (const [from, to, expectedLang] of [[enPath, ptPath, 'en'], [ptPath, enPath, 'pt']]) {

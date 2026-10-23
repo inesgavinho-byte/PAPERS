@@ -58,6 +58,11 @@ export const ideas: Idea[] = [
   { name: 'Evolution', gloss: 'How organisations change their form while remaining themselves.' },
   { name: 'Organisation', gloss: 'The organisation as an object of design, not a given.' },
   { name: 'Pattern', gloss: 'What persists across change; used sparingly, where it reveals a continuity between Papers or Volumes.' },
+  { name: 'Evidence', gloss: 'What allows a claim to be examined rather than merely believed.' },
+  { name: 'Trust', gloss: 'Confidence grounded in legibility, limits and the possibility of verification.' },
+  { name: 'Provenance', gloss: 'The origin and chain through which information acquires meaning and accountability.' },
+  { name: 'Authority', gloss: 'Who or what is entitled to decide, approve, supersede or attest.' },
+  { name: 'Verification', gloss: 'The ability to inspect the basis of a claim and test whether it still holds.' },
 ];
 
 // Curated subset shown on the cover, in the brief's order.
