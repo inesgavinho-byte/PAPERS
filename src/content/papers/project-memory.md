@@ -1,5 +1,5 @@
 ---
-issue: 0
+issue: 6
 volume: 2
 title: "The Building Should Remember"
 subtitle: "Project Memory — Why storing information is not the same as preserving the history of a building."
@@ -20,8 +20,6 @@ principles: []
 genealogy: []
 relatedPapers: []
 ---
-
-*Translated from the original publication in Portuguese.*
 
 A building can contain thousands of drawings, specifications, approvals, photographs, models, technical sheets and records.
 
@@ -115,7 +113,7 @@ Rarely around what actually produces meaning:
 
 relationships through time.
 
-<figure style="margin:64px auto;max-width:360px;">
+<figure class="paper-editorial-image" style="max-width:360px;margin-left:auto;margin-right:auto;">
   <svg viewBox="0 0 360 500" role="img" aria-label="Project Memory diagram showing the progression Decision, Context, Evidence, Time and Memory." style="width:100%;height:auto;display:block;">
     <title>Project Memory — Decision → Context → Evidence → Time → Memory</title>
     <g style="font-family:var(--sans);font-size:14px;letter-spacing:0.22em;text-transform:uppercase;fill:var(--ink);">
@@ -136,7 +134,7 @@ relationships through time.
       <path d="M 175 424 L 180 433 L 185 424"/>
     </g>
   </svg>
-  <figcaption class="paper-metadata" style="text-align:center;margin-top:20px;line-height:1.8;">
+  <figcaption>
     Project Memory — Decision → Context → Evidence → Time → Memory.<br />
     Diagram by Inês Gavinho, 2026 · Original diagram.
   </figcaption>
