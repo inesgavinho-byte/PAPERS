@@ -113,6 +113,11 @@ export function languagePaths(path: string): { pt: string; en: string } | undefi
   if (pathname === '/' || pathname === '/en') return { pt: '/', en: '/en' };
   if (pathname === '/papers' || pathname === '/pt/papers') return { pt: '/pt/papers', en: '/papers' };
   if (pathname === '/about' || pathname === '/pt/about') return { pt: '/pt/about', en: '/about' };
+  if (pathname === '/projects' || pathname === '/pt/projects') return { pt: '/pt/projects', en: '/projects' };
+  const project = pathname.match(/^\/(?:pt\/)?projects\/([^/]+)$/)?.[1];
+  if (project === 'terra' || project === 'the-address') {
+    return { pt: `/pt/projects/${project}`, en: `/projects/${project}` };
+  }
   const slug = pathname.match(/^\/(?:pt\/)?papers\/([^/]+)$/)?.[1];
   return slug && portugueseEditions[slug]
     ? { pt: `/pt/papers/${slug}`, en: `/papers/${slug}` }

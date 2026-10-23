@@ -1,0 +1,123 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Distinction from '../../../components/Distinction.astro';
+---
+
+<Layout
+  title="THE ADDRESS"
+  description="Procurar casa não é um problema de catálogo. É um problema de contexto — o caso THE ADDRESS, produto de inteligência imobiliária em produção."
+  canonicalPath="/pt/projects/the-address"
+  ogType="article"
+  lang="pt"
+  ogImage="/projects/the-address/og.png"
+  alternateLanguages={[
+    { lang: 'pt', href: '/pt/projects/the-address' },
+    { lang: 'en', href: '/projects/the-address' },
+    { lang: 'x-default', href: '/projects/the-address' },
+  ]}
+>
+  <article class="project-case" lang="pt">
+    <div class="edition-link">
+      <a href="/projects/the-address" hreflang="en">Ler a tradução em inglês →</a>
+    </div>
+
+    <header class="case-header">
+      <p class="issue-number">Projects · 002</p>
+      <h1>THE ADDRESS</h1>
+      <p class="project-category">Inteligência imobiliária · Produto digital</p>
+      <p class="case-attribution">Conceção de produto, direção criativa e de tecnologia — Inês Gavinho / PINK_MOUSTACHE</p>
+      <p class="paper-metadata">Edição original em português · 23 de outubro de 2026</p>
+      <div class="paper-entry-section paper-entry-section--center">
+        <p class="paper-entry-label">Distinção central</p>
+        <Distinction value="Catálogo ≠ Contexto" variant="stacked" />
+      </div>
+      <p class="case-lead">
+        THE ADDRESS é um produto de inteligência imobiliária. Este caso documenta a
+        decisão que o organiza: procurar casa não é um problema de catálogo.
+        É um problema de contexto.
+      </p>
+    </header>
+
+    <div class="prose case-body">
+      <h2>O problema</h2>
+      <p>Os portais imobiliários tratam a procura como um problema de catálogo: reúnem anúncios, oferecem filtros e deixam o resto a quem procura. Quem procura casa passa semanas a repetir a mesma pesquisa, a abrir os mesmos anúncios, a recomeçar em cada portal.</p>
+      <p>O catálogo responde a «o que está à venda». Não responde a «serve-me a mim», nem «em que contexto», nem «o que mudou desde ontem». A oferta está toda lá; a decisão continua a ser feita à mão, todos os dias, pela pessoa.</p>
+      <p>O problema não é falta de oferta listada. É que a procura é tratada como um momento, quando é um processo.</p>
+
+      <h2>Imóvel ≠ Anúncio</h2>
+      <p>Um anúncio é uma peça de comunicação com data de validade. Um imóvel é um facto que existe antes do anúncio e continua a existir depois dele: muda de preço, sai do mercado, volta, reaparece com outra designação.</p>
+      <p>Enquanto um produto só conhecer anúncios, cada peça nova é um desconhecido: não há continuidade, não há memória, não há contexto. É a distinção que organiza este projeto: imóvel ≠ anúncio. O sistema toma o imóvel como a realidade e o anúncio como uma das suas representações, datada.</p>
+      <blockquote>
+        <p>O anúncio é uma representação com data; o imóvel é a realidade que lhe sobrevive.</p>
+      </blockquote>
+
+      <h2>Mundos ligados</h2>
+      <p>O produto liga três mundos que os portais mantêm separados: quem procura — e a sua intenção —, o que está no mercado — o imóvel, não o anúncio — e quem publica — profissionais com identidade verificável.</p>
+      <p>Cada mundo existe por si; o valor está nas ligações. A pesquisa guardada torna-se intenção. O imóvel mantém-se como registo próprio, com as suas alterações. O profissional tem um perfil público, verificável, com o que publica associado ao seu nome.</p>
+      <p>E a conversa entre os três deixa de ser um formulário anónimo: em cada página existe uma entrada de conversa que chega já com o contexto — num imóvel, a conversa começa nesse imóvel.</p>
+      <figure class="case-figure">
+        <img src="/projects/the-address/imovel-contextual.png" alt="Ficha de imóvel da THE ADDRESS em produção: galeria, escrita própria e entrada de conversa contextual." width="2000" height="1680" loading="lazy" />
+        <figcaption>Fig. 1 — A ficha de um imóvel, com uma entrada de conversa que chega já com o contexto.</figcaption>
+      </figure>
+
+      <h2>Dos filtros à intenção</h2>
+      <p>Um filtro é uma pergunta que se apaga a si mesma: feita uma vez, não guarda nada. Quem procura casa repete-a de manhã e à noite, à mão.</p>
+      <p>Aqui, a pesquisa guardada é promovida a intenção estruturada — zona, tipologia, valores, condições — que o sistema passa a compreender e a comparar. Passar de filtros a intenções muda o sujeito da busca: deixa de ser a pessoa a perscrutar o catálogo e passa a ser o sistema a manter a pergunta viva.</p>
+
+      <h2>Um sistema que pode continuar a procurar</h2>
+      <p>Com a intenção guardada, a procura não termina quando a pessoa fecha o separador. Quando nova oferta entra no sistema, é comparada com as intenções existentes; as correspondências são pontuadas de forma explicável — o sistema sabe dizer porquê, resultado a resultado.</p>
+      <p>Quem procura recebe, no resumo dos seus alertas, o que encaixa na sua intenção, ordenado pela qualidade do encaixe. A pergunta deixou de ser feita uma vez; passou a ser mantida.</p>
+
+      <h2>A descoberta continua a ser espacial</h2>
+      <p>Nada disto torna o mapa dispensável. Procurar casa continua a ser um ato espacial: bairros, fronteiras que não seguem freguesias, distâncias que não são retas.</p>
+      <p>Por isso a exploração é mapa primeiro, com a lista ao lado, e a seleção geográfica pode ser desenhada: uma zona traçada à mão, um raio à volta de um ponto. O mapa não é um acessório do catálogo; é o instrumento da pergunta.</p>
+      <figure class="case-figure">
+        <img src="/projects/the-address/explorar-mapa.png" alt="Exploração da THE ADDRESS em vista de mapa: cartões de imóveis à esquerda, mapa à direita com seleção geográfica desenhável." width="2000" height="1470" loading="lazy" />
+        <figcaption>Fig. 2 — Exploração mapa primeiro, com a lista ao lado.</figcaption>
+      </figure>
+
+      <h2>A qualificação pode tornar-se reutilizável</h2>
+      <p>Quem procura arrendamento repete a mesma prova em cada candidatura: quem é, o que ganha, que garantias oferece. Cada senhorio, cada processo, começa de novo — e o inquilino é, entretanto, um desconhecido com pressa.</p>
+      <p>O Rental Passport inverte isto: o dossiê de qualificação constrói-se uma vez e apresenta-se em qualquer candidatura, com o consentimento explícito na partilha. Candidatar-se deixa de ser remontar a prova em cada porta e passa a ser apresentar-se — com o que se autoriza, dito com clareza.</p>
+      <figure class="case-figure">
+        <img src="/projects/the-address/passaporte.png" alt="Página do Rental Passport da THE ADDRESS, vista sem sessão iniciada." width="2000" height="1200" loading="lazy" />
+        <figcaption>Fig. 3 — A entrada do Rental Passport para quem ainda não construiu o seu dossiê.</figcaption>
+      </figure>
+
+      <h2>A informação editorial é parte do produto</h2>
+      <p>Um imóvel não é uma ficha técnica. Cada um é apresentado com escrita própria — o que é, onde está, o que o rodeia — e a entrada do produto é uma edição, não uma montra de anúncios.</p>
+      <p>É uma decisão de produto, não de decoração: a informação editorial é o que transforma um registo num juízo verificável sobre um lugar. Quem lê decide melhor; quem publica tem de escrever bem.</p>
+      <figure class="case-figure">
+        <img src="/projects/the-address/capa.png" alt="Página inicial da THE ADDRESS: edição editorial tipográfica — «Imóveis extraordinários, sem ruído» — com uma primeira seleção de lugares." width="2000" height="1764" loading="lazy" />
+        <figcaption>Fig. 4 — A entrada do produto é uma edição, não uma montra.</figcaption>
+      </figure>
+
+      <h2>O meu papel</h2>
+      <p>Conceção de produto e direção criativa e de tecnologia: da forma conceptual do sistema às suas regras de evidência e à sua linguagem visual.</p>
+      <p class="case-attribution">Inês Gavinho / PINK_MOUSTACHE</p>
+
+      <h2>Sistema construído</h2>
+      <p>O que existe hoje em produção, em by-theaddress.com:</p>
+      <ul>
+        <li>exploração mapa primeiro, com lista ao lado e seleção geográfica desenhável;</li>
+        <li>fichas de imóvel com escrita própria e entrada contextual para conversa;</li>
+        <li>conta com favoritos e alertas, com resumo periódico por correio;</li>
+        <li>publicação por profissionais, com perfis públicos verificáveis e um controlo de qualidade que não depende de quem publica;</li>
+        <li>Rental Passport e candidaturas apresentadas com consentimento explícito;</li>
+        <li>intenções de procura guardadas e comparação contínua com a nova oferta, com correspondências explicáveis;</li>
+        <li>subscrição do Journal; a edição com artigos está em preparação.</li>
+      </ul>
+      <p>As capturas deste caso são recortes de capturas integrais das páginas públicas do produto em produção (23 de outubro de 2026), vistas sem sessão iniciada; nenhum conteúdo foi retocado.</p>
+
+      <h2>Estado</h2>
+      <p>THE ADDRESS está em produção, publicamente acessível em by-theaddress.com (verificado a 23 de outubro de 2026). Existem no produto funcionalidades experimentais que não fazem parte deste registo; o que aqui se afirma é o que está demonstrado.</p>
+    </div>
+
+    <footer class="case-footer">
+      <p class="pm-wordmark">pink<span class="pm-underscore">_</span>moustache</p>
+      <p class="pm-note">A prática independente de produto e tecnologia de Inês Gavinho.</p>
+      <p class="pm-tagline">Think differently. Build deliberately.</p>
+      <p class="case-back"><a href="/pt/projects">← Projects</a></p>
+    </footer>
+  </article>
+</Layout>

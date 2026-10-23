@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Distinction from '../../components/Distinction.astro';
+---
+
+<Layout
+  title="THE ADDRESS"
+  description="Property search is not a catalogue problem. It is a context problem — the THE ADDRESS case study, a property intelligence product in production."
+  canonicalPath="/projects/the-address"
+  ogType="article"
+  ogImage="/projects/the-address/og.png"
+  alternateLanguages={[
+    { lang: 'pt', href: '/pt/projects/the-address' },
+    { lang: 'en', href: '/projects/the-address' },
+    { lang: 'x-default', href: '/projects/the-address' },
+  ]}
+>
+  <article class="project-case">
+    <div class="edition-link">
+      <a href="/pt/projects/the-address" hreflang="pt">Ler a edição original em português →</a>
+    </div>
+
+    <header class="case-header">
+      <p class="issue-number">Projects · 002</p>
+      <h1>THE ADDRESS</h1>
+      <p class="project-category">Property intelligence · Digital product</p>
+      <p class="case-attribution">Product conception, creative & technology direction — Inês Gavinho / PINK_MOUSTACHE</p>
+      <p class="paper-metadata">Translated from the original publication in Portuguese · 23 October 2026</p>
+      <div class="paper-entry-section paper-entry-section--center">
+        <p class="paper-entry-label">Central Distinction</p>
+        <Distinction value="Catalogue ≠ Context" variant="stacked" />
+      </div>
+      <p class="case-lead">
+        THE ADDRESS is a property intelligence product. This case study documents the
+        decision that organises it: property search is not a catalogue problem.
+        It is a context problem.
+      </p>
+    </header>
+
+    <div class="prose case-body">
+      <h2>The problem</h2>
+      <p>Property portals treat search as a catalogue problem: they gather listings, offer filters, and leave the rest to the person searching. Someone looking for a home spends weeks repeating the same search, opening the same listings, starting over on every portal.</p>
+      <p>A catalogue answers “what is for sale”. It does not answer “does this suit me”, or “in what context”, or “what changed since yesterday”. The supply is all there; the decision is still made by hand, every day, by the person.</p>
+      <p>The problem is not a lack of listed supply. It is that search is treated as a moment, when it is a process.</p>
+
+      <h2>Property ≠ Listing</h2>
+      <p>A listing is a piece of communication with an expiry date. A property is a fact that exists before the listing and goes on existing after it: the price changes, it leaves the market, it returns, it reappears under another name.</p>
+      <p>As long as a product only knows listings, every new piece is a stranger: no continuity, no memory, no context. This is the distinction that organises the project: property ≠ listing. The system takes the property as the reality and the listing as one of its representations, dated.</p>
+      <blockquote>
+        <p>A listing is a representation with a date; the property is the reality that outlives it.</p>
+      </blockquote>
+
+      <h2>Connected worlds</h2>
+      <p>The product connects three worlds that portals keep apart: the person searching — and their intention —, what is on the market — the property, not the listing —, and who publishes — professionals with a verifiable identity.</p>
+      <p>Each world exists on its own; the value lies in the connections. A saved search becomes an intention. The property is kept as a record of its own, with its changes. The professional has a public, verifiable profile, with what they publish attached to their name.</p>
+      <p>And the conversation between the three stops being an anonymous form: on every page there is an entry to a conversation that arrives already in context — on a property page, the conversation begins with that property.</p>
+      <figure class="case-figure">
+        <img src="/projects/the-address/imovel-contextual.png" alt="THE ADDRESS property page in production: gallery, its own writing, and the contextual conversation entry." width="2000" height="1680" loading="lazy" />
+        <figcaption>Fig. 1 — A property page, with a conversation entry that arrives already in context.</figcaption>
+      </figure>
+
+      <h2>From filters to intention</h2>
+      <p>A filter is a question that erases itself: asked once, it keeps nothing. Someone searching for a home repeats it morning and evening, by hand.</p>
+      <p>Here, the saved search is promoted to a structured intention — area, typology, values, conditions — which the system comes to understand and to compare. Moving from filters to intentions changes the subject of the search: it is no longer the person scanning the catalogue; it is the system keeping the question alive.</p>
+
+      <h2>A system that can continue looking</h2>
+      <p>With the intention kept, the search does not end when the person closes the tab. When new supply enters the system, it is compared with the existing intentions; matches are scored in an explainable way — the system can say why, result by result.</p>
+      <p>In the summary of their alerts, the person receives what fits their intention, ordered by the quality of the fit. The question is no longer asked once; it is kept.</p>
+
+      <h2>Discovery remains spatial</h2>
+      <p>None of this makes the map dispensable. Searching for a home remains a spatial act: neighbourhoods, boundaries that do not follow parishes, distances that are not straight lines.</p>
+      <p>That is why exploration is map first, with the list alongside, and geographic selection can be drawn: a zone traced by hand, a radius around a point. The map is not an accessory to the catalogue; it is the instrument of the question.</p>
+      <figure class="case-figure">
+        <img src="/projects/the-address/explorar-mapa.png" alt="THE ADDRESS exploration in map view: property cards on the left, the map filling the rest of the screen, with drawable geographic selection." width="2000" height="1470" loading="lazy" />
+        <figcaption>Fig. 2 — Map-first exploration, with the list alongside.</figcaption>
+      </figure>
+
+      <h2>Qualification can become reusable</h2>
+      <p>Someone looking to rent repeats the same proof in every application: who they are, what they earn, what guarantees they offer. Every landlord, every process, starts again — and the tenant, meanwhile, is a stranger in a hurry.</p>
+      <p>The Rental Passport inverts this: the qualification dossier is built once and presented in any application, with explicit consent over what is shared. Applying stops being the remaking of the proof at every door and becomes introducing oneself — with what one authorises, stated clearly.</p>
+      <figure class="case-figure">
+        <img src="/projects/the-address/passaporte.png" alt="THE ADDRESS Rental Passport page, viewed without signing in." width="2000" height="1200" loading="lazy" />
+        <figcaption>Fig. 3 — The Rental Passport entry for those who have not yet built their dossier.</figcaption>
+      </figure>
+
+      <h2>Editorial information is part of the product</h2>
+      <p>A property is not a technical sheet. Each one is presented in its own words — what it is, where it is, what surrounds it — and the product’s front page is an edition, not a shop window of listings.</p>
+      <p>This is a product decision, not decoration: editorial information is what turns a record into a verifiable judgement about a place. Whoever reads decides better; whoever publishes must write well.</p>
+      <figure class="case-figure">
+        <img src="/projects/the-address/capa.png" alt="THE ADDRESS front page: a typographic editorial edition — “Imóveis extraordinários, sem ruído” — with a first selection of places." width="2000" height="1764" loading="lazy" />
+        <figcaption>Fig. 4 — The product’s front page is an edition, not a shop window.</figcaption>
+      </figure>
+
+      <h2>My role</h2>
+      <p>Product conception, creative & technology direction: from the conceptual shape of the system to its rules of evidence and its visual language.</p>
+      <p class="case-attribution">Inês Gavinho / PINK_MOUSTACHE</p>
+
+      <h2>Built system</h2>
+      <p>What exists today in production, at by-theaddress.com:</p>
+      <ul>
+        <li>map-first exploration, with the list alongside and drawable geographic selection;</li>
+        <li>property pages with their own writing and a contextual entry to conversation;</li>
+        <li>an account with favourites and alerts, with a periodic digest by email;</li>
+        <li>publishing by professionals, with public verifiable profiles and a quality check that does not depend on whoever publishes;</li>
+        <li>the Rental Passport and applications presented with explicit consent;</li>
+        <li>saved search intentions and continuous comparison with new supply, with explainable matches;</li>
+        <li>Journal subscription; the edition with articles is in preparation.</li>
+      </ul>
+      <p>The captures in this case study are crops of full-page captures of the product’s public pages in production (23 October 2026), viewed without signing in; no content was retouched.</p>
+
+      <h2>Status</h2>
+      <p>THE ADDRESS is in production, publicly accessible at by-theaddress.com (verified 23 October 2026). Experimental features exist in the product and are not part of this record; what is stated here is what is demonstrated.</p>
+    </div>
+
+    <footer class="case-footer">
+      <p class="pm-wordmark">pink<span class="pm-underscore">_</span>moustache</p>
+      <p class="pm-note">Inês Gavinho’s independent product and technology practice.</p>
+      <p class="pm-tagline">Think differently. Build deliberately.</p>
+      <p class="case-back"><a href="/projects">← Projects</a></p>
+    </footer>
+  </article>
+</Layout>
