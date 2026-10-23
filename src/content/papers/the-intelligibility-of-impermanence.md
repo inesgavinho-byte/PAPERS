@@ -48,16 +48,9 @@ Because memory is not accumulation.
 It is continuity.
 
 
-<figure class="paper-editorial-image">
-  <img
-    src="/images/dafundo-impermanence.jpg"
-    alt="Interior of a building undergoing transformation in Dafundo, with structure, finishes and construction layers exposed."
-    width="720"
-    height="810"
-    loading="lazy"
-  />
-  <figcaption>Dafundo, Portugal — Tiago Casanova for GAVINHO.</figcaption>
-</figure>
+![Interior of a building undergoing transformation in Dafundo, with structure, finishes and construction layers exposed.](/images/dafundo-impermanence.jpg)
+
+*Dafundo, Portugal — Tiago Casanova for GAVINHO.*
 
 
 ## The delicacy of the ephemeral
