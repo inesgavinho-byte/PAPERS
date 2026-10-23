@@ -151,10 +151,6 @@ The question is:
 
 “Can we reconstruct, with confidence, what actually happened?”
 
-![Wooden corridor of traditional Japanese architecture, its floor marked by use, seen in longitudinal perspective.](/images/impermanence-corridor.jpg)
-
-*Photograph © Inês Gavinho.*
-
 ## The paradox of digital memory
 
 Technology has intensified this problem at the same time as it promised to solve it.
@@ -287,7 +283,7 @@ And perhaps that distinction will become increasingly important in a world that 
 
 ## References
 
-- Motoori Norinaga, *Shibun yōryō* (1763) and *Genji monogatari Tama no ogushi* (1796) — the kokugaku treatises that define *mono no aware* and apply it to *The Tale of Genji*; translated excerpts in Michael F. Marra, “Motoori Norinaga and Fujitani Mitsue”, *Harvard Journal of Asiatic Studies* 58, no. 1 (1998).
+- Motoori Norinaga, *Shibun yōryō* (1763) and *Genji monogatari Tama no ogushi* (1796) — the kokugaku treatises in which *mono no aware* is defined and applied to *The Tale of Genji*; translated excerpts in Michael F. Marra, *The Poetics of Motoori Norinaga: A Hermeneutical Journey* (Honolulu: University of Hawai‘i Press, 1997).
 - Haruo Shirane, *Japan and the Culture of the Four Seasons: Nature, Literature, and the Arts* (New York: Columbia University Press, 2012).
 - Earl Miner, *The Japanese Tradition in British and American Literature* (Princeton: Princeton University Press, 1966; first edition 1958).
 
