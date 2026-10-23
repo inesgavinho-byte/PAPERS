@@ -13,6 +13,10 @@ interface Props {
   ogType?: string;
   /** "full" = complete navigation; "cover" = brand + About only (homepage). */
   nav?: 'full' | 'cover';
+  /** Language alternates for this page, e.g. [{ lang: 'pt', href: '/pt/…' }]. */
+  alternates?: { lang: string; href: string }[];
+  /** Path-only OpenGraph image, e.g. "/projects/terra/og.png". */
+  ogImage?: string;
 }
 
 const {
@@ -22,6 +26,8 @@ const {
   canonicalPath,
   ogType = 'website',
   nav = 'full',
+  alternates,
+  ogImage,
 } = Astro.props;
 
 const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.byline}`;
@@ -38,13 +44,15 @@ const canonical = new URL(canonicalPath ?? Astro.url.pathname, site.url).href;
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alternates?.map((alt) => <link rel="alternate" hreflang={alt.lang} href={new URL(alt.href, site.url).href} />)}
+    {ogImage && <meta property="og:image" content={new URL(ogImage, site.url).href} />}
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title ?? `${site.name} — ${site.byline}`} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    {ogImage ? <meta name="twitter:card" content="summary_large_image" /> : <meta name="twitter:card" content="summary" />}
 
     <link rel="alternate" type="application/rss+xml" title={`${site.name} — Papers`} href="/rss.xml" />
 

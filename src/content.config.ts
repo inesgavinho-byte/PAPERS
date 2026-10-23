@@ -41,4 +41,25 @@ const principles = defineCollection({
   }),
 });
 
-export const collections = { papers, principles };
+// A Project is a documented piece of built work — an editorial case study, not a portfolio card.
+const projects = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
+  schema: z.object({
+    number: z.number(),
+    title: z.string(),
+    category: z.string(),
+    categoryPt: z.string(),
+    attribution: z.string(),
+    attributionPt: z.string(),
+    summary: z.string(),
+    summaryPt: z.string(),
+    image: z.string().default(''),
+    imageAlt: z.string().default(''),
+    imageAltPt: z.string().default(''),
+    published: z.coerce.date(),
+    // Unpublished projects stay in the data model but out of the site.
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { papers, principles, projects };

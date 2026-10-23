@@ -1,0 +1,47 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getProjects } from '../../../lib/content';
+import { issueNumber } from '../../../lib/format';
+
+const projects = await getProjects();
+---
+
+<Layout
+  title="Projects"
+  description="Trabalho construído de Inês Gavinho, documentado como evidência — sistemas de construção e produtos digitais."
+  canonicalPath="/pt/projects"
+  lang="pt"
+  alternates={[
+    { lang: 'pt', href: '/pt/projects' },
+    { lang: 'en', href: '/projects' },
+    { lang: 'x-default', href: '/projects' },
+  ]}
+>
+  <div class="projects-index lang-pt">
+    <header class="projects-header">
+      <h1>Projects</h1>
+      <p class="index-intro">Trabalho construído, documentado como evidência — não como portfólio.</p>
+    </header>
+
+    {
+      projects.map((project) => (
+        <article class="project-row">
+          <p class="issue-number">Projects · {issueNumber(project.data.number)}</p>
+          <h2>
+            <a href={`/pt/projects/${project.id}`}>{project.data.title}</a>
+          </h2>
+          <p class="project-category">{project.data.categoryPt}</p>
+          <a class="project-figure" href={`/pt/projects/${project.id}`} aria-label={`Abrir o caso ${project.data.title}`}>
+            <img src={project.data.image} alt={project.data.imageAltPt} width="2000" height="1764" loading="lazy" />
+          </a>
+          <p class="project-summary">{project.data.summaryPt}</p>
+          <p class="project-role">Conceção de produto, direção criativa e de tecnologia</p>
+          <p class="project-metadata">
+            {project.data.published.toLocaleDateString('pt-PT', { day: 'numeric', month: 'long', year: 'numeric' })}
+          </p>
+          <a class="project-link" href={`/pt/projects/${project.id}`}>Ler o caso →</a>
+        </article>
+      ))
+    }
+  </div>
+</Layout>

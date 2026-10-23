@@ -2,6 +2,13 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 
 export type Paper = CollectionEntry<'papers'>;
 export type Principle = CollectionEntry<'principles'>;
+export type Project = CollectionEntry<'projects'>;
+
+/** Projects in editorial order — by number ascending. Drafts never render. */
+export async function getProjects(): Promise<Project[]> {
+  const projects = await getCollection('projects', ({ data }) => !data.draft);
+  return projects.sort((a, b) => a.data.number - b.data.number);
+}
 
 /** Papers in reading order — by (volume, issue) ascending. Numbering restarts per Volume. */
 export async function getPapers(): Promise<Paper[]> {
