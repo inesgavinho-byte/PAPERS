@@ -28,6 +28,7 @@ const {
   issue,
   volume,
   title,
+  subtitle,
   centralDistinction,
   question,
   abstract,
@@ -66,7 +67,7 @@ const reference = `${volumeNames[volume] ?? `Volume ${volume}`} · ${num}`;
     <!-- Title page -->
     <header class="paper-entry">
       <p class="issue-number">{reference}</p>
-      <h1>{title}</h1>
+      <h1>{title}</h1>{subtitle && <p class="paper-subtitle">{subtitle}</p>}
 
       {
         question && (

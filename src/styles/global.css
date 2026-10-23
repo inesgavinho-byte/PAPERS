@@ -1011,7 +1011,7 @@ white-space: normal;
 .col-question{display:none}
 .col-title{font-size:clamp(1.4rem,2.1vw,1.8rem)}
 .col-distinction{color:var(--muted)}
-.paper-entry{margin-top:72px}
+.paper-subtitle{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(20px,2.6vw,26px);line-height:1.32;color:var(--muted);max-width:620px;margin:-26px 0 46px}.paper-entry{margin-top:72px}
 .paper-entry h1{letter-spacing:-.028em}
 .prose{font-size:clamp(20px,2vw,23px);line-height:1.65}
 .prose blockquote{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:28px 0}

@@ -37,6 +37,12 @@ export const portugueseEditions: Record<string, PortugueseEdition> = {
     question: 'O vazio é o mesmo que a profundidade?',
     kind: 'revised',
   },
+  'project-memory': {
+    title: 'O edifício deveria lembrar-se',
+    distinction: 'Arquivo ≠ Memória',
+    question: 'Guardar é recordar?',
+    kind: 'original',
+  },
   'the-sponge-paradox': {
     title: 'O Paradoxo da Esponja',
     distinction: 'Informação ≠ Compreensão',

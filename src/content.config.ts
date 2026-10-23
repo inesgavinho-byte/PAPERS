@@ -9,6 +9,8 @@ const papers = defineCollection({
     // Which Volume this Paper belongs to. Existing Papers default to 1.
     volume: z.number().default(1),
     title: z.string(),
+    // A quiet standfirst under the title, e.g. "Project Memory — Why storing…".
+    subtitle: z.string().optional(),
     // The intellectual core, displayed above the abstract, e.g. "Architecture ≠ Service".
     centralDistinction: z.string(),
     // A short, dominant statement of the thesis — used on the cover. One or two sentences.
