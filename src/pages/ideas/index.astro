@@ -8,18 +8,18 @@ const entries = ideas.map((idea) => ({
   ...idea,
   slug: slugify(idea.name),
   count: ideaCount(papers, idea.name),
-})).filter((idea) => idea.count > 0);
+})).filter((idea) => idea.count >= 2);
 ---
 
 <Layout
   title="Ideas"
-  description="The conceptual territories of PAPERS. Each Idea gathers every Paper that enters its terrain."
+  description="Recurring conceptual territories across PAPERS. Each Idea gathers the essays that return to the same question from different directions."
   canonicalPath="/ideas"
 >
   <div class="index-page">
     <h1>Ideas</h1>
     <p class="index-intro">
-      Not tags — territories. Each Idea gathers every Paper that enters its terrain.
+      Not tags — recurring territories. The index shows ideas that return across more than one Paper; more specific concepts remain within the essays where they arise.
     </p>
 
     {
