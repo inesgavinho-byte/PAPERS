@@ -49,6 +49,12 @@ export const portugueseEditions: Record<string, PortugueseEdition> = {
     question: 'O que significaria um projeto conseguir lembrar-se da sua própria história?',
     kind: 'original',
   },
+  'evidence-before-confidence': {
+    title: 'Evidência Antes da Confiança',
+    distinction: 'Plausibilidade ≠ Evidência',
+    question: 'De que deve depender a confiança quando produzir uma resposta convincente se tornou quase gratuito?',
+    kind: 'original',
+  },
 };
 
 const portugueseSources = import.meta.glob('../pages/pt/papers/*.astro', {
