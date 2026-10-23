@@ -8,7 +8,8 @@ import {
   relatedPapers,
   principlesForPaper,
 } from '../../lib/content';
-import { formatDate, issueNumber } from '../../lib/format';
+import { formatDate, issueNumber, estimateReadingTime } from '../../lib/format';
+import { portugueseEditions } from '../../data/editions';
 import { slugify, volumeNames } from '../../data/site';
 
 export async function getStaticPaths() {
@@ -27,15 +28,17 @@ const {
   issue,
   volume,
   title,
+  subtitle,
   centralDistinction,
   question,
   abstract,
-  readingTime,
   published,
   ideas,
   genealogy,
 } = paper.data;
 
+const readingTime = estimateReadingTime(paper.body);
+const portugueseEdition = portugueseEditions[paper.id];
 const related = relatedPapers(paper, papers).slice(0, 3);
 const relPrinciples = principlesForPaper(paper, principles);
 const num = issueNumber(issue);
@@ -43,16 +46,28 @@ const num = issueNumber(issue);
 const reference = `${volumeNames[volume] ?? `Volume ${volume}`} · ${num}`;
 ---
 
-<Layout title={title} description={abstract} canonicalPath={`/papers/${paper.id}`} ogType="article">
+<Layout title={title} description={abstract} canonicalPath={`/papers/${paper.id}`} ogType="article" ogImage={`/og/${paper.id}.png`}>
   <article>
-    {paper.id === "on-inhabited-time" && <div style="max-width:720px;margin:36px auto 0;padding:0 32px;font-size:14px"><a href="/pt/papers/on-inhabited-time" hreflang="pt">Ler a versão portuguesa revista (2026) →</a></div>}
-    {paper.id === "the-architectural-project-of-we" && <div style="max-width:720px;margin:36px auto 0;padding:0 32px;font-size:14px"><a href="/pt/papers/the-architectural-project-of-we" hreflang="pt">Ler a versão portuguesa revista (2026) →</a></div>}
-    {paper.id === "the-architecture-of-the-interval" && <div style="max-width:720px;margin:36px auto 0;padding:0 32px;font-size:14px"><a href="/pt/papers/the-architecture-of-the-interval" hreflang="pt">Ler a versão portuguesa revista (2026) →</a></div>}
-    {paper.id === "a-new-spatial-humanism" && <div style="max-width:720px;margin:36px auto 0;padding:0 32px;font-size:14px"><a href="/pt/papers/a-new-spatial-humanism" hreflang="pt">Ler a versão portuguesa revista (2026) →</a></div>}
+    <div class="edition-back"><a href="/papers">← All papers</a></div>
+    {portugueseEdition && (
+      <aside class="edition-notice">
+        {portugueseEdition.kind === 'original' ? (
+          <>
+            <p>Translated from the original publication in Portuguese.</p>
+            <a href={`/pt/papers/${paper.id}`} lang="pt" hreflang="pt">Ler a publicação original em português →</a>
+          </>
+        ) : (
+          <>
+            <p>This is the original English publication. A revised Portuguese edition is also available.</p>
+            <a href={`/pt/papers/${paper.id}`} lang="pt" hreflang="pt">Ler a edição portuguesa revista →</a>
+          </>
+        )}
+      </aside>
+    )}
     <!-- Title page -->
     <header class="paper-entry">
       <p class="issue-number">{reference}</p>
-      <h1>{title}</h1>
+      <h1>{title}</h1>{subtitle && <p class="paper-subtitle">{subtitle}</p>}
 
       {
         question && (
@@ -71,7 +86,7 @@ const reference = `${volumeNames[volume] ?? `Volume ${volume}`} · ${num}`;
       <div class="paper-entry-section">
         <p class="paper-entry-label">Abstract</p>
         <p class="paper-abstract">{abstract}</p>
-        <p class="paper-metadata">{formatDate(published)} · {readingTime}</p>
+        <p class="paper-metadata">Inês Gavinho · {formatDate(published)} · {readingTime} estimated reading</p>
       </div>
     </header>
 
@@ -86,7 +101,7 @@ const reference = `${volumeNames[volume] ?? `Volume ${volume}`} · ${num}`;
           {formatDate(published)}
         </div>
         <div class="rail-section">
-          <span class="rail-label">Reading time</span>
+          <span class="rail-label">Estimated reading time</span>
           {readingTime}
         </div>
         {

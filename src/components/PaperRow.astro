@@ -1,20 +1,31 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { issueNumber } from '../lib/format';
+import { paperEdition, portugueseEditions, type Language } from '../data/editions';
 
 interface Props {
   paper: CollectionEntry<'papers'>;
+  lang?: Language;
 }
 
-const { paper } = Astro.props;
-const { issue, title, centralDistinction, question, readingTime } = paper.data;
+const { paper, lang = 'en' } = Astro.props;
+const edition = paperEdition(paper, lang);
+const portuguese = portugueseEditions[paper.id];
+const hasPortuguese = Boolean(portuguese);
+const ptLabel = portuguese?.kind === 'original' ? 'Português · original' : 'Português · edição revista';
+const enLabel = portuguese?.kind === 'original' ? 'English · translation' : 'English · original';
 ---
 
-<a class="index-row" href={`/papers/${paper.id}`}>
-  <span class="col-issue">{issueNumber(issue)}</span>
-  <span class="col-title">{title}</span>
-  <span class="col-distinction">{centralDistinction}</span>
-  <span class="col-question">{question}</span>
-  <span class="col-time">{readingTime}</span>
-  <span class="col-arrow" aria-hidden="true">→</span>
-</a>
+<article class="index-row" lang={edition.language === 'pt' ? 'pt-PT' : 'en'}>
+  <span class="col-issue">{issueNumber(paper.data.issue)}</span>
+  <div class="col-heading">
+    <h3 class="col-title"><a href={edition.href}>{edition.title}</a></h3>
+    <p class="col-editions">
+      {hasPortuguese && <><a href={`/pt/papers/${paper.id}`} lang="pt-PT" hreflang="pt-PT">{ptLabel}</a><span aria-hidden="true"> / </span></>}
+      <a href={`/papers/${paper.id}`} lang="en" hreflang="en">{enLabel}</a>
+    </p>
+  </div>
+  <span class="col-distinction">{edition.distinction}</span>
+  <span class="col-time" title={lang === 'pt' ? 'Tempo de leitura estimado' : 'Estimated reading time'}>{edition.readingTime}</span>
+  <a class="col-arrow" href={edition.href} aria-label={`${lang === 'pt' ? 'Ler' : 'Read'} ${edition.title}`}><span aria-hidden="true">→</span></a>
+</article>

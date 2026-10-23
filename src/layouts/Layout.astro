@@ -11,31 +11,36 @@ interface Props {
   /** Path-only canonical, e.g. "/papers". Defaults to current pathname. */
   canonicalPath?: string;
   ogType?: string;
-  /** "full" = complete navigation; "cover" = brand + About only (homepage). */
-  nav?: 'full' | 'cover';
-  /** Language alternates for this page, e.g. [{ lang: 'pt', href: '/pt/…' }]. */
-  alternates?: { lang: string; href: string }[];
-  /** Path-only OpenGraph image, e.g. "/projects/terra/og.png". */
+  /** Public PNG image, relative to the publication or an absolute URL. */
   ogImage?: string;
+  ogImageAlt?: string;
+  noindex?: boolean;
+  /** Use only for actual translations, not substantially revised editions. */
+  alternateLanguages?: Array<{ lang: 'en' | 'pt' | 'x-default'; href: string }>;
 }
 
 const {
   title,
   lang = 'en',
-  description = site.description,
+  description: customDescription,
   canonicalPath,
   ogType = 'website',
-  nav = 'full',
-  alternates,
-  ogImage,
+  ogImage = '/og/papers.png',
+  ogImageAlt,
+  noindex = false,
+  alternateLanguages = [],
 } = Astro.props;
 
-const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.byline}`;
+const byline = lang === 'pt' ? site.bylinePt : site.byline;
+const description = customDescription ?? (lang === 'pt' ? site.descriptionPt : site.description);
+const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${byline}`;
 const canonical = new URL(canonicalPath ?? Astro.url.pathname, site.url).href;
+const image = new URL(ogImage, site.url).href;
+const imageAlt = ogImageAlt ?? `${title ?? site.name} — ${site.author}`;
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang === 'pt' ? 'pt-PT' : 'en'}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -43,16 +48,30 @@ const canonical = new URL(canonicalPath ?? Astro.url.pathname, site.url).href;
 
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={site.author} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
-    {alternates?.map((alt) => <link rel="alternate" hreflang={alt.lang} href={new URL(alt.href, site.url).href} />)}
-    {ogImage && <meta property="og:image" content={new URL(ogImage, site.url).href} />}
+    {alternateLanguages.map((alternate) => (
+      <link rel="alternate" hreflang={alternate.lang === 'pt' ? 'pt-PT' : alternate.lang} href={new URL(alternate.href, site.url).href} />
+    ))}
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:title" content={title ?? `${site.name} — ${site.byline}`} />
+    <meta property="og:title" content={title ?? `${site.name} — ${byline}`} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    {ogImage ? <meta name="twitter:card" content="summary_large_image" /> : <meta name="twitter:card" content="summary" />}
+    <meta property="og:locale" content={lang === 'pt' ? 'pt_PT' : 'en_GB'} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:secure_url" content={image} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title ?? `${site.name} — ${byline}`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={imageAlt} />
 
     <link rel="alternate" type="application/rss+xml" title={`${site.name} — Papers`} href="/rss.xml" />
 
@@ -64,10 +83,11 @@ const canonical = new URL(canonicalPath ?? Astro.url.pathname, site.url).href;
     />
   </head>
   <body>
-    <Header variant={nav} />
-    <main>
+    <a class="skip-link" href="#main-content">{lang === 'pt' ? 'Saltar para o conteúdo' : 'Skip to content'}</a>
+    <Header lang={lang} />
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

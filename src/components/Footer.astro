@@ -1,11 +1,12 @@
 ---
 import { site } from '../data/site';
+interface Props { lang?: 'en' | 'pt' }
+const { lang = 'en' } = Astro.props;
 ---
-
 <footer class="site-footer">
   <div class="site-footer-inner">
-    <span>{site.name}</span>
-    <span>{site.purpose}</span>
-    <span><a href="/rss.xml">RSS</a></span>
+    <span>{site.name} · Inês Gavinho</span>
+    <span>{lang === 'pt' ? 'Pensar sobre aquilo que permanece.' : site.purpose}</span>
+    <span><a href="/rss.xml" hreflang="en" aria-label={lang === 'pt' ? 'RSS dos originais ingleses' : 'RSS of the English original editions'}>RSS · EN</a></span>
   </div>
 </footer>

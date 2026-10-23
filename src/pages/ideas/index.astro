@@ -8,7 +8,7 @@ const entries = ideas.map((idea) => ({
   ...idea,
   slug: slugify(idea.name),
   count: ideaCount(papers, idea.name),
-}));
+})).filter((idea) => idea.count > 0);
 ---
 
 <Layout

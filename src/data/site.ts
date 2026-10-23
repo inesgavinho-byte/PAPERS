@@ -2,10 +2,13 @@ export const site = {
   name: 'PAPERS',
   author: 'Inês Gavinho',
   byline: 'A publication by Inês Gavinho',
+  bylinePt: 'Uma publicação de Inês Gavinho',
   purpose: 'Thinking for what remains.',
   description:
-    'An independent personal publication by Inês Gavinho. Essays on architecture, attention, knowledge and the human condition.',
-  url: 'https://papers.inesgavinho.com',
+    'An independent personal publication by Inês Gavinho. Essays on architecture, technology, organisations, art and the human condition.',
+  descriptionPt:
+    'Uma publicação pessoal e independente de Inês Gavinho. Ensaios sobre arquitetura, tecnologia, organizações, arte e condição humana.',
+  url: 'https://papersbyig.netlify.app',
 };
 
 // The founding question of the discipline, set large on the homepage.
@@ -56,6 +59,16 @@ export const ideas: Idea[] = [
   { name: 'Evolution', gloss: 'How organisations change their form while remaining themselves.' },
   { name: 'Organisation', gloss: 'The organisation as an object of design, not a given.' },
   { name: 'Pattern', gloss: 'What persists across change; used sparingly, where it reveals a continuity between Papers or Volumes.' },
+  { name: 'Evidence', gloss: 'What allows a claim to be examined rather than merely believed.' },
+  { name: 'Trust', gloss: 'Confidence grounded in legibility, limits and the possibility of verification.' },
+  { name: 'Provenance', gloss: 'The origin and chain through which information acquires meaning and accountability.' },
+  { name: 'Authority', gloss: 'Who or what is entitled to decide, approve, supersede or attest.' },
+  { name: 'Verification', gloss: 'The ability to inspect the basis of a claim and test whether it still holds.' },
+  { name: 'Identity', gloss: 'The continuity of what something is across systems, versions and representations.' },
+  { name: 'Representation', gloss: 'A partial view of reality shaped by the purpose and limits of a system.' },
+  { name: 'Systems', gloss: 'Structured ways of observing, relating and acting on reality.' },
+  { name: 'Context', gloss: 'The relationships, conditions and history that make information intelligible.' },
+  { name: 'Interoperability', gloss: 'The capacity for different systems to refer coherently to the same underlying reality.' },
 ];
 
 // Curated subset shown on the cover, in the brief's order.

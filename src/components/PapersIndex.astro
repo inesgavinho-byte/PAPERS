@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PaperRow from './PaperRow.astro';
+import { getPapers, volumesDescending, papersInVolume } from '../lib/content';
+import { volumeLabel, volumeRoman } from '../data/site';
+import type { Language } from '../data/editions';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const pt = lang === 'pt';
+const papers = await getPapers();
+const volumes = volumesDescending(papers);
+const portugueseVolumes: Record<number, string> = { 1: 'Arquitetura', 2: 'Inteligência Organizacional' };
+const label = (volume: number) => pt
+  ? `Volume ${volumeRoman(volume)}${portugueseVolumes[volume] ? ` — ${portugueseVolumes[volume]}` : ''}`
+  : volumeLabel(volume);
+---
+
+<Layout
+  title={pt ? 'Ensaios' : 'Papers'}
+  lang={lang}
+  description={pt ? 'A coleção de ensaios de Inês Gavinho, com originais em português, traduções inglesas e edições portuguesas revistas de textos anteriores.' : 'The collected essays of Inês Gavinho, including Portuguese originals, English translations and earlier English originals.'}
+  canonicalPath={pt ? '/pt/papers' : '/papers'}
+  alternateLanguages={[{ lang: 'pt', href: '/pt/papers' }, { lang: 'en', href: '/papers' }]}
+>
+  <div class="papers-page">
+    <h1>{pt ? 'Ensaios' : 'Papers'}</h1>
+    <p class="index-intro">{pt
+      ? 'Cada ensaio parte de uma pergunta e propõe uma distinção. A coleção cresce por acumulação.'
+      : 'Each essay begins with a question and proposes a distinction. The collection grows by accumulation.'}</p>
+    <p class="edition-note">{pt
+      ? 'Os novos ensaios são escritos originalmente em português e depois traduzidos para inglês. Os Papers anteriores preservam os seus originais ingleses e, quando disponíveis, edições portuguesas revistas.'
+      : 'New essays are written originally in Portuguese and then translated into English. Earlier Papers preserve their English originals and, where available, revised Portuguese editions.'}</p>
+    {volumes.map((volume) => (
+      <section class="volume-group" aria-labelledby={`volume-${volume}`}>
+        <h2 class="index-kicker" id={`volume-${volume}`}>{label(volume)}</h2>
+        <div class="index-list">{papersInVolume(papers, volume).map((paper) => <PaperRow paper={paper} lang={lang} />)}</div>
+      </section>
+    ))}
+  </div>
+</Layout>
