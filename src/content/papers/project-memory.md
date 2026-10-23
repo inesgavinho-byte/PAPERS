@@ -18,7 +18,10 @@ ideas:
   - Organisation
 principles: []
 genealogy: []
-relatedPapers: []
+relatedPapers:
+  - memory-is-not-an-archive
+  - the-intelligibility-of-impermanence
+  - the-architecture-of-context
 ---
 
 A building can contain thousands of drawings, specifications, approvals, photographs, models, technical sheets and records.
