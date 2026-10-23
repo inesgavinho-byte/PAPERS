@@ -18,6 +18,11 @@ const volumePapers = papersInVolume(papers, volume);
 const description = pt
   ? 'Ensaios de Inês Gavinho sobre arquitetura, tecnologia, organizações, arte e condição humana.'
   : 'Essays by Inês Gavinho on architecture, technology, organisations, art and the human condition.';
+const editionLabel = edition?.editionKind === 'revised'
+  ? (pt ? 'Edição portuguesa revista' : 'Revised Portuguese edition')
+  : edition?.editionKind === 'translation'
+    ? 'Translated from the original publication in Portuguese'
+    : (pt ? 'Publicação original em português' : 'English original');
 ---
 
 <Layout lang={lang} description={description} canonicalPath={pt ? '/' : '/en'} alternateLanguages={[{ lang: 'pt', href: '/' }, { lang: 'en', href: '/en' }]}>
@@ -32,7 +37,7 @@ const description = pt
       </div>
       {current && edition && (
         <a class="hero-panel" href={edition.href} lang={edition.language === 'pt' ? 'pt-PT' : 'en'}>
-          <span class="panel-label">{edition.revised ? 'Edição portuguesa revista' : 'English original'}</span>
+          <span class="panel-label">{editionLabel}</span>
           <span class="panel-issue">{pt ? 'Ensaio' : 'Paper'} {issueNumber(current.data.issue)}</span>
           <span class="panel-title">{edition.title}</span>
           <span class="panel-distinction">{edition.distinction}</span>
