@@ -25,7 +25,7 @@ import Distinction from '../../components/Distinction.astro';
       <h1>TERRA</h1>
       <p class="project-category">Construction systems · Digital product</p>
       <p class="case-attribution">Product conception, creative & technology direction — Inês Gavinho / PINK_MOUSTACHE</p>
-      <p class="paper-metadata">English translation of the original Portuguese edition · 23 October 2026</p>
+      <p class="paper-metadata">Translated from the original publication in Portuguese · 23 October 2026</p>
       <div class="paper-entry-section paper-entry-section--center">
         <p class="paper-entry-label">Central Distinction</p>
         <Distinction value="Information ≠ Decision" variant="stacked" />
@@ -64,7 +64,7 @@ import Distinction from '../../components/Distinction.astro';
       </figure>
 
       <h2>A correction does not erase what came before</h2>
-      <p>When a measurement changes — for instance, a 4.00 m² deduction that reduces the area from 24.00 to 20.00 m² — the previous value is not replaced. The revision rises from 1 to 2, and the system appends an event with the before and the after. The history is append-only: nothing is deleted.</p>
+      <p>When a measurement changes — for instance, a 4.00 m² deduction that reduces the area from 24.00 to 20.00 m² — the previous value is not replaced. The revision rises from 1 to 2, and the system appends an event with the before and the after: the previous state is preserved through new events.</p>
       <figure class="case-figure">
         <img src="/projects/terra/historico-deducao.png" alt="Measurement after deduction: “Área 1 — 20,00 m² (servidor), rev 2”, with the event history open." width="2000" height="1764" loading="lazy" />
         <figcaption>Fig. 3 — A 4.00 m² deduction: the area becomes 20.00 m², the revision rises to 2, and the history keeps the before and after.</figcaption>
@@ -85,7 +85,7 @@ import Distinction from '../../components/Distinction.astro';
       <p>The captures in this case study come from a demonstration run in an isolated environment with entirely synthetic data — a trial project, trial drawings, a trial user; production was left untouched. The values shown are the values the system calculated and stored, verified at the database and the interface at the same time; no capture was retouched.</p>
 
       <h2>Status</h2>
-      <p>TERRA is in pilot use for construction production management. The drawing-measurement module was executed and verified end-to-end in an isolated demonstration environment (22–23 October 2026); production adoption will proceed in phases.</p>
+      <p>TERRA is in pilot use for construction production management. In an isolated demonstration environment (22–23 October 2026), the path calibration → area → persistence → deduction/revision → history was executed and verified; production adoption will proceed in phases.</p>
     </div>
 
     <footer class="case-footer">
